@@ -7,7 +7,7 @@ class Demo extends Component {
   render() {
     return <div>
       <h1>prov-vis Demo</h1>
-      <hubmapProvVis.ProvVisReactComponent/>
+      <hubmapProvVis.ProvVis/>
     </div>
   }
 }
