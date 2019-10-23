@@ -19,7 +19,11 @@
     "test:coverage": "nwb test-react --coverage",
     "test:watch": "nwb test-react --server"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@hms-dbmi-bgm/react-workflow-viz": "0.0.15",
+    "d3": "^5.12.0",
+    "react-transition-group": "^4.3.0"
+  },
   "peerDependencies": {
     "react": "16.x"
   },
