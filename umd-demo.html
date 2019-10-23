@@ -22,7 +22,6 @@
         constructor() {
           super();
           this._shadowRoot = this.attachShadow({ mode: 'open' });
-
           const template = document.createElement('template');
           template.innerHTML = `
             <style>
@@ -55,11 +54,23 @@
             </div>
           `;
           this._shadowRoot.appendChild(template.content.cloneNode(true));
+          this.$button = this._shadowRoot.querySelector('button');
+        }
+
+        static get observedAttributes() {
+          return ['label'];
+        }
+        attributeChangedCallback(name, oldVal, newVal) {
+          this[name] = newVal;
+          this.render();
+        }
+        render() {
+        this.$button.innerHTML = this.label;
         }
       }
       window.customElements.define('my-button', Button);
     </script>
 
-    <my-button></my-button>
+    <my-button label="Click me!!!"></my-button>
   </body>
 </html>
