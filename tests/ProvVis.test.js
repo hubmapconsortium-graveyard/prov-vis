@@ -4,6 +4,8 @@ import { render, unmountComponentAtNode } from 'react-dom';
 
 import hubmapProvVis from '../src';
 
+import { simpleProv } from './fixtures';
+
 describe('ProvVis', () => {
   let node;
 
@@ -16,7 +18,7 @@ describe('ProvVis', () => {
   });
 
   it('renders', () => {
-    render(<hubmapProvVis.ProvVis />, node,
+    render(<hubmapProvVis.ProvVis prov={simpleProv} />, node,
       () => {
         // TODO: Just getting empty div.
         // expect(node.innerHTML).toContain('svg')
