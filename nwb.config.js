@@ -21,6 +21,8 @@ module.exports = {
           flags: ['--no-sandbox']
         }
       }
-    }
+    },
+    // Turn off coverage for now.
+    excludeFromCoverage: ['**/*']
   }
 }
