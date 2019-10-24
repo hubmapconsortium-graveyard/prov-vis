@@ -5,6 +5,7 @@ import '@hms-dbmi-bgm/react-workflow-viz/dist/react-workflow-viz.min.css';
 
 
 export default function ProvVis(props) {
+  /* eslint-disable */
   return (
     <GraphParser
       parsingOptions={{
@@ -21,4 +22,5 @@ export default function ProvVis(props) {
       <Graph rowSpacingType={'compact'} minimumHeight={300} />
     </GraphParser>
   );
+  /* eslint-enable */
 }
