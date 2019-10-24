@@ -8,8 +8,8 @@ export default class Prov {
     return Object.fromEntries(
       Object.entries(this.prov[propName])
         .map(
-          ([id, props]) => [id, props['rdfs:label']]
-        )
+          ([id, props]) => [id, props['rdfs:label']],
+        ),
     );
   }
 
@@ -17,19 +17,19 @@ export default class Prov {
     return Object.fromEntries(
       Object.values(this.prov[propName])
         .map(
-          props => [props['prov:activity'], props['prov:entity']]
-        )
+          (props) => [props['prov:activity'], props['prov:entity']],
+        ),
     );
   }
 
   getActivityInOut(activityId) {
     const generatedByMap = this.getActivityEntityMap('wasGeneratedBy');
     const usedMap = this.getActivityEntityMap('used');
-    return [usedMap[activityId], generatedByMap[activityId]]
+    return [usedMap[activityId], generatedByMap[activityId]];
   }
 
   toCwl() {
-    const activityId = 'ex:run'
+    const activityId = 'ex:run';
     const [entityInputId, entityOutputId] = this.getActivityInOut(activityId);
 
     const activityName = this.prov.activity[activityId]['rdfs:label'];
@@ -37,27 +37,27 @@ export default class Prov {
     const outputName = this.prov.entity[entityOutputId]['rdfs:label'];
 
     return [
-        {
-            "name": activityName,
-            "inputs":[
-                {
-                    "meta":{ "global": true },
-                    "name": inputName,
-                    "source":[]
-                }
+      {
+        name: activityName,
+        inputs: [
+          {
+            meta: { global: true },
+            name: inputName,
+            source: [],
+          },
+        ],
+        outputs: [
+          {
+            meta: { global: true },
+            name: outputName,
+            target: [
+              {
+                name: outputName,
+              },
             ],
-            "outputs":[
-                {
-                    "meta":{ "global":true },
-                    "name": outputName,
-                    "target":[
-                        {
-                            "name": outputName
-                        }
-                    ]
-                }
-            ]
-        }
+          },
+        ],
+      },
     ];
   }
 }
