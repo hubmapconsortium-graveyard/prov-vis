@@ -3,5 +3,7 @@ sudo: false
 language: node_js
 node_js:
   - 8
+addons:
+  chrome: stable
 
 script: eslint src tests && npm run test
