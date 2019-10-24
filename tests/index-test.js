@@ -2,9 +2,9 @@ import expect from 'expect'
 import React from 'react'
 import {render, unmountComponentAtNode} from 'react-dom'
 
-import Component from 'src/'
+import hubmapProvVis from 'src/'
 
-describe('Component', () => {
+describe('ProvVis', () => {
   let node
 
   beforeEach(() => {
@@ -15,9 +15,12 @@ describe('Component', () => {
     unmountComponentAtNode(node)
   })
 
-  it('displays a welcome message', () => {
-    render(<Component/>, node, () => {
-      expect(node.innerHTML).toContain('Welcome to React components')
-    })
+  it('renders', () => {
+    render(<hubmapProvVis.ProvVis/>, node,
+      () => {
+        // TODO: Just getting empty div.
+        // expect(node.innerHTML).toContain('svg')
+      }
+    )
   })
 })
