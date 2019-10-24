@@ -1,6 +1,6 @@
 import expect from 'expect';
 
-import Prov from './Prov';
+import Prov from '../src/Prov';
 
 describe('Prov', () => {
   it('converts W3C JSON to 4DN CWL', () => {

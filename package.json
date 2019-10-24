@@ -26,7 +26,8 @@
   },
   "peerDependencies": {
     "react": "16.x",
-    "react-dom": "16.x"
+    "react-dom": "16.x",
+    "expect": "^0.0.0"
   },
   "devDependencies": {
     "eslint": "^6.5.1",

@@ -2,7 +2,7 @@
 import React from 'react';
 import { render, unmountComponentAtNode } from 'react-dom';
 
-import hubmapProvVis from 'src/'; // eslint-disable-line import/no-unresolved
+import hubmapProvVis from '../src';
 
 describe('ProvVis', () => {
   let node;
