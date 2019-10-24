@@ -10,10 +10,12 @@ module.exports = {
     }
   },
   karma: {
-    // Chrome gives us visual debugging, and support for language features
-    // that aren't in PhantomJS, like Object.fromEntries.
+    /*
+    Chrome gives us support for language features that aren't in PhantomJS, like Object.fromEntries,
+    ... but there are limitations on Travis (https://docs.travis-ci.com/user/chrome),
+    so we run it headless + no-sandbox by default. Change to 'Chrome' for interactive debugging.
+    */
     browsers: ['ChromeHeadlessNoSandbox'],
-    // ... but there are limitations on Travis. https://docs.travis-ci.com/user/chrome
     extra: {
       customLaunchers: {
         ChromeHeadlessNoSandbox: {
@@ -21,8 +23,6 @@ module.exports = {
           flags: ['--no-sandbox']
         }
       }
-    },
-    // Turn off coverage for now.
-    excludeFromCoverage: ['**/*']
+    }
   }
 }
