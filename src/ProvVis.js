@@ -1,7 +1,6 @@
 import React from 'react';
 
 import Graph, { GraphParser } from '@hms-dbmi-bgm/react-workflow-viz';
-import '@hms-dbmi-bgm/react-workflow-viz/dist/react-workflow-viz.min.css';
 
 
 export default function ProvVis(props) {
