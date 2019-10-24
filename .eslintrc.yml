@@ -1,0 +1,20 @@
+env:
+  browser: true
+  es6: true
+extends:
+  - airbnb
+globals:
+  Atomics: readonly
+  SharedArrayBuffer: readonly
+parserOptions:
+  ecmaFeatures:
+    jsx: true
+  ecmaVersion: 2018
+  sourceType: module
+plugins:
+  - react
+rules:
+  no-console: [2, { "allow": ["warn", "error"]}]
+  react/jsx-filename-extension: [0]
+  react/sort-comp: [0]  # Non-alphabetical groupings can make more sense.
+  react/jsx-one-expression-per-line: [0]  # Makes punctuation after tab awkward.
