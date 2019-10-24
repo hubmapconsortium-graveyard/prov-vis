@@ -12,7 +12,7 @@ module.exports = {
   karma: {
     // Chrome gives us visual debugging, and support for language features
     // that aren't in PhantomJS, like Object.fromEntries.
-    browsers: ['Chrome', 'ChromeHeadless', 'ChromeHeadlessNoSandbox'],
+    browsers: ['ChromeHeadlessNoSandbox'],
     // ... but there are limitations on Travis. https://docs.travis-ci.com/user/chrome
     extra: {
       customLaunchers: {
