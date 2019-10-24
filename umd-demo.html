@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+  <head>
+    <title>prov-vis UMD demo</title>
+    <!-- Get the CSS for the underlying react-workflow-viz: -->
+    <link href="https://unpkg.com/@hms-dbmi-bgm/react-workflow-viz/dist/react-workflow-viz.min.css" type="text/css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <p>
+      This demonstrates how static HTML can use prov-vis via UMD.
+      If you have run <code>npm run build</code>, the component should be rendered below,
+      with some sample data.
+    </p>
+    <div id="prov-vis"></div>
+
+    <!-- External libraries listed in nwb.config.js need to be loaded first: -->
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+
+    <!-- This can be replaced with a link to the CDN: -->
+    <script src="./umd/prov-vis.min.js"></script>
+
+    <script>
+      hubmapProvVis.renderProvVis('prov-vis');
+    </script>
+  </body>
+</html>
