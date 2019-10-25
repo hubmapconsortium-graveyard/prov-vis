@@ -6,4 +6,4 @@ node_js:
 addons:
   chrome: stable
 
-script: test.sh
+script: ./test.sh
