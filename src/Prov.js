@@ -1,6 +1,15 @@
+import Ajv from 'ajv';
+
+import schema from './schema.json';
+
 export default class Prov {
   constructor(prov) {
-    // TODO: Validate against schema.
+    const validate = new Ajv().compile(schema);
+    const valid = validate(prov);
+    if (!valid) {
+      const failureReason = JSON.stringify(validate.errors, null, 2);
+      console.warn('validation failed', failureReason);
+    }
     this.prov = prov;
   }
 
