@@ -20,38 +20,11 @@
     <!-- This can be replaced with a link to the CDN: -->
     <script src="./umd/prov-vis.min.js"></script>
 
-    <script>
-      hubmapProvVis.renderProvVis('prov-vis', {
-        prefix: {
-          ex: 'http://example.org',
-          w3: 'http://www.w3.org/',
-        },
-        entity: {
-          'ex:input': {
-            'rdfs:label': 'bedfile',
-          },
-          'ex:output': {
-            'rdfs:label': 'beddbfile',
-          },
-        },
-        activity: {
-          'ex:run': {
-            'rdfs:label': 'bedtobeddb',
-          },
-        },
-        wasGeneratedBy: {
-          '_:1': {
-            'prov:activity': 'ex:run',
-            'prov:entity': 'ex:output',
-          },
-        },
-        used: {
-          '_:2': {
-            'prov:activity': 'ex:run',
-            'prov:entity': 'ex:input',
-          },
-        },
-      });
+    <script type="module">
+      // This import might be replaced with an AJAX call, or JSON templated into the page on the server.
+      // Module loading is subject to CORS restrictions, so this demo needs a static file server.
+      import {simple} from './tests/fixtures.js';
+      hubmapProvVis.renderProvVis('prov-vis', simple.prov);
     </script>
   </body>
 </html>
