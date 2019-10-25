@@ -6,4 +6,4 @@ node_js:
 addons:
   chrome: stable
 
-script: eslint src tests && npm run test
+script: test.sh
