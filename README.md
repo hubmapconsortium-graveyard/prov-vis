@@ -11,8 +11,10 @@ npm start
 ```
 and then visit `http://localhost:3000/`.
 
-To see the UMD library work, first build:
+To demo the UMD package, first build, then start a static file server:
 ```
 npm run build
+npm install http-server -g
+http-server
 ```
-and then visit `file:///path-to-your-checkout/umd-demo.html`.
+and then visit `http://localhost:8080/umd-demo.html`.
