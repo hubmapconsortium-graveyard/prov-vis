@@ -9,4 +9,18 @@ describe('Prov', () => {
     const prov = new Prov(simple.prov);
     expect(prov.toCwl()).toEqual(simple.cwl);
   });
+
+  it('errors if input is invalid', () => {
+    expect(() => new Prov({})).toThrow();
+  });
+
+  it('has expected error message', () => {
+    let message;
+    try {
+      new Prov({}); // eslint-disable-line no-new
+    } catch (e) {
+      message = e.message;
+    }
+    expect(message).toContain("should have required property 'prefix'");
+  });
 });
