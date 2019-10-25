@@ -11,7 +11,7 @@ npm start
 ```
 and then visit `http://localhost:3000/`.
 
-To see the UMD package, first build, then start a static file server:
+To demo the UMD package, first build, then start a static file server:
 ```
 npm run build
 npm install http-server -g
