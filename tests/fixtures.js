@@ -6,15 +6,15 @@ export const simple = {
     },
     entity: {
       'ex:input': {
-        'rdfs:label': 'bedfile',
+        'prov:label': 'bedfile',
       },
       'ex:output': {
-        'rdfs:label': 'beddbfile',
+        'prov:label': 'beddbfile',
       },
     },
     activity: {
       'ex:run': {
-        'rdfs:label': 'bedtobeddb',
+        'prov:label': 'bedtobeddb',
       },
     },
     wasGeneratedBy: {

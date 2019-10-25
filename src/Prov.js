@@ -13,14 +13,14 @@ export default class Prov {
     this.prov = prov;
   }
 
-  getNamesMap(propName) {
-    return Object.fromEntries(
-      Object.entries(this.prov[propName])
-        .map(
-          ([id, props]) => [id, props['rdfs:label']],
-        ),
-    );
-  }
+  // getNamesMap(propName) {
+  //   return Object.fromEntries(
+  //     Object.entries(this.prov[propName])
+  //       .map(
+  //         ([id, props]) => [id, props['rdfs:label']],
+  //       ),
+  //   );
+  // }
 
   getActivityEntityMap(propName) {
     return Object.fromEntries(
@@ -38,15 +38,16 @@ export default class Prov {
   }
 
   toCwl() {
-    const activityId = 'ex:run';
-    const [entityInputId, entityOutputId] = this.getActivityInOut(activityId);
+    const activityIds = Object.keys(this.prov.activity);
+    const activityInOutMap = Object.fromEntries(activityIds.map(activityId => [
+      activityId, this.getActivityInOut(activityId)
+    ]));
 
-    const activityName = this.prov.activity[activityId]['rdfs:label'];
-    const inputName = this.prov.entity[entityInputId]['rdfs:label'];
-    const outputName = this.prov.entity[entityOutputId]['rdfs:label'];
-
-    return [
-      {
+    return Object.entries(activityInOutMap).map(([activityId, ioPair]) => {
+      const activityName = this.prov.activity[activityId]['prov:label'];
+      const inputName = this.prov.entity[ioPair[0]]['prov:label'];
+      const outputName = this.prov.entity[ioPair[1]]['prov:label'];
+      return {
         name: activityName,
         inputs: [
           {
@@ -66,7 +67,7 @@ export default class Prov {
             ],
           },
         ],
-      },
-    ];
+      }
+    });
   }
 }
