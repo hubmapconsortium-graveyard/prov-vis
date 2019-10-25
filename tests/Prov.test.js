@@ -2,12 +2,14 @@ import expect from 'expect';
 
 import Prov from '../src/Prov';
 
-import { simple } from './fixtures';
+import * as fixtures from './fixtures';
 
 describe('Prov', () => {
-  it('converts W3C JSON to 4DN CWL', () => {
-    const prov = new Prov(simple.prov);
-    expect(prov.toCwl()).toEqual(simple.cwl);
+  Object.entries(fixtures).forEach(([k, v]) => {
+    it(`converts ${k} W3C JSON to 4DN CWL`, () => {
+      const prov = new Prov(v.prov);
+      expect(prov.toCwl()).toEqual(v.cwl);
+    });
   });
 
   it('errors if input is invalid', () => {
