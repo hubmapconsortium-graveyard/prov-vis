@@ -8,7 +8,7 @@ export default class Prov {
     const valid = validate(prov);
     if (!valid) {
       const failureReason = JSON.stringify(validate.errors, null, 2);
-      console.warn('validation failed', failureReason);
+      throw new Error(failureReason);
     }
     this.prov = prov;
   }

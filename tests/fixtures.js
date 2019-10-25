@@ -157,4 +157,6 @@ export const real = {
   cwl: [],
 };
 
+// The demos reference the default export:
+// Update this to update all the demos.
 export default simple;
