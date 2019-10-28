@@ -1,8 +1,7 @@
 export const simple = {
   prov: {
     prefix: {
-      ex: 'http://example.org',
-      w3: 'http://www.w3.org/',
+      hubmap: 'https://hubmapconsortium.org',
     },
     entity: {
       'ex:input': {

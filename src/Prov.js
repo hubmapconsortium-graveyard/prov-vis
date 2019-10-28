@@ -2,7 +2,7 @@ import Ajv from 'ajv';
 
 import schema from './schema.json';
 
-function makeCwlStep(activityName, inputName, output) {
+function makeCwlStep(activityName, inputName, outputName) {
   return {
     name: activityName,
     inputs: [
