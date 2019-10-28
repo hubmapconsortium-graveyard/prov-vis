@@ -46,8 +46,15 @@ export default class Prov {
     return Object.entries(activityInOutMap).map(([activityId, ioPair]) => {
       console.warn([activityId, ioPair]);
       const activityName = this.prov.activity[activityId]['prov:label'];
-      const inputName = this.prov.entity[ioPair[0]]['prov:label'];
-      const outputName = this.prov.entity[ioPair[1]]['prov:label'];
+      const inputEntity = this.prov.entity[ioPair[0]];
+      if (!inputEntity) {
+        // Top-level entities for organizations are referenced but not defined.
+        // They are not included in the visualization.
+        return null;
+      }
+      const inputName = inputEntity['prov:label'];
+      const outputEntity = this.prov.entity[ioPair[1]]
+      const outputName = outputEntity['prov:label'];
       return {
         name: activityName,
         inputs: [
@@ -69,6 +76,9 @@ export default class Prov {
           },
         ],
       };
-    });
+    }).filter(
+      // Exclude nulls:
+      step => step
+    );
   }
 }
