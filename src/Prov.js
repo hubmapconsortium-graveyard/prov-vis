@@ -13,15 +13,6 @@ export default class Prov {
     this.prov = prov;
   }
 
-  // getNamesMap(propName) {
-  //   return Object.fromEntries(
-  //     Object.entries(this.prov[propName])
-  //       .map(
-  //         ([id, props]) => [id, props['rdfs:label']],
-  //       ),
-  //   );
-  // }
-
   getActivityEntityMap(propName) {
     return Object.fromEntries(
       Object.values(this.prov[propName])
@@ -44,7 +35,6 @@ export default class Prov {
     ]));
 
     return Object.entries(activityInOutMap).map(([activityId, ioPair]) => {
-      console.warn([activityId, ioPair]);
       const activityName = this.prov.activity[activityId]['prov:label'];
       const inputEntity = this.prov.entity[ioPair[0]];
       if (!inputEntity) {
