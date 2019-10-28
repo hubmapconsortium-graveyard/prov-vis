@@ -53,7 +53,7 @@ export default class Prov {
         return null;
       }
       const inputName = inputEntity['prov:label'];
-      const outputEntity = this.prov.entity[ioPair[1]]
+      const outputEntity = this.prov.entity[ioPair[1]];
       const outputName = outputEntity['prov:label'];
       return {
         name: activityName,
@@ -78,7 +78,7 @@ export default class Prov {
       };
     }).filter(
       // Exclude nulls:
-      step => step
+      (step) => step,
     );
   }
 }
