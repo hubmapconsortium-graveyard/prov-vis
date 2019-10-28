@@ -23,11 +23,19 @@
   },
   "additionalProperties": false,
   "required": ["prefix", "entity", "activity", "wasGeneratedBy", "used"],
+  "$comment": "Support for 'Agent' eventually: Then add 'actedOnBehalfOf' and 'wasAttributedTo'",
   "properties": {
     "prefix": { "$ref": "#/definitions/string_to_string" },
     "entity": { "$ref": "#/definitions/string_to_string_to_string" },
     "activity": { "$ref": "#/definitions/string_to_string_to_string" },
     "wasGeneratedBy": { "$ref": "#/definitions/string_to_string_to_string" },
-    "used": { "$ref": "#/definitions/string_to_string_to_string" }
+    "used": { "$ref": "#/definitions/string_to_string_to_string" },
+
+    "actedOnBehalfOf": {
+      "$ref": "#/definitions/string_to_string_to_string"
+    },
+    "wasAttributedTo": {
+      "$ref": "#/definitions/string_to_string_to_string"
+    }
   }
 }
