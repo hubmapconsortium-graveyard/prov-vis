@@ -5,7 +5,7 @@ HuBMAP-specific wrapper for [4dn-dcic/react-workflow-viz](https://github.com/4dn
 
 This repo is bootstrapped with [NWB](https://github.com/insin/nwb/blob/master/docs/guides/ReactComponents.md).
 
-To use the live development server:
+To use the live live React demo:
 ```
 npm start
 ```
@@ -18,3 +18,6 @@ npm install http-server -g
 http-server
 ```
 and then visit `http://localhost:8080/umd-demo.html`.
+
+(Both demos use the default export from `tests/fixtures.js` as their input:
+Tweak that setting to see how different structures are rendered.)
