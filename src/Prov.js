@@ -2,6 +2,30 @@ import Ajv from 'ajv';
 
 import schema from './schema.json';
 
+function makeCwlStep(activityName, inputName, output) {
+  return {
+    name: activityName,
+    inputs: [
+      {
+        meta: { global: true },
+        name: inputName,
+        source: [],
+      },
+    ],
+    outputs: [
+      {
+        meta: { global: true },
+        name: outputName,
+        target: [
+          {
+            name: outputName,
+          },
+        ],
+      },
+    ],
+  };
+}
+
 export default class Prov {
   constructor(prov) {
     const validate = new Ajv().compile(schema);
@@ -40,34 +64,16 @@ export default class Prov {
       if (!inputEntity) {
         // Top-level entities for organizations are referenced but not defined.
         // They are not included in the visualization.
+        // TODO: https://github.com/hubmapconsortium/prov-vis/issues/15
         return null;
       }
       const inputName = inputEntity['prov:label'];
       const outputEntity = this.prov.entity[ioPair[1]];
       const outputName = outputEntity['prov:label'];
-      return {
-        name: activityName,
-        inputs: [
-          {
-            meta: { global: true },
-            name: inputName,
-            source: [],
-          },
-        ],
-        outputs: [
-          {
-            meta: { global: true },
-            name: outputName,
-            target: [
-              {
-                name: outputName,
-              },
-            ],
-          },
-        ],
-      };
+      return makeCwlStep(activityName, inputName, outputName);
     }).filter(
       // Exclude nulls:
+      // TODO: https://github.com/hubmapconsortium/prov-vis/issues/15
       (step) => step,
     );
   }
