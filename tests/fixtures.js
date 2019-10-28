@@ -114,16 +114,17 @@ export const real = {
         'hubmap:display_identifier': '9245d8a4314ad4891e123c0bf67fa746',
         'hubmap:uuid': '9245d8a4314ad4891e123c0bf67fa746',
       },
-      'hubmap:activities/b3f9408bc2d2c0bdd9a30705f4d1d6a3': {
-        'prov:startTime': '2019-10-16T13:59:00',
-        'prov:endTime': '2019-10-16T13:59:00',
-        'prov:label': 'b3f9408bc2d2c0bdd9a30705f4d1d6a3',
-        'prov:type': 'Register Donor Activity',
-        'hubmap:doi': '494FVJF666',
-        'hubmap:display_doi': 'HBM494.FVJF.666',
-        'hubmap:display_identifier': 'b3f9408bc2d2c0bdd9a30705f4d1d6a3',
-        'hubmap:uuid': 'b3f9408bc2d2c0bdd9a30705f4d1d6a3',
-      },
+      // This corresponds to the bad entity ID in "used".
+      // 'hubmap:activities/b3f9408bc2d2c0bdd9a30705f4d1d6a3': {
+      //   'prov:startTime': '2019-10-16T13:59:00',
+      //   'prov:endTime': '2019-10-16T13:59:00',
+      //   'prov:label': 'b3f9408bc2d2c0bdd9a30705f4d1d6a3',
+      //   'prov:type': 'Register Donor Activity',
+      //   'hubmap:doi': '494FVJF666',
+      //   'hubmap:display_doi': 'HBM494.FVJF.666',
+      //   'hubmap:display_identifier': 'b3f9408bc2d2c0bdd9a30705f4d1d6a3',
+      //   'hubmap:uuid': 'b3f9408bc2d2c0bdd9a30705f4d1d6a3',
+      // },
     },
     wasGeneratedBy: {
       '_:id1': {
@@ -134,10 +135,11 @@ export const real = {
         'prov:entity': 'hubmap:entities/7dde784299770261b6b09f396642c22a',
         'prov:activity': 'hubmap:activities/9245d8a4314ad4891e123c0bf67fa746',
       },
-      '_:id5': {
-        'prov:entity': 'hubmap:entities/68eb352a2f09069d265bec86512774a6',
-        'prov:activity': 'hubmap:activities/b3f9408bc2d2c0bdd9a30705f4d1d6a3',
-      },
+      // This corresponds to the bad entity ID in "used".
+      // '_:id5': {
+      //   'prov:entity': 'hubmap:entities/68eb352a2f09069d265bec86512774a6',
+      //   'prov:activity': 'hubmap:activities/b3f9408bc2d2c0bdd9a30705f4d1d6a3',
+      // },
     },
     used: {
       '_:id2': {
@@ -148,10 +150,11 @@ export const real = {
         'prov:activity': 'hubmap:activities/9245d8a4314ad4891e123c0bf67fa746',
         'prov:entity': 'hubmap:entities/68eb352a2f09069d265bec86512774a6',
       },
-      '_:id6': {
-        'prov:activity': 'hubmap:activities/b3f9408bc2d2c0bdd9a30705f4d1d6a3',
-        'prov:entity': 'hubmap:entities/5bd084c8-edc2-11e8-802f-0e368f3075e8',
-      },
+      // Sample data had bad ID: Ignoring for now.
+      // '_:id6': {
+      //   'prov:activity': 'hubmap:activities/b3f9408bc2d2c0bdd9a30705f4d1d6a3',
+      //   'prov:entity': 'hubmap:entities/5bd084c8-edc2-11e8-802f-0e368f3075e8',
+      // },
     },
   },
   cwl: [],
@@ -159,4 +162,4 @@ export const real = {
 
 // The demos reference the default export:
 // Update this to update all the demos.
-export default simple;
+export default real;

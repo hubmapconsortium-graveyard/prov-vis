@@ -44,6 +44,7 @@ export default class Prov {
     ]));
 
     return Object.entries(activityInOutMap).map(([activityId, ioPair]) => {
+      console.warn([activityId, ioPair]);
       const activityName = this.prov.activity[activityId]['prov:label'];
       const inputName = this.prov.entity[ioPair[0]]['prov:label'];
       const outputName = this.prov.entity[ioPair[1]]['prov:label'];
