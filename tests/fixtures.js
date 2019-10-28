@@ -279,7 +279,58 @@ export const real = {
       },
     },
   },
-  cwl: [],
+  cwl: [
+    {
+      inputs: [
+        {
+          meta: {
+            global: true,
+          },
+          name: 'TEST0005-RK',
+          source: [],
+        },
+      ],
+      name: '822a66f8d498ef37fbc2280abcf56c9e',
+      outputs: [
+        {
+          meta: {
+            global: true,
+          },
+          name: 'TEST0005-RK-1',
+          target: [
+            {
+              name: 'TEST0005-RK-1',
+            },
+          ],
+        },
+      ],
+    },
+    {
+      inputs: [
+        {
+          meta: {
+            global: true,
+          },
+          name: 'TEST0005',
+          source: [],
+        },
+      ],
+      name: 'd8db1999c29d32dd5960883be688983a',
+      outputs: [
+        {
+          meta: {
+            global: true,
+          },
+          name: 'TEST0005-RK',
+          target: [
+            {
+              name: 'TEST0005-RK',
+            },
+          ],
+        },
+      ],
+    },
+  ],
 };
 
 // The demos reference the default export:
