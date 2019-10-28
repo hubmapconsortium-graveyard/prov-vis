@@ -39,8 +39,8 @@ export default class Prov {
 
   toCwl() {
     const activityIds = Object.keys(this.prov.activity);
-    const activityInOutMap = Object.fromEntries(activityIds.map(activityId => [
-      activityId, this.getActivityInOut(activityId)
+    const activityInOutMap = Object.fromEntries(activityIds.map((activityId) => [
+      activityId, this.getActivityInOut(activityId),
     ]));
 
     return Object.entries(activityInOutMap).map(([activityId, ioPair]) => {
@@ -68,7 +68,7 @@ export default class Prov {
             ],
           },
         ],
-      }
+      };
     });
   }
 }
