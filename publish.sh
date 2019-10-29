@@ -7,5 +7,5 @@ die() { set +v; echo "$*" 1>&2 ; exit 1; }
 [[ `git status --porcelain` ]] && die 'Commit changes and push!'
 
 npm version patch
-npm publish
+npm publish --access=public
 git push origin --tags
