@@ -6,8 +6,6 @@ die() { set +v; echo "$*" 1>&2 ; exit 1; }
 [ `git symbolic-ref --short HEAD` != 'master' ] || die 'Make a release branch!'
 [[ `git status --porcelain` ]] && die 'Commit changes and push!'
 
-./test.sh || die 'Fix tests!'
-
 npm version patch
 npm publish
 git push origin --tags
