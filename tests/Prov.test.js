@@ -28,7 +28,7 @@ describe('Prov', () => {
 });
 
 describe('cwl utils', () => {
-  it('successfully makeCwlInput reference', () => {
+  it('makeCwlInput reference', () => {
     expect(makeCwlInput('name1', null, true)).toEqual(
       {
         meta: {
@@ -52,7 +52,7 @@ describe('cwl utils', () => {
     );
   });
 
-  it('successfully makeCwlInput with step', () => {
+  it('makeCwlInput with step', () => {
     expect(makeCwlInput('name1', 'step1')).toEqual(
       {
         meta: {
@@ -77,7 +77,7 @@ describe('cwl utils', () => {
     );
   });
 
-  it('successfully makeCwlOutput', () => {
+  it('makeCwlOutput', () => {
     expect(makeCwlOutput('name1', ['step1'])).toEqual(
       {
         meta: {
