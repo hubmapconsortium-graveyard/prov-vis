@@ -14,3 +14,8 @@ end eslint
 start test
 npm run test
 end test
+
+start changelog
+diff CHANGELOG.md <(curl https://raw.githubusercontent.com/hubmapconsortium/prov-vis/master/CHANGELOG.md) \
+  && die 'Update CHANGELOG.md'
+end changelog
