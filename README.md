@@ -21,3 +21,12 @@ and then visit `http://localhost:8080/umd-demo.html`.
 
 (Both demos use the default export from `tests/fixtures.js` as their input:
 Tweak that setting to see how different structures are rendered.)
+
+## Publish
+
+Make a release branch, and run:
+```
+./test.sh
+./publish.sh
+```
+That will run the tests, bump the version, publish to NPM, and push to GitHub.
