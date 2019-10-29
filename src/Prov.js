@@ -2,6 +2,51 @@ import Ajv from 'ajv';
 
 import schema from './schema.json';
 
+// export only to test.
+export function makeCwlInput(name, steps, isReference) {
+  const id = name;
+  const source = [{
+    name,
+    for_file: id,
+  }];
+  if (steps) {
+    if (steps.length > 1) {
+      throw new Error('Limited to 1 step');
+    } else if (steps.length === 1) {
+      [source[0].step] = steps;
+    }
+  }
+  return {
+    name,
+    source,
+    run_data: {
+      file: [{ '@id': id }],
+    },
+    meta: {
+      global: true,
+      in_path: true,
+      type: isReference ? 'reference file' : 'data file',
+    },
+  };
+}
+
+// export only to test.
+export function makeCwlOutput(name, steps) {
+  const id = name;
+  return {
+    name,
+    target:
+      steps.map((step) => ({ step, name })),
+    run_data: {
+      file: [{ '@id': id }],
+    },
+    meta: {
+      global: true,
+      in_path: true,
+    },
+  };
+}
+
 export default class Prov {
   constructor(prov) {
     const validate = new Ajv().compile(schema);
@@ -11,6 +56,9 @@ export default class Prov {
       throw new Error(failureReason);
     }
     this.prov = prov;
+
+    this.generatedByMap = this.getActivityEntityMap('wasGeneratedBy');
+    this.usedMap = this.getActivityEntityMap('used');
   }
 
   getActivityEntityMap(propName) {
@@ -22,53 +70,51 @@ export default class Prov {
     );
   }
 
-  getActivityInOut(activityId) {
-    const generatedByMap = this.getActivityEntityMap('wasGeneratedBy');
-    const usedMap = this.getActivityEntityMap('used');
-    return [usedMap[activityId], generatedByMap[activityId]];
+
+  getEntities(activity, relation) {
+    return Object.values(this.prov[relation])
+      .filter((pair) => pair['prov:activity'] === activity)
+      .map((pair) => pair['prov:entity']);
+  }
+
+  getParentEntities(activity) {
+    return this.getEntities(activity, 'used');
+  }
+
+  getChildEntities(activity) {
+    return this.getEntities(activity, 'wasGeneratedBy');
+  }
+
+  getActivities(entity, relation) {
+    return Object.values(this.prov[relation])
+      .filter((pair) => pair['prov:entity'] === entity)
+      .map((pair) => pair['prov:activity']);
+  }
+
+  getParentActivities(entity) {
+    return this.getActivities(entity, 'wasGeneratedBy');
+  }
+
+  getChildActivities(entity) {
+    return this.getActivities(entity, 'used');
+  }
+
+
+  makeCwlStep(activityId) {
+    const inputs = this.getParentEntities(activityId)
+      .map((entityId) => makeCwlInput(entityId, this.getParentActivities(entityId)));
+    const outputs = this.getChildEntities(activityId)
+      .map((entityId) => makeCwlOutput(entityId, this.getChildActivities(entityId)));
+    return {
+      name: activityId,
+      inputs,
+      outputs,
+    };
   }
 
   toCwl() {
-    const activityIds = Object.keys(this.prov.activity);
-    const activityInOutMap = Object.fromEntries(activityIds.map((activityId) => [
-      activityId, this.getActivityInOut(activityId),
-    ]));
-
-    return Object.entries(activityInOutMap).map(([activityId, ioPair]) => {
-      const activityName = this.prov.activity[activityId]['prov:label'];
-      const inputEntity = this.prov.entity[ioPair[0]];
-      if (!inputEntity) {
-        // Top-level entities for organizations are referenced but not defined.
-        // They are not included in the visualization.
-        return null;
-      }
-      const inputName = inputEntity['prov:label'];
-      const outputEntity = this.prov.entity[ioPair[1]];
-      const outputName = outputEntity['prov:label'];
-      return {
-        name: activityName,
-        inputs: [
-          {
-            meta: { global: true },
-            name: inputName,
-            source: [],
-          },
-        ],
-        outputs: [
-          {
-            meta: { global: true },
-            name: outputName,
-            target: [
-              {
-                name: outputName,
-              },
-            ],
-          },
-        ],
-      };
-    }).filter(
-      // Exclude nulls:
-      (step) => step,
+    return Object.keys(this.prov.activity).map(
+      (activityId) => this.makeCwlStep(activityId),
     );
   }
 }

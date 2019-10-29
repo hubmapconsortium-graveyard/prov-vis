@@ -1,17 +1,20 @@
 import expect from 'expect';
 
-import Prov from '../src/Prov';
+import Prov, { makeCwlInput, makeCwlOutput } from '../src/Prov';
 
 import * as fixtures from './fixtures';
 
-describe('Prov', () => {
+
+describe('Prov fixtures', () => {
   Object.entries(fixtures).forEach(([k, v]) => {
     it(`converts ${k} W3C JSON to 4DN CWL`, () => {
       const prov = new Prov(v.prov);
       expect(prov.toCwl()).toEqual(v.cwl);
     });
   });
+});
 
+describe('Prov errors', () => {
   it('errors if input is invalid', () => {
     expect(() => new Prov({})).toThrow();
   });
@@ -24,5 +27,109 @@ describe('Prov', () => {
       message = e.message;
     }
     expect(message).toContain("should have required property 'prefix'");
+  });
+});
+
+describe('Prov methods', () => {
+  const prov = new Prov(fixtures.complex.prov);
+
+  it('getParentEntities', () => {
+    expect(prov.getParentEntities('hubmap:act-4')).toEqual([
+      'hubmap:ent-1', 'hubmap:ent-3', 'hubmap:ent-4',
+    ]);
+  });
+
+  it('getChildEntities', () => {
+    expect(prov.getChildEntities('hubmap:act-2')).toEqual([
+      'hubmap:ent-4', 'hubmap:ent-7',
+    ]);
+  });
+
+  it('getParentActivities', () => {
+    expect(prov.getParentActivities('hubmap:ent-6')).toEqual([
+      'hubmap:act-4',
+    ]);
+  });
+
+  it('getChildActivities', () => {
+    expect(prov.getChildActivities('hubmap:ent-1')).toEqual([
+      'hubmap:act-1', 'hubmap:act-2', 'hubmap:act-4',
+    ]);
+  });
+});
+
+describe('cwl utils', () => {
+  it('makeCwlInput reference', () => {
+    expect(makeCwlInput('name1', [], true)).toEqual(
+      {
+        meta: {
+          global: true,
+          in_path: true,
+          type: 'reference file',
+        },
+        name: 'name1',
+        run_data: {
+          file: [
+            {
+              '@id': 'name1',
+            },
+          ],
+        },
+        source: [{
+          for_file: 'name1',
+          name: 'name1',
+        }],
+      },
+    );
+  });
+
+  it('makeCwlInput with step', () => {
+    expect(makeCwlInput('name1', ['step1'])).toEqual(
+      {
+        meta: {
+          global: true,
+          in_path: true,
+          type: 'data file',
+        },
+        name: 'name1',
+        run_data: {
+          file: [
+            {
+              '@id': 'name1',
+            },
+          ],
+        },
+        source: [{
+          for_file: 'name1',
+          name: 'name1',
+          step: 'step1',
+        }],
+      },
+    );
+  });
+
+  it('makeCwlOutput', () => {
+    expect(makeCwlOutput('name1', ['step1'])).toEqual(
+      {
+        meta: {
+          global: true,
+          in_path: true,
+        },
+        name: 'name1',
+        run_data: {
+          file: [
+            {
+              '@id': 'name1',
+            },
+          ],
+        },
+        target: [
+          {
+            name: 'name1',
+            step: 'step1',
+          },
+        ],
+      },
+    );
   });
 });

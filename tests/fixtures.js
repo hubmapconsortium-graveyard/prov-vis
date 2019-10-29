@@ -1,8 +1,7 @@
 export const simple = {
   prov: {
     prefix: {
-      ex: 'http://example.org',
-      w3: 'http://www.w3.org/',
+      hubmap: 'https://hubmapconsortium.org',
     },
     entity: {
       'ex:input': {
@@ -36,23 +35,41 @@ export const simple = {
         {
           meta: {
             global: true,
+            in_path: true,
+            type: 'data file',
           },
-          name: 'bedfile',
-          source: [],
+          name: 'ex:input',
+          run_data: {
+            file: [
+              {
+                '@id': 'ex:input',
+              },
+            ],
+          },
+          source: [
+            {
+              for_file: 'ex:input',
+              name: 'ex:input',
+            },
+          ],
         },
       ],
-      name: 'bedtobeddb',
+      name: 'ex:run',
       outputs: [
         {
           meta: {
             global: true,
+            in_path: true,
           },
-          name: 'beddbfile',
-          target: [
-            {
-              name: 'beddbfile',
-            },
-          ],
+          name: 'ex:output',
+          run_data: {
+            file: [
+              {
+                '@id': 'ex:output',
+              },
+            ],
+          },
+          target: [],
         },
       ],
     },
@@ -285,21 +302,149 @@ export const real = {
         {
           meta: {
             global: true,
+            in_path: true,
+            type: 'data file',
           },
-          name: 'TEST0005-RK',
-          source: [],
+          name: 'hubmap:entities/9942c58c009cb0a0f245f9cb61586af5',
+          run_data: {
+            file: [
+              {
+                '@id': 'hubmap:entities/9942c58c009cb0a0f245f9cb61586af5',
+              },
+            ],
+          },
+          source: [
+            {
+              for_file: 'hubmap:entities/9942c58c009cb0a0f245f9cb61586af5',
+              name: 'hubmap:entities/9942c58c009cb0a0f245f9cb61586af5',
+              step: 'hubmap:activities/d8db1999c29d32dd5960883be688983a',
+            },
+          ],
         },
       ],
-      name: '822a66f8d498ef37fbc2280abcf56c9e',
+      name: 'hubmap:activities/822a66f8d498ef37fbc2280abcf56c9e',
       outputs: [
         {
           meta: {
             global: true,
+            in_path: true,
           },
-          name: 'TEST0005-RK-1',
+          name: 'hubmap:entities/0817f6a3a2f170486a49f2ffae46072d',
+          run_data: {
+            file: [
+              {
+                '@id': 'hubmap:entities/0817f6a3a2f170486a49f2ffae46072d',
+              },
+            ],
+          },
+          target: [],
+        },
+        {
+          meta: {
+            global: true,
+            in_path: true,
+          },
+          name: 'hubmap:entities/12e77e69ab76b1832a95e00646f666db',
+          run_data: {
+            file: [
+              {
+                '@id': 'hubmap:entities/12e77e69ab76b1832a95e00646f666db',
+              },
+            ],
+          },
+          target: [],
+        },
+        {
+          meta: {
+            global: true,
+            in_path: true,
+          },
+          name: 'hubmap:entities/d2f87dda666fce9efeeeb09b078b5feb',
+          run_data: {
+            file: [
+              {
+                '@id': 'hubmap:entities/d2f87dda666fce9efeeeb09b078b5feb',
+              },
+            ],
+          },
+          target: [],
+        },
+        {
+          meta: {
+            global: true,
+            in_path: true,
+          },
+          name: 'hubmap:entities/731c5b88cdc623212cf605d1ff6f22f7',
+          run_data: {
+            file: [
+              {
+                '@id': 'hubmap:entities/731c5b88cdc623212cf605d1ff6f22f7',
+              },
+            ],
+          },
+          target: [],
+        },
+        {
+          meta: {
+            global: true,
+            in_path: true,
+          },
+          name: 'hubmap:entities/51318fa4fff79c82d4de7b2d70e630cb',
+          run_data: {
+            file: [
+              {
+                '@id': 'hubmap:entities/51318fa4fff79c82d4de7b2d70e630cb',
+              },
+            ],
+          },
+          target: [],
+        },
+      ],
+    },
+    {
+      inputs: [
+        {
+          meta: {
+            global: true,
+            in_path: true,
+            type: 'data file',
+          },
+          name: 'hubmap:entities/5822aa2f0e9e1e9b07731de97109ef6d',
+          run_data: {
+            file: [
+              {
+                '@id': 'hubmap:entities/5822aa2f0e9e1e9b07731de97109ef6d',
+              },
+            ],
+          },
+          source: [
+            {
+              for_file: 'hubmap:entities/5822aa2f0e9e1e9b07731de97109ef6d',
+              name: 'hubmap:entities/5822aa2f0e9e1e9b07731de97109ef6d',
+              step: 'hubmap:activities/dd7a55a9a297ad308f6c48c3b7090475',
+            },
+          ],
+        },
+      ],
+      name: 'hubmap:activities/d8db1999c29d32dd5960883be688983a',
+      outputs: [
+        {
+          meta: {
+            global: true,
+            in_path: true,
+          },
+          name: 'hubmap:entities/9942c58c009cb0a0f245f9cb61586af5',
+          run_data: {
+            file: [
+              {
+                '@id': 'hubmap:entities/9942c58c009cb0a0f245f9cb61586af5',
+              },
+            ],
+          },
           target: [
             {
-              name: 'TEST0005-RK-1',
+              name: 'hubmap:entities/9942c58c009cb0a0f245f9cb61586af5',
+              step: 'hubmap:activities/822a66f8d498ef37fbc2280abcf56c9e',
             },
           ],
         },
@@ -310,21 +455,44 @@ export const real = {
         {
           meta: {
             global: true,
+            in_path: true,
+            type: 'data file',
           },
-          name: 'TEST0005',
-          source: [],
+          name: 'hubmap:entities/5bd084c8-edc2-11e8-802f-0e368f3075e8',
+          run_data: {
+            file: [
+              {
+                '@id': 'hubmap:entities/5bd084c8-edc2-11e8-802f-0e368f3075e8',
+              },
+            ],
+          },
+          source: [
+            {
+              for_file: 'hubmap:entities/5bd084c8-edc2-11e8-802f-0e368f3075e8',
+              name: 'hubmap:entities/5bd084c8-edc2-11e8-802f-0e368f3075e8',
+            },
+          ],
         },
       ],
-      name: 'd8db1999c29d32dd5960883be688983a',
+      name: 'hubmap:activities/dd7a55a9a297ad308f6c48c3b7090475',
       outputs: [
         {
           meta: {
             global: true,
+            in_path: true,
           },
-          name: 'TEST0005-RK',
+          name: 'hubmap:entities/5822aa2f0e9e1e9b07731de97109ef6d',
+          run_data: {
+            file: [
+              {
+                '@id': 'hubmap:entities/5822aa2f0e9e1e9b07731de97109ef6d',
+              },
+            ],
+          },
           target: [
             {
-              name: 'TEST0005-RK',
+              name: 'hubmap:entities/5822aa2f0e9e1e9b07731de97109ef6d',
+              step: 'hubmap:activities/d8db1999c29d32dd5960883be688983a',
             },
           ],
         },
@@ -333,6 +501,343 @@ export const real = {
   ],
 };
 
+export const complex = {
+  prov: {
+    /*
+    E1 ═> A1 ═> E3 ═> A3 ═> E5
+    ║╚═══════╗  ╚══════╗
+    ╚═════╗  ╚════════╗║
+          V           VV
+    E2 ═> A2 ═> E4 ═> A4 ═> E6
+          ║
+          ╚═══> E7
+    */
+
+    /* eslint-disable object-curly-spacing */
+    /* eslint-disable object-curly-newline */
+    /* eslint-disable indent */
+    prefix: {
+      hubmap: 'https://hubmapconsortium.org',
+    },
+    entity: {
+      'hubmap:ent-1': {'prov:label': 'ent-1'},
+      'hubmap:ent-2': {'prov:label': 'ent-2'},
+      'hubmap:ent-3': {'prov:label': 'ent-3'},
+      'hubmap:ent-4': {'prov:label': 'ent-4'},
+      'hubmap:ent-5': {'prov:label': 'ent-5'},
+      'hubmap:ent-6': {'prov:label': 'ent-6'},
+      'hubmap:ent-7': {'prov:label': 'ent-7'},
+    },
+    activity: {
+      'hubmap:act-1': {'prov:label': 'act-1'},
+      'hubmap:act-2': {'prov:label': 'act-2'},
+      'hubmap:act-3': {'prov:label': 'act-3'},
+      'hubmap:act-4': {'prov:label': 'act-4'},
+    },
+    wasGeneratedBy: {
+      '_:1': {'prov:entity': 'hubmap:ent-3',
+              'prov:activity': 'hubmap:act-1'},
+      '_:2': {'prov:entity': 'hubmap:ent-4',
+              'prov:activity': 'hubmap:act-2'},
+      '_:3': {'prov:entity': 'hubmap:ent-5',
+              'prov:activity': 'hubmap:act-3'},
+      '_:4': {'prov:entity': 'hubmap:ent-6',
+              'prov:activity': 'hubmap:act-4'},
+      '_:5': {'prov:entity': 'hubmap:ent-7',
+              'prov:activity': 'hubmap:act-2'},
+    },
+    used: {
+      '_:5': {'prov:activity': 'hubmap:act-1',
+              'prov:entity': 'hubmap:ent-1'},
+
+      '_:6': {'prov:activity': 'hubmap:act-2',
+              'prov:entity': 'hubmap:ent-1'},
+      '_:7': {'prov:activity': 'hubmap:act-2',
+              'prov:entity': 'hubmap:ent-2'},
+
+      '_:8': {'prov:activity': 'hubmap:act-3',
+              'prov:entity': 'hubmap:ent-3'},
+
+      '_:9': {'prov:activity': 'hubmap:act-4',
+              'prov:entity': 'hubmap:ent-1'},
+      '_:10': {'prov:activity': 'hubmap:act-4',
+              'prov:entity': 'hubmap:ent-3'},
+      '_:11': {'prov:activity': 'hubmap:act-4',
+              'prov:entity': 'hubmap:ent-4'},
+      },
+    },
+    /* eslint-enable */
+  cwl: [
+    {
+      inputs: [
+        {
+          meta: {
+            global: true,
+            in_path: true,
+            type: 'data file',
+          },
+          name: 'hubmap:ent-1',
+          run_data: {
+            file: [
+              {
+                '@id': 'hubmap:ent-1',
+              },
+            ],
+          },
+          source: [
+            {
+              for_file: 'hubmap:ent-1',
+              name: 'hubmap:ent-1',
+            },
+          ],
+        },
+      ],
+      name: 'hubmap:act-1',
+      outputs: [
+        {
+          meta: {
+            global: true,
+            in_path: true,
+          },
+          name: 'hubmap:ent-3',
+          run_data: {
+            file: [
+              {
+                '@id': 'hubmap:ent-3',
+              },
+            ],
+          },
+          target: [
+            {
+              name: 'hubmap:ent-3',
+              step: 'hubmap:act-3',
+            },
+            {
+              name: 'hubmap:ent-3',
+              step: 'hubmap:act-4',
+            },
+          ],
+        },
+      ],
+    },
+    {
+      inputs: [
+        {
+          meta: {
+            global: true,
+            in_path: true,
+            type: 'data file',
+          },
+          name: 'hubmap:ent-1',
+          run_data: {
+            file: [
+              {
+                '@id': 'hubmap:ent-1',
+              },
+            ],
+          },
+          source: [
+            {
+              for_file: 'hubmap:ent-1',
+              name: 'hubmap:ent-1',
+            },
+          ],
+        },
+        {
+          meta: {
+            global: true,
+            in_path: true,
+            type: 'data file',
+          },
+          name: 'hubmap:ent-2',
+          run_data: {
+            file: [
+              {
+                '@id': 'hubmap:ent-2',
+              },
+            ],
+          },
+          source: [
+            {
+              for_file: 'hubmap:ent-2',
+              name: 'hubmap:ent-2',
+            },
+          ],
+        },
+      ],
+      name: 'hubmap:act-2',
+      outputs: [
+        {
+          meta: {
+            global: true,
+            in_path: true,
+          },
+          name: 'hubmap:ent-4',
+          run_data: {
+            file: [
+              {
+                '@id': 'hubmap:ent-4',
+              },
+            ],
+          },
+          target: [
+            {
+              name: 'hubmap:ent-4',
+              step: 'hubmap:act-4',
+            },
+          ],
+        },
+        {
+          meta: {
+            global: true,
+            in_path: true,
+          },
+          name: 'hubmap:ent-7',
+          run_data: {
+            file: [
+              {
+                '@id': 'hubmap:ent-7',
+              },
+            ],
+          },
+          target: [],
+        },
+      ],
+    },
+    {
+      inputs: [
+        {
+          meta: {
+            global: true,
+            in_path: true,
+            type: 'data file',
+          },
+          name: 'hubmap:ent-3',
+          run_data: {
+            file: [
+              {
+                '@id': 'hubmap:ent-3',
+              },
+            ],
+          },
+          source: [
+            {
+              for_file: 'hubmap:ent-3',
+              name: 'hubmap:ent-3',
+              step: 'hubmap:act-1',
+            },
+          ],
+        },
+      ],
+      name: 'hubmap:act-3',
+      outputs: [
+        {
+          meta: {
+            global: true,
+            in_path: true,
+          },
+          name: 'hubmap:ent-5',
+          run_data: {
+            file: [
+              {
+                '@id': 'hubmap:ent-5',
+              },
+            ],
+          },
+          target: [],
+        },
+      ],
+    },
+    {
+      inputs: [
+        {
+          meta: {
+            global: true,
+            in_path: true,
+            type: 'data file',
+          },
+          name: 'hubmap:ent-1',
+          run_data: {
+            file: [
+              {
+                '@id': 'hubmap:ent-1',
+              },
+            ],
+          },
+          source: [
+            {
+              for_file: 'hubmap:ent-1',
+              name: 'hubmap:ent-1',
+            },
+          ],
+        },
+        {
+          meta: {
+            global: true,
+            in_path: true,
+            type: 'data file',
+          },
+          name: 'hubmap:ent-3',
+          run_data: {
+            file: [
+              {
+                '@id': 'hubmap:ent-3',
+              },
+            ],
+          },
+          source: [
+            {
+              for_file: 'hubmap:ent-3',
+              name: 'hubmap:ent-3',
+              step: 'hubmap:act-1',
+            },
+          ],
+        },
+        {
+          meta: {
+            global: true,
+            in_path: true,
+            type: 'data file',
+          },
+          name: 'hubmap:ent-4',
+          run_data: {
+            file: [
+              {
+                '@id': 'hubmap:ent-4',
+              },
+            ],
+          },
+          source: [
+            {
+              for_file: 'hubmap:ent-4',
+              name: 'hubmap:ent-4',
+              step: 'hubmap:act-2',
+            },
+          ],
+        },
+      ],
+      name: 'hubmap:act-4',
+      outputs: [
+        {
+          meta: {
+            global: true,
+            in_path: true,
+          },
+          name: 'hubmap:ent-6',
+          run_data: {
+            file: [
+              {
+                '@id': 'hubmap:ent-6',
+              },
+            ],
+          },
+          target: [],
+        },
+      ],
+    },
+  ],
+};
+
 // The demos reference the default export:
 // Update this to update all the demos.
-export default real;
+export default complex;
