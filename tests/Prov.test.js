@@ -36,6 +36,8 @@ describe('Prov methods', () => {
   ╚═════╗  ╚════════╗║
         V           VV
   E2 ═> A2 ═> E4 ═> A4 ═> E6
+        ║
+        ╚═══> E7
   */
   /* eslint-disable object-curly-spacing */
   /* eslint-disable object-curly-newline */
@@ -51,6 +53,7 @@ describe('Prov methods', () => {
       'hubmap:ent-4': {'prov:label': 'ent-4'},
       'hubmap:ent-5': {'prov:label': 'ent-5'},
       'hubmap:ent-6': {'prov:label': 'ent-6'},
+      'hubmap:ent-7': {'prov:label': 'ent-7'},
     },
     activity: {
       'hubmap:act-1': {'prov:label': 'act-1'},
@@ -67,6 +70,8 @@ describe('Prov methods', () => {
               'prov:activity': 'hubmap:act-3'},
       '_:4': {'prov:entity': 'hubmap:ent-6',
               'prov:activity': 'hubmap:act-4'},
+      '_:5': {'prov:entity': 'hubmap:ent-7',
+              'prov:activity': 'hubmap:act-2'},
     },
     used: {
       '_:5': {'prov:activity': 'hubmap:act-1',
@@ -90,9 +95,28 @@ describe('Prov methods', () => {
     });
     /* eslint-enable */
 
-  it('getParentEntity', () => {
-    // TODO: Make it do something!
-    expect(prov.getParentEntities('hubmap:act-4')).toEqual([]);
+  it('getParentEntities', () => {
+    expect(prov.getParentEntities('hubmap:act-4')).toEqual([
+      'hubmap:ent-1', 'hubmap:ent-3', 'hubmap:ent-4',
+    ]);
+  });
+
+  it('getChildEntities', () => {
+    expect(prov.getChildEntities('hubmap:act-2')).toEqual([
+      'hubmap:ent-4', 'hubmap:ent-7',
+    ]);
+  });
+
+  it('getParentActivities', () => {
+    expect(prov.getParentActivities('hubmap:ent-6')).toEqual([
+      'hubmap:act-4',
+    ]);
+  });
+
+  it('getChildActivities', () => {
+    expect(prov.getChildActivities('hubmap:ent-1')).toEqual([
+      'hubmap:act-1', 'hubmap:act-2', 'hubmap:act-4',
+    ]);
   });
 });
 

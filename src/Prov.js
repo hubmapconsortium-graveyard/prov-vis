@@ -91,11 +91,35 @@ export default class Prov {
     );
   }
 
-  /* eslint-disable */
-  getParentEntities(activityLabel) {
-    return [];
+
+  getEntities(activity, relation) {
+    return Object.values(this.prov[relation])
+      .filter((pair) => pair['prov:activity'] === activity)
+      .map((pair) => pair['prov:entity']);
   }
-  /* eslint-enable */
+
+  getParentEntities(activity) {
+    return this.getEntities(activity, 'used');
+  }
+
+  getChildEntities(activity) {
+    return this.getEntities(activity, 'wasGeneratedBy');
+  }
+
+  getActivities(entity, relation) {
+    return Object.values(this.prov[relation])
+      .filter((pair) => pair['prov:entity'] === entity)
+      .map((pair) => pair['prov:activity']);
+  }
+
+  getParentActivities(entity) {
+    return this.getActivities(entity, 'wasGeneratedBy');
+  }
+
+  getChildActivities(entity) {
+    return this.getActivities(entity, 'used');
+  }
+
 
   getActivityInOut(activityId) {
     const generatedByMap = this.getActivityEntityMap('wasGeneratedBy');
