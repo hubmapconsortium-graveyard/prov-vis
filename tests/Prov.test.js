@@ -4,14 +4,16 @@ import Prov, { makeCwlInput, makeCwlOutput } from '../src/Prov';
 
 import * as fixtures from './fixtures';
 
-describe('Prov', () => {
+describe('Prov fixtures', () => {
   Object.entries(fixtures).forEach(([k, v]) => {
     it(`converts ${k} W3C JSON to 4DN CWL`, () => {
       const prov = new Prov(v.prov);
       expect(prov.toCwl()).toEqual(v.cwl);
     });
   });
+});
 
+describe('Prov errors', () => {
   it('errors if input is invalid', () => {
     expect(() => new Prov({})).toThrow();
   });
@@ -24,6 +26,73 @@ describe('Prov', () => {
       message = e.message;
     }
     expect(message).toContain("should have required property 'prefix'");
+  });
+});
+
+describe('Prov methods', () => {
+  /*
+  E1 ═> A1 ═> E3 ═> A3 ═> E5
+  ║╚═══════╗  ╚══════╗
+  ╚═════╗  ╚════════╗║
+        V           VV
+  E2 ═> A2 ═> E4 ═> A4 ═> E6
+  */
+  /* eslint-disable object-curly-spacing */
+  /* eslint-disable object-curly-newline */
+  /* eslint-disable indent */
+  const prov = new Prov({
+    prefix: {
+      hubmap: 'https://hubmapconsortium.org',
+    },
+    entity: {
+      'hubmap:ent-1': {'prov:label': 'ent-1'},
+      'hubmap:ent-2': {'prov:label': 'ent-2'},
+      'hubmap:ent-3': {'prov:label': 'ent-3'},
+      'hubmap:ent-4': {'prov:label': 'ent-4'},
+      'hubmap:ent-5': {'prov:label': 'ent-5'},
+      'hubmap:ent-6': {'prov:label': 'ent-6'},
+    },
+    activity: {
+      'hubmap:act-1': {'prov:label': 'act-1'},
+      'hubmap:act-2': {'prov:label': 'act-2'},
+      'hubmap:act-3': {'prov:label': 'act-3'},
+      'hubmap:act-4': {'prov:label': 'act-4'},
+    },
+    wasGeneratedBy: {
+      '_:1': {'prov:entity': 'hubmap:ent-3',
+              'prov:activity': 'hubmap:act-1'},
+      '_:2': {'prov:entity': 'hubmap:ent-4',
+              'prov:activity': 'hubmap:act-2'},
+      '_:3': {'prov:entity': 'hubmap:ent-5',
+              'prov:activity': 'hubmap:act-3'},
+      '_:4': {'prov:entity': 'hubmap:ent-6',
+              'prov:activity': 'hubmap:act-4'},
+    },
+    used: {
+      '_:5': {'prov:activity': 'hubmap:act-1',
+              'prov:entity': 'hubmap:ent-1'},
+
+      '_:6': {'prov:activity': 'hubmap:act-2',
+              'prov:entity': 'hubmap:ent-1'},
+      '_:7': {'prov:activity': 'hubmap:act-2',
+              'prov:entity': 'hubmap:ent-2'},
+
+      '_:8': {'prov:activity': 'hubmap:act-3',
+              'prov:entity': 'hubmap:ent-3'},
+
+      '_:9': {'prov:activity': 'hubmap:act-4',
+              'prov:entity': 'hubmap:ent-1'},
+      '_:10': {'prov:activity': 'hubmap:act-4',
+              'prov:entity': 'hubmap:ent-3'},
+      '_:11': {'prov:activity': 'hubmap:act-4',
+              'prov:entity': 'hubmap:ent-4'},
+      },
+    });
+    /* eslint-enable */
+
+  it('getParentEntity', () => {
+    // TODO: Make it do something!
+    expect(prov.getParentEntities('hubmap:act-4')).toEqual([]);
   });
 });
 

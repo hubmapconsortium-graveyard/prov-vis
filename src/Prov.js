@@ -78,8 +78,8 @@ export default class Prov {
     }
     this.prov = prov;
 
-    // this.generatedByMap = this.getActivityEntityMap('wasGeneratedBy');
-    // this.usedMap = this.getActivityEntityMap('used');
+    this.generatedByMap = this.getActivityEntityMap('wasGeneratedBy');
+    this.usedMap = this.getActivityEntityMap('used');
   }
 
   getActivityEntityMap(propName) {
@@ -90,6 +90,12 @@ export default class Prov {
         ),
     );
   }
+
+  /* eslint-disable */
+  getParentEntities(activityLabel) {
+    return [];
+  }
+  /* eslint-enable */
 
   getActivityInOut(activityId) {
     const generatedByMap = this.getActivityEntityMap('wasGeneratedBy');
