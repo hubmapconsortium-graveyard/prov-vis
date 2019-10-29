@@ -35,9 +35,23 @@ export const simple = {
         {
           meta: {
             global: true,
+            in_path: true,
+            type: 'data file',
           },
-          name: 'bedfile',
-          source: [],
+          name: 'ex:input',
+          run_data: {
+            file: [
+              {
+                '@id': 'ex:input',
+              },
+            ],
+          },
+          source: [
+            {
+              for_file: 'ex:input',
+              name: 'ex:input',
+            },
+          ],
         },
       ],
       name: 'bedtobeddb',
@@ -45,13 +59,17 @@ export const simple = {
         {
           meta: {
             global: true,
+            in_path: true,
           },
-          name: 'beddbfile',
-          target: [
-            {
-              name: 'beddbfile',
-            },
-          ],
+          name: 'ex:output',
+          run_data: {
+            file: [
+              {
+                '@id': 'ex:output',
+              },
+            ],
+          },
+          target: [],
         },
       ],
     },
@@ -284,9 +302,24 @@ export const real = {
         {
           meta: {
             global: true,
+            in_path: true,
+            type: 'data file',
           },
-          name: 'TEST0005-RK',
-          source: [],
+          name: 'hubmap:entities/9942c58c009cb0a0f245f9cb61586af5',
+          run_data: {
+            file: [
+              {
+                '@id': 'hubmap:entities/9942c58c009cb0a0f245f9cb61586af5',
+              },
+            ],
+          },
+          source: [
+            {
+              for_file: 'hubmap:entities/9942c58c009cb0a0f245f9cb61586af5',
+              name: 'hubmap:entities/9942c58c009cb0a0f245f9cb61586af5',
+              step: 'hubmap:activities/d8db1999c29d32dd5960883be688983a',
+            },
+          ],
         },
       ],
       name: '822a66f8d498ef37fbc2280abcf56c9e',
@@ -294,11 +327,124 @@ export const real = {
         {
           meta: {
             global: true,
+            in_path: true,
           },
-          name: 'TEST0005-RK-1',
+          name: 'hubmap:entities/0817f6a3a2f170486a49f2ffae46072d',
+          run_data: {
+            file: [
+              {
+                '@id': 'hubmap:entities/0817f6a3a2f170486a49f2ffae46072d',
+              },
+            ],
+          },
+          target: [],
+        },
+        {
+          meta: {
+            global: true,
+            in_path: true,
+          },
+          name: 'hubmap:entities/12e77e69ab76b1832a95e00646f666db',
+          run_data: {
+            file: [
+              {
+                '@id': 'hubmap:entities/12e77e69ab76b1832a95e00646f666db',
+              },
+            ],
+          },
+          target: [],
+        },
+        {
+          meta: {
+            global: true,
+            in_path: true,
+          },
+          name: 'hubmap:entities/d2f87dda666fce9efeeeb09b078b5feb',
+          run_data: {
+            file: [
+              {
+                '@id': 'hubmap:entities/d2f87dda666fce9efeeeb09b078b5feb',
+              },
+            ],
+          },
+          target: [],
+        },
+        {
+          meta: {
+            global: true,
+            in_path: true,
+          },
+          name: 'hubmap:entities/731c5b88cdc623212cf605d1ff6f22f7',
+          run_data: {
+            file: [
+              {
+                '@id': 'hubmap:entities/731c5b88cdc623212cf605d1ff6f22f7',
+              },
+            ],
+          },
+          target: [],
+        },
+        {
+          meta: {
+            global: true,
+            in_path: true,
+          },
+          name: 'hubmap:entities/51318fa4fff79c82d4de7b2d70e630cb',
+          run_data: {
+            file: [
+              {
+                '@id': 'hubmap:entities/51318fa4fff79c82d4de7b2d70e630cb',
+              },
+            ],
+          },
+          target: [],
+        },
+      ],
+    },
+    {
+      inputs: [
+        {
+          meta: {
+            global: true,
+            in_path: true,
+            type: 'data file',
+          },
+          name: 'hubmap:entities/5822aa2f0e9e1e9b07731de97109ef6d',
+          run_data: {
+            file: [
+              {
+                '@id': 'hubmap:entities/5822aa2f0e9e1e9b07731de97109ef6d',
+              },
+            ],
+          },
+          source: [
+            {
+              for_file: 'hubmap:entities/5822aa2f0e9e1e9b07731de97109ef6d',
+              name: 'hubmap:entities/5822aa2f0e9e1e9b07731de97109ef6d',
+              step: 'hubmap:activities/dd7a55a9a297ad308f6c48c3b7090475',
+            },
+          ],
+        },
+      ],
+      name: 'd8db1999c29d32dd5960883be688983a',
+      outputs: [
+        {
+          meta: {
+            global: true,
+            in_path: true,
+          },
+          name: 'hubmap:entities/9942c58c009cb0a0f245f9cb61586af5',
+          run_data: {
+            file: [
+              {
+                '@id': 'hubmap:entities/9942c58c009cb0a0f245f9cb61586af5',
+              },
+            ],
+          },
           target: [
             {
-              name: 'TEST0005-RK-1',
+              name: 'hubmap:entities/9942c58c009cb0a0f245f9cb61586af5',
+              step: 'hubmap:activities/822a66f8d498ef37fbc2280abcf56c9e',
             },
           ],
         },
@@ -309,21 +455,44 @@ export const real = {
         {
           meta: {
             global: true,
+            in_path: true,
+            type: 'data file',
           },
-          name: 'TEST0005',
-          source: [],
+          name: 'hubmap:entities/5bd084c8-edc2-11e8-802f-0e368f3075e8',
+          run_data: {
+            file: [
+              {
+                '@id': 'hubmap:entities/5bd084c8-edc2-11e8-802f-0e368f3075e8',
+              },
+            ],
+          },
+          source: [
+            {
+              for_file: 'hubmap:entities/5bd084c8-edc2-11e8-802f-0e368f3075e8',
+              name: 'hubmap:entities/5bd084c8-edc2-11e8-802f-0e368f3075e8',
+            },
+          ],
         },
       ],
-      name: 'd8db1999c29d32dd5960883be688983a',
+      name: 'dd7a55a9a297ad308f6c48c3b7090475',
       outputs: [
         {
           meta: {
             global: true,
+            in_path: true,
           },
-          name: 'TEST0005-RK',
+          name: 'hubmap:entities/5822aa2f0e9e1e9b07731de97109ef6d',
+          run_data: {
+            file: [
+              {
+                '@id': 'hubmap:entities/5822aa2f0e9e1e9b07731de97109ef6d',
+              },
+            ],
+          },
           target: [
             {
-              name: 'TEST0005-RK',
+              name: 'hubmap:entities/5822aa2f0e9e1e9b07731de97109ef6d',
+              step: 'hubmap:activities/d8db1999c29d32dd5960883be688983a',
             },
           ],
         },

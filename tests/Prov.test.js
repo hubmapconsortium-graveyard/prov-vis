@@ -122,7 +122,7 @@ describe('Prov methods', () => {
 
 describe('cwl utils', () => {
   it('makeCwlInput reference', () => {
-    expect(makeCwlInput('name1', null, true)).toEqual(
+    expect(makeCwlInput('name1', [], true)).toEqual(
       {
         meta: {
           global: true,
@@ -137,16 +137,16 @@ describe('cwl utils', () => {
             },
           ],
         },
-        source: {
+        source: [{
           for_file: 'name1',
           name: 'name1',
-        },
+        }],
       },
     );
   });
 
   it('makeCwlInput with step', () => {
-    expect(makeCwlInput('name1', 'step1')).toEqual(
+    expect(makeCwlInput('name1', ['step1'])).toEqual(
       {
         meta: {
           global: true,
@@ -161,11 +161,11 @@ describe('cwl utils', () => {
             },
           ],
         },
-        source: {
+        source: [{
           for_file: 'name1',
           name: 'name1',
           step: 'step1',
-        },
+        }],
       },
     );
   });

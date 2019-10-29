@@ -3,14 +3,18 @@ import Ajv from 'ajv';
 import schema from './schema.json';
 
 // export only to test.
-export function makeCwlInput(name, step, isReference) {
+export function makeCwlInput(name, steps, isReference) {
   const id = name;
-  const source = {
+  const source = [{
     name,
     for_file: id,
-  };
-  if (step) {
-    source.step = step;
+  }];
+  if (steps) {
+    if (steps.length > 1) {
+      throw new Error('Limited to 1 step');
+    } else if (steps.length === 1) {
+      [source[0].step] = steps;
+    }
   }
   return {
     name,
@@ -40,31 +44,6 @@ export function makeCwlOutput(name, steps) {
       global: true,
       in_path: true,
     },
-  };
-}
-
-function makeCwlStep(activityName, inputName, outputName) {
-  // TODO: use makeCwlInput/makeCwlOutput
-  return {
-    name: activityName,
-    inputs: [
-      {
-        meta: { global: true },
-        name: inputName,
-        source: [],
-      },
-    ],
-    outputs: [
-      {
-        meta: { global: true },
-        name: outputName,
-        target: [
-          {
-            name: outputName,
-          },
-        ],
-      },
-    ],
   };
 }
 
@@ -121,35 +100,21 @@ export default class Prov {
   }
 
 
-  getActivityInOut(activityId) {
-    const generatedByMap = this.getActivityEntityMap('wasGeneratedBy');
-    const usedMap = this.getActivityEntityMap('used');
-    return [usedMap[activityId], generatedByMap[activityId]];
+  makeCwlStep(activityId, activity) {
+    const inputs = this.getParentEntities(activityId)
+      .map((entityId) => makeCwlInput(entityId, this.getParentActivities(entityId)));
+    const outputs = this.getChildEntities(activityId)
+      .map((entityId) => makeCwlOutput(entityId, this.getChildActivities(entityId)));
+    return {
+      name: activity['prov:label'],
+      inputs,
+      outputs,
+    };
   }
 
   toCwl() {
-    const activityIds = Object.keys(this.prov.activity);
-    const activityInOutMap = Object.fromEntries(activityIds.map((activityId) => [
-      activityId, this.getActivityInOut(activityId),
-    ]));
-
-    return Object.entries(activityInOutMap).map(([activityId, ioPair]) => {
-      const activityName = this.prov.activity[activityId]['prov:label'];
-      const inputEntity = this.prov.entity[ioPair[0]];
-      if (!inputEntity) {
-        // Top-level entities for organizations are referenced but not defined.
-        // They are not included in the visualization.
-        // TODO: https://github.com/hubmapconsortium/prov-vis/issues/15
-        return null;
-      }
-      const inputName = inputEntity['prov:label'];
-      const outputEntity = this.prov.entity[ioPair[1]];
-      const outputName = outputEntity['prov:label'];
-      return makeCwlStep(activityName, inputName, outputName);
-    }).filter(
-      // Exclude nulls:
-      // TODO: https://github.com/hubmapconsortium/prov-vis/issues/15
-      (step) => step,
+    return Object.entries(this.prov.activity).map(
+      ([activityId, activity]) => this.makeCwlStep(activityId, activity),
     );
   }
 }
