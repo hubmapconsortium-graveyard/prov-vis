@@ -1,6 +1,6 @@
 import expect from 'expect';
 
-import Prov from '../src/Prov';
+import Prov, { makeCwlInput, makeCwlOutput } from '../src/Prov';
 
 import * as fixtures from './fixtures';
 
@@ -24,5 +24,81 @@ describe('Prov', () => {
       message = e.message;
     }
     expect(message).toContain("should have required property 'prefix'");
+  });
+});
+
+describe('cwl utils', () => {
+  it('successfully makeCwlInput reference', () => {
+    expect(makeCwlInput('name1', null, true)).toEqual(
+      {
+        meta: {
+          global: true,
+          in_path: true,
+          type: 'reference file',
+        },
+        name: 'name1',
+        run_data: {
+          file: [
+            {
+              '@id': 'name1',
+            },
+          ],
+        },
+        source: {
+          for_file: 'name1',
+          name: 'name1',
+        },
+      },
+    );
+  });
+
+  it('successfully makeCwlInput with step', () => {
+    expect(makeCwlInput('name1', 'step1')).toEqual(
+      {
+        meta: {
+          global: true,
+          in_path: true,
+          type: 'data file',
+        },
+        name: 'name1',
+        run_data: {
+          file: [
+            {
+              '@id': 'name1',
+            },
+          ],
+        },
+        source: {
+          for_file: 'name1',
+          name: 'name1',
+          step: 'step1',
+        },
+      },
+    );
+  });
+
+  it('successfully makeCwlOutput', () => {
+    expect(makeCwlOutput('name1', ['step1'])).toEqual(
+      {
+        meta: {
+          global: true,
+          in_path: true,
+        },
+        name: 'name1',
+        run_data: {
+          file: [
+            {
+              '@id': 'name1',
+            },
+          ],
+        },
+        target: [
+          {
+            name: 'name1',
+            step: 'step1',
+          },
+        ],
+      },
+    );
   });
 });

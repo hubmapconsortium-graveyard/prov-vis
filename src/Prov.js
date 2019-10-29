@@ -2,7 +2,49 @@ import Ajv from 'ajv';
 
 import schema from './schema.json';
 
+// export only to test.
+export function makeCwlInput(name, step, isReference) {
+  const id = name;
+  const source = {
+    name,
+    for_file: id,
+  };
+  if (step) {
+    source.step = step;
+  }
+  return {
+    name,
+    source,
+    run_data: {
+      file: [{ '@id': id }],
+    },
+    meta: {
+      global: true,
+      in_path: true,
+      type: isReference ? 'reference file' : 'data file',
+    },
+  };
+}
+
+// export only to test.
+export function makeCwlOutput(name, steps) {
+  const id = name;
+  return {
+    name,
+    target:
+            steps.map((step) => ({ step, name })),
+    run_data: {
+      file: [{ '@id': id }],
+    },
+    meta: {
+      global: true,
+      in_path: true,
+    },
+  };
+}
+
 function makeCwlStep(activityName, inputName, outputName) {
+  // TODO: use makeCwlInput/makeCwlOutput
   return {
     name: activityName,
     inputs: [
@@ -35,6 +77,9 @@ export default class Prov {
       throw new Error(failureReason);
     }
     this.prov = prov;
+
+    // this.generatedByMap = this.getActivityEntityMap('wasGeneratedBy');
+    // this.usedMap = this.getActivityEntityMap('used');
   }
 
   getActivityEntityMap(propName) {
