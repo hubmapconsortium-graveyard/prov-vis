@@ -54,7 +54,7 @@ export const simple = {
           ],
         },
       ],
-      name: 'bedtobeddb',
+      name: 'ex:run',
       outputs: [
         {
           meta: {
@@ -322,7 +322,7 @@ export const real = {
           ],
         },
       ],
-      name: '822a66f8d498ef37fbc2280abcf56c9e',
+      name: 'hubmap:activities/822a66f8d498ef37fbc2280abcf56c9e',
       outputs: [
         {
           meta: {
@@ -426,7 +426,7 @@ export const real = {
           ],
         },
       ],
-      name: 'd8db1999c29d32dd5960883be688983a',
+      name: 'hubmap:activities/d8db1999c29d32dd5960883be688983a',
       outputs: [
         {
           meta: {
@@ -474,7 +474,7 @@ export const real = {
           ],
         },
       ],
-      name: 'dd7a55a9a297ad308f6c48c3b7090475',
+      name: 'hubmap:activities/dd7a55a9a297ad308f6c48c3b7090475',
       outputs: [
         {
           meta: {

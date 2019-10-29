@@ -36,7 +36,7 @@ export function makeCwlOutput(name, steps) {
   return {
     name,
     target:
-            steps.map((step) => ({ step, name })),
+      steps.map((step) => ({ step, name })),
     run_data: {
       file: [{ '@id': id }],
     },
@@ -100,21 +100,21 @@ export default class Prov {
   }
 
 
-  makeCwlStep(activityId, activity) {
+  makeCwlStep(activityId) {
     const inputs = this.getParentEntities(activityId)
       .map((entityId) => makeCwlInput(entityId, this.getParentActivities(entityId)));
     const outputs = this.getChildEntities(activityId)
       .map((entityId) => makeCwlOutput(entityId, this.getChildActivities(entityId)));
     return {
-      name: activity['prov:label'],
+      name: activityId,
       inputs,
       outputs,
     };
   }
 
   toCwl() {
-    return Object.entries(this.prov.activity).map(
-      ([activityId, activity]) => this.makeCwlStep(activityId, activity),
+    return Object.keys(this.prov.activity).map(
+      (activityId) => this.makeCwlStep(activityId),
     );
   }
 }
