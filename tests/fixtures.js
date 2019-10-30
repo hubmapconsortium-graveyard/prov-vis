@@ -1,4 +1,5 @@
 export const simple = {
+  getNameForActivity: (id) => id,
   prov: {
     prefix: {
       hubmap: 'https://hubmapconsortium.org',
@@ -77,6 +78,10 @@ export const simple = {
 };
 
 export const real = {
+  getNameForActivity: (id, prov) => {
+    const activity = prov.activity[id];
+    return `${activity['prov:type']} - ${activity['prov:label']}`;
+  },
   prov: {
     prefix: {
       ex: 'http://example.org',
@@ -502,6 +507,7 @@ export const real = {
 };
 
 export const complex = {
+  getNameForActivity: (id) => id,
   prov: {
     /*
     E1 ═> A1 ═> E3 ═> A3 ═> E5

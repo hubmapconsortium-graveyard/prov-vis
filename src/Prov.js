@@ -67,7 +67,7 @@ export default class Prov {
     return Object.fromEntries(
       Object.values(this.prov[propName])
         .map(
-          (props) => [this.getNameForActivity(props['prov:activity']), props['prov:entity']],
+          (props) => [this.getNameForActivity(props['prov:activity'], this.prov), props['prov:entity']],
         ),
     );
   }
@@ -75,7 +75,7 @@ export default class Prov {
 
   getEntities(activity, relation) {
     return Object.values(this.prov[relation])
-      .filter((pair) => this.getNameForActivity(pair['prov:activity']) === activity)
+      .filter((pair) => this.getNameForActivity(pair['prov:activity'], this.prov) === activity)
       .map((pair) => pair['prov:entity']);
   }
 
@@ -90,7 +90,7 @@ export default class Prov {
   getActivities(entity, relation) {
     return Object.values(this.prov[relation])
       .filter((pair) => pair['prov:entity'] === entity)
-      .map((pair) => this.getNameForActivity(pair['prov:activity']));
+      .map((pair) => this.getNameForActivity(pair['prov:activity'], this.prov));
   }
 
   getParentActivities(entity) {
@@ -103,7 +103,7 @@ export default class Prov {
 
 
   makeCwlStep(activityId) {
-    const activityName = this.getNameForActivity(activityId);
+    const activityName = this.getNameForActivity(activityId, this.prov);
     const inputs = this.getParentEntities(activityName)
       .map((entityId) => makeCwlInput(entityId, this.getParentActivities(entityId)));
     const outputs = this.getChildEntities(activityName)
