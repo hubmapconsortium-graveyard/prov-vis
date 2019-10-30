@@ -1,25 +1,26 @@
 <!doctype html>
 <html>
   <head>
-    <title>prov-vis UMD demo</title>
+    <title>prov-vis demo</title>
     <!-- Get the CSS for the underlying react-workflow-viz: -->
     <link href="https://unpkg.com/@hms-dbmi-bgm/react-workflow-viz/dist/react-workflow-viz.min.css" type="text/css" rel="stylesheet" />
   </head>
 
   <body>
     <p>
-      This demonstrates how static HTML can use prov-vis via UMD.
-      If you have run <code>npm run build</code>, the component should be rendered below,
-      with some sample data.
+      This demonstrates how to use <a href="https://github.com/hubmapconsortium/prov-vis/">prov-vis</a> in static HTML.
     </p>
     <div id="prov-vis"></div>
 
     <!-- External libraries listed in nwb.config.js need to be loaded first: -->
     <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
 
-    <!-- This can be replaced with a link to the CDN: -->
-    <!-- <script src="https://unpkg.com/@hubmap/prov-vis@0.0.1/umd/@hubmap/prov-vis.min.js"></script> -->
-    <script src="./umd/prov-vis.min.js"></script>
+    <!-- Load prov-vis: -->
+    <script src="https://unpkg.com/@hubmap/prov-vis/umd/@hubmap/prov-vis.min.js"></script>
+    <!-- In production, add a version number! -->
+
+    <!-- ... or "npm run build" to preview it locally; Comment out the line above, and uncomment this: -->
+    <!-- <script src="./umd/prov-vis.min.js"></script> -->
 
     <script type="module">
       // This import might be replaced with an AJAX call, or JSON templated into the page on the server.
