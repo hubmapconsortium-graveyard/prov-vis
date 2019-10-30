@@ -10,7 +10,13 @@ function Demo() {
   return (
     <div>
       <h1>prov-vis Demo</h1>
-      <hubmapProvVis.ProvVis prov={defaultFixture.prov} getNameForActivity={(id) => `${id}-!`} />
+      <hubmapProvVis.ProvVis
+        prov={defaultFixture.prov}
+        getNameForActivity={(id) => {
+          const activity = defaultFixture.prov.activity[id];
+          return `${activity['prov:type']} - ${activity['prov:label']}`;
+        }}
+      />
     </div>
   );
 }

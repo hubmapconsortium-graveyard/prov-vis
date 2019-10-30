@@ -48,7 +48,7 @@ export function makeCwlOutput(name, steps) {
 }
 
 export default class Prov {
-  constructor(prov, getNameForActivity = (activityId) => activityId) {
+  constructor(prov, getNameForActivity = (id) => id) {
     this.getNameForActivity = getNameForActivity;
 
     const validate = new Ajv().compile(schema);
