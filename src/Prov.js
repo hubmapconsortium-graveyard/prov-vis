@@ -48,7 +48,9 @@ export function makeCwlOutput(name, steps) {
 }
 
 export default class Prov {
-  constructor(prov) {
+  constructor(prov, getNameForActivity = (activityId) => `${activityId}-ID`) {
+    this.getNameForActivity = getNameForActivity;
+
     const validate = new Ajv().compile(schema);
     const valid = validate(prov);
     if (!valid) {
@@ -65,7 +67,7 @@ export default class Prov {
     return Object.fromEntries(
       Object.values(this.prov[propName])
         .map(
-          (props) => [props['prov:activity'], props['prov:entity']],
+          (props) => [this.getNameForActivity(props['prov:activity']), props['prov:entity']],
         ),
     );
   }
@@ -73,7 +75,7 @@ export default class Prov {
 
   getEntities(activity, relation) {
     return Object.values(this.prov[relation])
-      .filter((pair) => pair['prov:activity'] === activity)
+      .filter((pair) => this.getNameForActivity(pair['prov:activity']) === activity)
       .map((pair) => pair['prov:entity']);
   }
 
@@ -88,7 +90,7 @@ export default class Prov {
   getActivities(entity, relation) {
     return Object.values(this.prov[relation])
       .filter((pair) => pair['prov:entity'] === entity)
-      .map((pair) => pair['prov:activity']);
+      .map((pair) => this.getNameForActivity(pair['prov:activity']));
   }
 
   getParentActivities(entity) {
@@ -101,12 +103,13 @@ export default class Prov {
 
 
   makeCwlStep(activityId) {
-    const inputs = this.getParentEntities(activityId)
+    const activityName = this.getNameForActivity(activityId);
+    const inputs = this.getParentEntities(activityName)
       .map((entityId) => makeCwlInput(entityId, this.getParentActivities(entityId)));
-    const outputs = this.getChildEntities(activityId)
+    const outputs = this.getChildEntities(activityName)
       .map((entityId) => makeCwlOutput(entityId, this.getChildActivities(entityId)));
     return {
-      name: activityId,
+      name: activityName,
       inputs,
       outputs,
     };
