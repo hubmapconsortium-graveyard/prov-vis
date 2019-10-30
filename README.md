@@ -1,26 +1,29 @@
 # prov-vis
 HuBMAP-specific wrapper for [4dn-dcic/react-workflow-viz](https://github.com/4dn-dcic/react-workflow-viz)
 
+[Static demo](https://hubmapconsortium.github.io/prov-vis/)
+
 ## Development
 
 This repo is bootstrapped with [NWB](https://github.com/insin/nwb/blob/master/docs/guides/ReactComponents.md).
 
-To use the live live React demo:
-```
+To use the live demo:
+```sh
 npm start
 ```
 and then visit `http://localhost:3000/`.
 
-To demo the UMD package, first build, then start a static file server:
-```
+To preview the static demo:
+```sh
 npm run build
-npm install http-server -g
+npm install http-server -g  # If you don't have a static file server already available... 
 http-server
 ```
-and then visit `http://localhost:8080/umd-demo.html`.
+and change the `script` tag in `index.html` to point at the UMD build;
+then visit `http://localhost:8080/`.
 
 (Both demos use the default export from `tests/fixtures.js` as their input:
-Tweak that setting to see how different structures are rendered.)
+Tweak that to see how different structures are rendered.)
 
 ## Publish
 
