@@ -86,7 +86,7 @@ export const real = {
   getNameForEntity: (id, prov) => {
     const entity = prov.entity[id];
     // NOTE: The initial entity node was not included in the sample data;
-    // Fallback to ID, if needed.
+    // Fallback to ID, if needed. https://github.com/hubmapconsortium/prov-vis/issues/15
     return entity ? `${entity['prov:type']} - ${entity['prov:label']}` : id;
   },
   prov: {

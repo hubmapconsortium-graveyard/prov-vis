@@ -74,41 +74,41 @@ export default class Prov {
   }
 
 
-  getEntities(activity, relation) {
+  getEntities(activityName, relation) {
     return Object.values(this.prov[relation])
-      .filter((pair) => this.getNameForActivity(pair['prov:activity'], this.prov) === activity)
+      .filter((pair) => this.getNameForActivity(pair['prov:activity'], this.prov) === activityName)
       .map((pair) => this.getNameForEntity(pair['prov:entity'], this.prov));
   }
 
-  getParentEntities(activity) {
-    return this.getEntities(activity, 'used');
+  getParentEntities(activityName) {
+    return this.getEntities(activityName, 'used');
   }
 
-  getChildEntities(activity) {
-    return this.getEntities(activity, 'wasGeneratedBy');
+  getChildEntities(activityName) {
+    return this.getEntities(activityName, 'wasGeneratedBy');
   }
 
-  getActivities(entity, relation) {
+  getActivities(entityName, relation) {
     return Object.values(this.prov[relation])
-      .filter((pair) => this.getNameForEntity(pair['prov:entity'], this.prov) === entity)
+      .filter((pair) => this.getNameForEntity(pair['prov:entity'], this.prov) === entityName)
       .map((pair) => this.getNameForActivity(pair['prov:activity'], this.prov));
   }
 
-  getParentActivities(entity) {
-    return this.getActivities(entity, 'wasGeneratedBy');
+  getParentActivities(entityName) {
+    return this.getActivities(entityName, 'wasGeneratedBy');
   }
 
-  getChildActivities(entity) {
-    return this.getActivities(entity, 'used');
+  getChildActivities(entityName) {
+    return this.getActivities(entityName, 'used');
   }
 
 
   makeCwlStep(activityId) {
     const activityName = this.getNameForActivity(activityId, this.prov);
     const inputs = this.getParentEntities(activityName)
-      .map((entityId) => makeCwlInput(entityId, this.getParentActivities(entityId)));
+      .map((entityName) => makeCwlInput(entityName, this.getParentActivities(entityName)));
     const outputs = this.getChildEntities(activityName)
-      .map((entityId) => makeCwlOutput(entityId, this.getChildActivities(entityId)));
+      .map((entityName) => makeCwlOutput(entityName, this.getChildActivities(entityName)));
     return {
       name: activityName,
       inputs,
