@@ -13,6 +13,7 @@ function Demo() {
       <hubmapProvVis.ProvVis
         prov={defaultFixture.prov}
         getNameForActivity={defaultFixture.getNameForActivity}
+        getNameForEntity={defaultFixture.getNameForEntity}
       />
     </div>
   );

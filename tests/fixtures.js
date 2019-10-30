@@ -1,5 +1,6 @@
 export const simple = {
   getNameForActivity: (id) => id,
+  getNameForEntity: (id) => id,
   prov: {
     prefix: {
       hubmap: 'https://hubmapconsortium.org',
@@ -81,6 +82,12 @@ export const real = {
   getNameForActivity: (id, prov) => {
     const activity = prov.activity[id];
     return `${activity['prov:type']} - ${activity['prov:label']}`;
+  },
+  getNameForEntity: (id, prov) => {
+    const entity = prov.entity[id];
+    // NOTE: The initial entity node was not included in the sample data;
+    // Fallback to ID, if needed.
+    return entity ? `${entity['prov:type']} - ${entity['prov:label']}` : id;
   },
   prov: {
     prefix: {
@@ -846,4 +853,4 @@ export const complex = {
 
 // The demos reference the default export:
 // Update this to update all the demos.
-export default real;
+export default complex;

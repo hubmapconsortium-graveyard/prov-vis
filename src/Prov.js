@@ -48,8 +48,9 @@ export function makeCwlOutput(name, steps) {
 }
 
 export default class Prov {
-  constructor(prov, getNameForActivity = (id) => id) {
+  constructor(prov, getNameForActivity = (id) => id, getNameForEntity = (id) => id) {
     this.getNameForActivity = getNameForActivity;
+    this.getNameForEntity = getNameForEntity;
 
     const validate = new Ajv().compile(schema);
     const valid = validate(prov);
@@ -76,7 +77,7 @@ export default class Prov {
   getEntities(activity, relation) {
     return Object.values(this.prov[relation])
       .filter((pair) => this.getNameForActivity(pair['prov:activity'], this.prov) === activity)
-      .map((pair) => pair['prov:entity']);
+      .map((pair) => this.getNameForEntity(pair['prov:entity'], this.prov));
   }
 
   getParentEntities(activity) {
@@ -89,7 +90,7 @@ export default class Prov {
 
   getActivities(entity, relation) {
     return Object.values(this.prov[relation])
-      .filter((pair) => pair['prov:entity'] === entity)
+      .filter((pair) => this.getNameForEntity(pair['prov:entity'], this.prov) === entity)
       .map((pair) => this.getNameForActivity(pair['prov:activity'], this.prov));
   }
 
