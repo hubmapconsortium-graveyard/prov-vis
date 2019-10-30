@@ -1,18 +1,18 @@
-import React, {Component} from 'react'
-import {render} from 'react-dom'
+import React from 'react';
+import { render } from 'react-dom';
 
-import hubmapProvVis from '../../src'
+import hubmapProvVis from '../../src';
 import '@hms-dbmi-bgm/react-workflow-viz/dist/react-workflow-viz.min.css';
 
-import defaultFixture from '../../tests/fixtures'
+import defaultFixture from '../../tests/fixtures';
 
-class Demo extends Component {
-  render() {
-    return <div>
+function Demo() {
+  return (
+    <div>
       <h1>prov-vis Demo</h1>
-      <hubmapProvVis.ProvVis prov={defaultFixture.prov}/>
+      <hubmapProvVis.ProvVis prov={defaultFixture.prov} getNameForActivity={(id) => `${id}-!`} />
     </div>
-  }
+  );
 }
 
-render(<Demo/>, document.querySelector('#demo'))
+render(<Demo />, document.querySelector('#demo'));

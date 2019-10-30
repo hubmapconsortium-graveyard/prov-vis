@@ -5,8 +5,8 @@ import Graph, { GraphParser } from '@hms-dbmi-bgm/react-workflow-viz';
 import Prov from './Prov';
 
 export default function ProvVis(props) {
-  const { prov } = props;
-  const steps = new Prov(prov).toCwl();
+  const { prov, getNameForActivity } = props;
+  const steps = new Prov(prov, getNameForActivity).toCwl();
   return (
     <GraphParser
       parsingOptions={{
