@@ -1,0 +1,105 @@
+[
+  {
+    "name": "Create Sample Activity - 822a66f8d498ef37fbc2280abcf56c9e",
+    "inputs": [
+      {
+        "name": "hubmap:entities/9942c58c009cb0a0f245f9cb61586af5",
+        "source": [
+          {
+            "name": "hubmap:entities/9942c58c009cb0a0f245f9cb61586af5",
+            "for_file": "hubmap:entities/9942c58c009cb0a0f245f9cb61586af5"
+          }
+        ],
+        "run_data": {
+          "file": [
+            {
+              "@id": "hubmap:entities/9942c58c009cb0a0f245f9cb61586af5"
+            }
+          ]
+        },
+        "meta": {
+          "global": true,
+          "in_path": true,
+          "type": "data file"
+        }
+      }
+    ],
+    "outputs": [
+      {
+        "name": "Sample - TEST0005-RK-4",
+        "target": [],
+        "run_data": {
+          "file": [
+            {
+              "@id": "Sample - TEST0005-RK-4"
+            }
+          ]
+        },
+        "meta": {
+          "global": true,
+          "in_path": true
+        }
+      },
+      {
+        "name": "Sample - TEST0005-RK-5",
+        "target": [],
+        "run_data": {
+          "file": [
+            {
+              "@id": "Sample - TEST0005-RK-5"
+            }
+          ]
+        },
+        "meta": {
+          "global": true,
+          "in_path": true
+        }
+      },
+      {
+        "name": "Sample - TEST0005-RK-3",
+        "target": [],
+        "run_data": {
+          "file": [
+            {
+              "@id": "Sample - TEST0005-RK-3"
+            }
+          ]
+        },
+        "meta": {
+          "global": true,
+          "in_path": true
+        }
+      },
+      {
+        "name": "Sample - TEST0005-RK-2",
+        "target": [],
+        "run_data": {
+          "file": [
+            {
+              "@id": "Sample - TEST0005-RK-2"
+            }
+          ]
+        },
+        "meta": {
+          "global": true,
+          "in_path": true
+        }
+      },
+      {
+        "name": "Sample - TEST0005-RK-1",
+        "target": [],
+        "run_data": {
+          "file": [
+            {
+              "@id": "Sample - TEST0005-RK-1"
+            }
+          ]
+        },
+        "meta": {
+          "global": true,
+          "in_path": true
+        }
+      }
+    ]
+  }
+]

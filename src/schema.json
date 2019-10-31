@@ -23,30 +23,18 @@
   },
   "additionalProperties": false,
   "required": ["prefix", "entity", "activity", "wasGeneratedBy", "used"],
-  "$comment": "Support for 'Agent' eventually: Then add 'actedOnBehalfOf' and 'wasAttributedTo'",
   "properties": {
     "prefix": {
       "allOf": [
         { "$ref": "#/definitions/string_to_string" },
-        {
-          "$comment": "TODO: Add 'prov'.",
-          "required": ["hubmap"],
-          "properties": {
-            "hubmap": { "const": "https://hubmapconsortium.org" }
-          }
-        }
+        { "$comment": "TODO: Add 'prov'." }
       ]
     },
     "entity": { "$ref": "#/definitions/string_to_string_to_string" },
     "activity": { "$ref": "#/definitions/string_to_string_to_string" },
     "wasGeneratedBy": { "$ref": "#/definitions/string_to_string_to_string" },
     "used": { "$ref": "#/definitions/string_to_string_to_string" },
-
-    "actedOnBehalfOf": {
-      "$ref": "#/definitions/string_to_string_to_string"
-    },
-    "wasAttributedTo": {
-      "$ref": "#/definitions/string_to_string_to_string"
-    }
+    "agent": { "$ref": "#/definitions/string_to_string_to_string" },
+    "actedOnBehalfOf": { "$ref": "#/definitions/string_to_string_to_string" }
   }
 }

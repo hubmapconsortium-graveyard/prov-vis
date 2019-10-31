@@ -1,0 +1,45 @@
+[
+  {
+    "name": "ex:run",
+    "inputs": [
+      {
+        "name": "ex:input",
+        "source": [
+          {
+            "name": "ex:input",
+            "for_file": "ex:input"
+          }
+        ],
+        "run_data": {
+          "file": [
+            {
+              "@id": "ex:input"
+            }
+          ]
+        },
+        "meta": {
+          "global": true,
+          "in_path": true,
+          "type": "data file"
+        }
+      }
+    ],
+    "outputs": [
+      {
+        "name": "ex:output",
+        "target": [],
+        "run_data": {
+          "file": [
+            {
+              "@id": "ex:output"
+            }
+          ]
+        },
+        "meta": {
+          "global": true,
+          "in_path": true
+        }
+      }
+    ]
+  }
+]
