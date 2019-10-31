@@ -48,7 +48,10 @@ export function makeCwlOutput(name, steps) {
 }
 
 export default class Prov {
-  constructor(prov) {
+  constructor(prov, getNameForActivity = (id) => id, getNameForEntity = (id) => id) {
+    this.getNameForActivity = getNameForActivity;
+    this.getNameForEntity = getNameForEntity;
+
     const validate = new Ajv().compile(schema);
     const valid = validate(prov);
     if (!valid) {
@@ -65,48 +68,49 @@ export default class Prov {
     return Object.fromEntries(
       Object.values(this.prov[propName])
         .map(
-          (props) => [props['prov:activity'], props['prov:entity']],
+          (props) => [this.getNameForActivity(props['prov:activity'], this.prov), props['prov:entity']],
         ),
     );
   }
 
 
-  getEntities(activity, relation) {
+  getEntities(activityName, relation) {
     return Object.values(this.prov[relation])
-      .filter((pair) => pair['prov:activity'] === activity)
-      .map((pair) => pair['prov:entity']);
+      .filter((pair) => this.getNameForActivity(pair['prov:activity'], this.prov) === activityName)
+      .map((pair) => this.getNameForEntity(pair['prov:entity'], this.prov));
   }
 
-  getParentEntities(activity) {
-    return this.getEntities(activity, 'used');
+  getParentEntities(activityName) {
+    return this.getEntities(activityName, 'used');
   }
 
-  getChildEntities(activity) {
-    return this.getEntities(activity, 'wasGeneratedBy');
+  getChildEntities(activityName) {
+    return this.getEntities(activityName, 'wasGeneratedBy');
   }
 
-  getActivities(entity, relation) {
+  getActivities(entityName, relation) {
     return Object.values(this.prov[relation])
-      .filter((pair) => pair['prov:entity'] === entity)
-      .map((pair) => pair['prov:activity']);
+      .filter((pair) => this.getNameForEntity(pair['prov:entity'], this.prov) === entityName)
+      .map((pair) => this.getNameForActivity(pair['prov:activity'], this.prov));
   }
 
-  getParentActivities(entity) {
-    return this.getActivities(entity, 'wasGeneratedBy');
+  getParentActivities(entityName) {
+    return this.getActivities(entityName, 'wasGeneratedBy');
   }
 
-  getChildActivities(entity) {
-    return this.getActivities(entity, 'used');
+  getChildActivities(entityName) {
+    return this.getActivities(entityName, 'used');
   }
 
 
   makeCwlStep(activityId) {
-    const inputs = this.getParentEntities(activityId)
-      .map((entityId) => makeCwlInput(entityId, this.getParentActivities(entityId)));
-    const outputs = this.getChildEntities(activityId)
-      .map((entityId) => makeCwlOutput(entityId, this.getChildActivities(entityId)));
+    const activityName = this.getNameForActivity(activityId, this.prov);
+    const inputs = this.getParentEntities(activityName)
+      .map((entityName) => makeCwlInput(entityName, this.getParentActivities(entityName)));
+    const outputs = this.getChildEntities(activityName)
+      .map((entityName) => makeCwlOutput(entityName, this.getChildActivities(entityName)));
     return {
-      name: activityId,
+      name: activityName,
       inputs,
       outputs,
     };

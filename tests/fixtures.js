@@ -1,4 +1,6 @@
 export const simple = {
+  getNameForActivity: (id) => id,
+  getNameForEntity: (id) => id,
   prov: {
     prefix: {
       hubmap: 'https://hubmapconsortium.org',
@@ -77,6 +79,16 @@ export const simple = {
 };
 
 export const real = {
+  getNameForActivity: (id, prov) => {
+    const activity = prov.activity[id];
+    return `${activity['prov:type']} - ${activity['prov:label']}`;
+  },
+  getNameForEntity: (id, prov) => {
+    const entity = prov.entity[id];
+    // NOTE: The initial entity node was not included in the sample data;
+    // Fallback to ID, if needed. https://github.com/hubmapconsortium/prov-vis/issues/15
+    return entity ? `${entity['prov:type']} - ${entity['prov:label']}` : id;
+  },
   prov: {
     prefix: {
       ex: 'http://example.org',
@@ -298,167 +310,169 @@ export const real = {
   },
   cwl: [
     {
+      name: 'Create Sample Activity - 822a66f8d498ef37fbc2280abcf56c9e',
       inputs: [
         {
+          name: 'Sample - TEST0005-RK',
+          source: [
+            {
+              name: 'Sample - TEST0005-RK',
+              for_file: 'Sample - TEST0005-RK',
+              step: 'Create Sample Activity - d8db1999c29d32dd5960883be688983a',
+            },
+          ],
+          run_data: {
+            file: [
+              {
+                '@id': 'Sample - TEST0005-RK',
+              },
+            ],
+          },
           meta: {
             global: true,
             in_path: true,
             type: 'data file',
           },
-          name: 'hubmap:entities/9942c58c009cb0a0f245f9cb61586af5',
-          run_data: {
-            file: [
-              {
-                '@id': 'hubmap:entities/9942c58c009cb0a0f245f9cb61586af5',
-              },
-            ],
-          },
-          source: [
-            {
-              for_file: 'hubmap:entities/9942c58c009cb0a0f245f9cb61586af5',
-              name: 'hubmap:entities/9942c58c009cb0a0f245f9cb61586af5',
-              step: 'hubmap:activities/d8db1999c29d32dd5960883be688983a',
-            },
-          ],
         },
       ],
-      name: 'hubmap:activities/822a66f8d498ef37fbc2280abcf56c9e',
       outputs: [
         {
+          name: 'Sample - TEST0005-RK-4',
+          target: [],
+          run_data: {
+            file: [
+              {
+                '@id': 'Sample - TEST0005-RK-4',
+              },
+            ],
+          },
           meta: {
             global: true,
             in_path: true,
           },
-          name: 'hubmap:entities/0817f6a3a2f170486a49f2ffae46072d',
-          run_data: {
-            file: [
-              {
-                '@id': 'hubmap:entities/0817f6a3a2f170486a49f2ffae46072d',
-              },
-            ],
-          },
-          target: [],
         },
         {
+          name: 'Sample - TEST0005-RK-5',
+          target: [],
+          run_data: {
+            file: [
+              {
+                '@id': 'Sample - TEST0005-RK-5',
+              },
+            ],
+          },
           meta: {
             global: true,
             in_path: true,
           },
-          name: 'hubmap:entities/12e77e69ab76b1832a95e00646f666db',
-          run_data: {
-            file: [
-              {
-                '@id': 'hubmap:entities/12e77e69ab76b1832a95e00646f666db',
-              },
-            ],
-          },
-          target: [],
         },
         {
+          name: 'Sample - TEST0005-RK-3',
+          target: [],
+          run_data: {
+            file: [
+              {
+                '@id': 'Sample - TEST0005-RK-3',
+              },
+            ],
+          },
           meta: {
             global: true,
             in_path: true,
           },
-          name: 'hubmap:entities/d2f87dda666fce9efeeeb09b078b5feb',
-          run_data: {
-            file: [
-              {
-                '@id': 'hubmap:entities/d2f87dda666fce9efeeeb09b078b5feb',
-              },
-            ],
-          },
-          target: [],
         },
         {
+          name: 'Sample - TEST0005-RK-2',
+          target: [],
+          run_data: {
+            file: [
+              {
+                '@id': 'Sample - TEST0005-RK-2',
+              },
+            ],
+          },
           meta: {
             global: true,
             in_path: true,
           },
-          name: 'hubmap:entities/731c5b88cdc623212cf605d1ff6f22f7',
-          run_data: {
-            file: [
-              {
-                '@id': 'hubmap:entities/731c5b88cdc623212cf605d1ff6f22f7',
-              },
-            ],
-          },
-          target: [],
         },
         {
+          name: 'Sample - TEST0005-RK-1',
+          target: [],
+          run_data: {
+            file: [
+              {
+                '@id': 'Sample - TEST0005-RK-1',
+              },
+            ],
+          },
           meta: {
             global: true,
             in_path: true,
           },
-          name: 'hubmap:entities/51318fa4fff79c82d4de7b2d70e630cb',
-          run_data: {
-            file: [
-              {
-                '@id': 'hubmap:entities/51318fa4fff79c82d4de7b2d70e630cb',
-              },
-            ],
-          },
-          target: [],
         },
       ],
     },
     {
+      name: 'Create Sample Activity - d8db1999c29d32dd5960883be688983a',
       inputs: [
         {
+          name: 'Donor - TEST0005',
+          source: [
+            {
+              name: 'Donor - TEST0005',
+              for_file: 'Donor - TEST0005',
+              step: 'Register Donor Activity - dd7a55a9a297ad308f6c48c3b7090475',
+            },
+          ],
+          run_data: {
+            file: [
+              {
+                '@id': 'Donor - TEST0005',
+              },
+            ],
+          },
           meta: {
             global: true,
             in_path: true,
             type: 'data file',
           },
-          name: 'hubmap:entities/5822aa2f0e9e1e9b07731de97109ef6d',
-          run_data: {
-            file: [
-              {
-                '@id': 'hubmap:entities/5822aa2f0e9e1e9b07731de97109ef6d',
-              },
-            ],
-          },
-          source: [
-            {
-              for_file: 'hubmap:entities/5822aa2f0e9e1e9b07731de97109ef6d',
-              name: 'hubmap:entities/5822aa2f0e9e1e9b07731de97109ef6d',
-              step: 'hubmap:activities/dd7a55a9a297ad308f6c48c3b7090475',
-            },
-          ],
         },
       ],
-      name: 'hubmap:activities/d8db1999c29d32dd5960883be688983a',
       outputs: [
         {
-          meta: {
-            global: true,
-            in_path: true,
-          },
-          name: 'hubmap:entities/9942c58c009cb0a0f245f9cb61586af5',
-          run_data: {
-            file: [
-              {
-                '@id': 'hubmap:entities/9942c58c009cb0a0f245f9cb61586af5',
-              },
-            ],
-          },
+          name: 'Sample - TEST0005-RK',
           target: [
             {
-              name: 'hubmap:entities/9942c58c009cb0a0f245f9cb61586af5',
-              step: 'hubmap:activities/822a66f8d498ef37fbc2280abcf56c9e',
+              step: 'Create Sample Activity - 822a66f8d498ef37fbc2280abcf56c9e',
+              name: 'Sample - TEST0005-RK',
             },
           ],
+          run_data: {
+            file: [
+              {
+                '@id': 'Sample - TEST0005-RK',
+              },
+            ],
+          },
+          meta: {
+            global: true,
+            in_path: true,
+          },
         },
       ],
     },
     {
+      name: 'Register Donor Activity - dd7a55a9a297ad308f6c48c3b7090475',
       inputs: [
         {
-          meta: {
-            global: true,
-            in_path: true,
-            type: 'data file',
-          },
           name: 'hubmap:entities/5bd084c8-edc2-11e8-802f-0e368f3075e8',
+          source: [
+            {
+              name: 'hubmap:entities/5bd084c8-edc2-11e8-802f-0e368f3075e8',
+              for_file: 'hubmap:entities/5bd084c8-edc2-11e8-802f-0e368f3075e8',
+            },
+          ],
           run_data: {
             file: [
               {
@@ -466,35 +480,33 @@ export const real = {
               },
             ],
           },
-          source: [
-            {
-              for_file: 'hubmap:entities/5bd084c8-edc2-11e8-802f-0e368f3075e8',
-              name: 'hubmap:entities/5bd084c8-edc2-11e8-802f-0e368f3075e8',
-            },
-          ],
+          meta: {
+            global: true,
+            in_path: true,
+            type: 'data file',
+          },
         },
       ],
-      name: 'hubmap:activities/dd7a55a9a297ad308f6c48c3b7090475',
       outputs: [
         {
+          name: 'Donor - TEST0005',
+          target: [
+            {
+              step: 'Create Sample Activity - d8db1999c29d32dd5960883be688983a',
+              name: 'Donor - TEST0005',
+            },
+          ],
+          run_data: {
+            file: [
+              {
+                '@id': 'Donor - TEST0005',
+              },
+            ],
+          },
           meta: {
             global: true,
             in_path: true,
           },
-          name: 'hubmap:entities/5822aa2f0e9e1e9b07731de97109ef6d',
-          run_data: {
-            file: [
-              {
-                '@id': 'hubmap:entities/5822aa2f0e9e1e9b07731de97109ef6d',
-              },
-            ],
-          },
-          target: [
-            {
-              name: 'hubmap:entities/5822aa2f0e9e1e9b07731de97109ef6d',
-              step: 'hubmap:activities/d8db1999c29d32dd5960883be688983a',
-            },
-          ],
         },
       ],
     },
@@ -502,6 +514,7 @@ export const real = {
 };
 
 export const complex = {
+  getNameForActivity: (id) => id,
   prov: {
     /*
     E1 ═> A1 ═> E3 ═> A3 ═> E5
