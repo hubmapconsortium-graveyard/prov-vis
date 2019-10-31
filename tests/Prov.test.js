@@ -80,6 +80,9 @@ describe('cwl utils', () => {
           for_file: 'name1',
           name: 'name1',
         }],
+        prov: {
+          extras: 'go here',
+        },
       },
     );
   });
@@ -105,6 +108,9 @@ describe('cwl utils', () => {
           name: 'name1',
           step: 'step1',
         }],
+        prov: {
+          extras: 'go here',
+        },
       },
     );
   });
@@ -130,6 +136,9 @@ describe('cwl utils', () => {
             step: 'step1',
           },
         ],
+        prov: {
+          extras: 'go here',
+        },
       },
     );
   });

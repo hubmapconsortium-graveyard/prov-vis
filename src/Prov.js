@@ -27,6 +27,8 @@ export function makeCwlInput(name, steps, isReference) {
       in_path: true,
       type: isReference ? 'reference file' : 'data file',
     },
+    // TODO: Domain-specific extras go here:
+    prov: { extras: 'go here' },
   };
 }
 
@@ -44,6 +46,8 @@ export function makeCwlOutput(name, steps) {
       global: true,
       in_path: true,
     },
+    // TODO: Domain-specific extras go here:
+    prov: { extras: 'go here' },
   };
 }
 
@@ -106,13 +110,22 @@ export default class Prov {
   makeCwlStep(activityId) {
     const activityName = this.getNameForActivity(activityId, this.prov);
     const inputs = this.getParentEntities(activityName)
-      .map((entityName) => makeCwlInput(entityName, this.getParentActivities(entityName)));
+      .map(
+        (entityName) => makeCwlInput(
+          entityName, this.getParentActivities(entityName),
+        ),
+      );
     const outputs = this.getChildEntities(activityName)
-      .map((entityName) => makeCwlOutput(entityName, this.getChildActivities(entityName)));
+      .map(
+        (entityName) => makeCwlOutput(
+          entityName, this.getChildActivities(entityName),
+        ),
+      );
     return {
       name: activityName,
       inputs,
       outputs,
+      prov: { extras: 'go here' },
     };
   }
 

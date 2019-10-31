@@ -21,6 +21,9 @@
           "global": true,
           "in_path": true,
           "type": "data file"
+        },
+        "prov": {
+          "extras": "go here"
         }
       }
     ],
@@ -38,8 +41,14 @@
         "meta": {
           "global": true,
           "in_path": true
+        },
+        "prov": {
+          "extras": "go here"
         }
       }
-    ]
+    ],
+    "prov": {
+      "extras": "go here"
+    }
   }
 ]

@@ -14,7 +14,7 @@ function Demo() {
         prov={defaultFixture.prov}
         getNameForActivity={defaultFixture.getNameForActivity}
         getNameForEntity={defaultFixture.getNameForEntity}
-        renderDetailPane={(node) => <div>hello? {node && Object.keys(node.meta).join('/')}</div>}
+        renderDetailPane={(node) => <div>TODO: {node && Object.keys(node.meta).join(', ')}</div>}
       />
     </div>
   );
