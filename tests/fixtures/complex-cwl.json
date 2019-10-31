@@ -1,0 +1,269 @@
+[
+  {
+    "name": "hubmap:act-1",
+    "inputs": [
+      {
+        "name": "hubmap:ent-1",
+        "source": [
+          {
+            "name": "hubmap:ent-1",
+            "for_file": "hubmap:ent-1"
+          }
+        ],
+        "run_data": {
+          "file": [
+            {
+              "@id": "hubmap:ent-1"
+            }
+          ]
+        },
+        "meta": {
+          "global": true,
+          "in_path": true,
+          "type": "data file"
+        }
+      }
+    ],
+    "outputs": [
+      {
+        "name": "hubmap:ent-3",
+        "target": [
+          {
+            "step": "hubmap:act-3",
+            "name": "hubmap:ent-3"
+          },
+          {
+            "step": "hubmap:act-4",
+            "name": "hubmap:ent-3"
+          }
+        ],
+        "run_data": {
+          "file": [
+            {
+              "@id": "hubmap:ent-3"
+            }
+          ]
+        },
+        "meta": {
+          "global": true,
+          "in_path": true
+        }
+      }
+    ]
+  },
+  {
+    "name": "hubmap:act-2",
+    "inputs": [
+      {
+        "name": "hubmap:ent-1",
+        "source": [
+          {
+            "name": "hubmap:ent-1",
+            "for_file": "hubmap:ent-1"
+          }
+        ],
+        "run_data": {
+          "file": [
+            {
+              "@id": "hubmap:ent-1"
+            }
+          ]
+        },
+        "meta": {
+          "global": true,
+          "in_path": true,
+          "type": "data file"
+        }
+      },
+      {
+        "name": "hubmap:ent-2",
+        "source": [
+          {
+            "name": "hubmap:ent-2",
+            "for_file": "hubmap:ent-2"
+          }
+        ],
+        "run_data": {
+          "file": [
+            {
+              "@id": "hubmap:ent-2"
+            }
+          ]
+        },
+        "meta": {
+          "global": true,
+          "in_path": true,
+          "type": "data file"
+        }
+      }
+    ],
+    "outputs": [
+      {
+        "name": "hubmap:ent-4",
+        "target": [
+          {
+            "step": "hubmap:act-4",
+            "name": "hubmap:ent-4"
+          }
+        ],
+        "run_data": {
+          "file": [
+            {
+              "@id": "hubmap:ent-4"
+            }
+          ]
+        },
+        "meta": {
+          "global": true,
+          "in_path": true
+        }
+      },
+      {
+        "name": "hubmap:ent-7",
+        "target": [],
+        "run_data": {
+          "file": [
+            {
+              "@id": "hubmap:ent-7"
+            }
+          ]
+        },
+        "meta": {
+          "global": true,
+          "in_path": true
+        }
+      }
+    ]
+  },
+  {
+    "name": "hubmap:act-3",
+    "inputs": [
+      {
+        "name": "hubmap:ent-3",
+        "source": [
+          {
+            "name": "hubmap:ent-3",
+            "for_file": "hubmap:ent-3",
+            "step": "hubmap:act-1"
+          }
+        ],
+        "run_data": {
+          "file": [
+            {
+              "@id": "hubmap:ent-3"
+            }
+          ]
+        },
+        "meta": {
+          "global": true,
+          "in_path": true,
+          "type": "data file"
+        }
+      }
+    ],
+    "outputs": [
+      {
+        "name": "hubmap:ent-5",
+        "target": [],
+        "run_data": {
+          "file": [
+            {
+              "@id": "hubmap:ent-5"
+            }
+          ]
+        },
+        "meta": {
+          "global": true,
+          "in_path": true
+        }
+      }
+    ]
+  },
+  {
+    "name": "hubmap:act-4",
+    "inputs": [
+      {
+        "name": "hubmap:ent-1",
+        "source": [
+          {
+            "name": "hubmap:ent-1",
+            "for_file": "hubmap:ent-1"
+          }
+        ],
+        "run_data": {
+          "file": [
+            {
+              "@id": "hubmap:ent-1"
+            }
+          ]
+        },
+        "meta": {
+          "global": true,
+          "in_path": true,
+          "type": "data file"
+        }
+      },
+      {
+        "name": "hubmap:ent-3",
+        "source": [
+          {
+            "name": "hubmap:ent-3",
+            "for_file": "hubmap:ent-3",
+            "step": "hubmap:act-1"
+          }
+        ],
+        "run_data": {
+          "file": [
+            {
+              "@id": "hubmap:ent-3"
+            }
+          ]
+        },
+        "meta": {
+          "global": true,
+          "in_path": true,
+          "type": "data file"
+        }
+      },
+      {
+        "name": "hubmap:ent-4",
+        "source": [
+          {
+            "name": "hubmap:ent-4",
+            "for_file": "hubmap:ent-4",
+            "step": "hubmap:act-2"
+          }
+        ],
+        "run_data": {
+          "file": [
+            {
+              "@id": "hubmap:ent-4"
+            }
+          ]
+        },
+        "meta": {
+          "global": true,
+          "in_path": true,
+          "type": "data file"
+        }
+      }
+    ],
+    "outputs": [
+      {
+        "name": "hubmap:ent-6",
+        "target": [],
+        "run_data": {
+          "file": [
+            {
+              "@id": "hubmap:ent-6"
+            }
+          ]
+        },
+        "meta": {
+          "global": true,
+          "in_path": true
+        }
+      }
+    ]
+  }
+]
