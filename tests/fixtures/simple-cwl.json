@@ -1,6 +1,6 @@
 [
   {
-    "name": "ex:run",
+    "name": "ex:process",
     "inputs": [
       {
         "name": "ex:input",

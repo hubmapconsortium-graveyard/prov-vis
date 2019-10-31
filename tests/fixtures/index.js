@@ -8,24 +8,24 @@ export const simple = {
   getNameForEntity: (id) => id,
   prov: {
     prefix: {
-      hubmap: 'https://hubmapconsortium.org',
+      ex: 'http://example.com',
     },
     entity: {
-      'ex:input': { 'prov:label': 'bedfile' },
-      'ex:output': { 'prov:label': 'beddbfile' },
+      'ex:input': { 'prov:label': 'Input', 'ex:note': 'Begins here...' },
+      'ex:output': { 'prov:label': 'Output', 'ex:note': '... and ends here.' },
     },
     activity: {
-      'ex:run': { 'prov:label': 'bedtobeddb' },
+      'ex:process': { 'prov:label': 'Process' },
     },
     wasGeneratedBy: {
       '_:1': {
-        'prov:activity': 'ex:run',
+        'prov:activity': 'ex:process',
         'prov:entity': 'ex:output',
       },
     },
     used: {
       '_:2': {
-        'prov:activity': 'ex:run',
+        'prov:activity': 'ex:process',
         'prov:entity': 'ex:input',
       },
     },
