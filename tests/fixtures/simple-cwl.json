@@ -48,7 +48,7 @@
       }
     ],
     "prov": {
-      "extras": "go here"
+      "prov:label": "Process"
     }
   }
 ]

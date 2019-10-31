@@ -125,7 +125,7 @@ export default class Prov {
       name: activityName,
       inputs,
       outputs,
-      prov: { extras: 'go here' },
+      prov: this.prov.activity[activityId],
     };
   }
 
