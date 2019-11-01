@@ -63,18 +63,6 @@ export default class Prov {
       throw new Error(failureReason);
     }
     this.prov = prov;
-
-    this.generatedByMap = this.getActivityEntityMap('wasGeneratedBy');
-    this.usedMap = this.getActivityEntityMap('used');
-  }
-
-  getActivityEntityMap(propName) {
-    return Object.fromEntries(
-      Object.values(this.prov[propName])
-        .map(
-          (props) => [this.getNameForActivity(props['prov:activity'], this.prov), props['prov:entity']],
-        ),
-    );
   }
 
 
