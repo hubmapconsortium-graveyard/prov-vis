@@ -43,7 +43,8 @@
           "in_path": true
         },
         "prov": {
-          "prov:label": "Process"
+          "prov:label": "Output",
+          "ex:note": "... and ends here."
         }
       }
     ],

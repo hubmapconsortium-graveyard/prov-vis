@@ -118,7 +118,7 @@ export default class Prov {
     const outputs = this.getChildEntityNames(activityName)
       .map(
         (entityName) => makeCwlOutput(
-          entityName, this.getChildActivityNames(entityName), this.prov.activity[activityId]
+          entityName, this.getChildActivityNames(entityName), this.entityByName[entityName]
         ),
       );
     return {

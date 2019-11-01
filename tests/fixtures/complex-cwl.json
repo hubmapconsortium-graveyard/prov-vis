@@ -52,7 +52,7 @@
           "in_path": true
         },
         "prov": {
-          "prov:label": "act-1"
+          "prov:label": "ent-3"
         }
       }
     ],
@@ -133,7 +133,7 @@
           "in_path": true
         },
         "prov": {
-          "prov:label": "act-2"
+          "prov:label": "ent-4"
         }
       },
       {
@@ -151,7 +151,7 @@
           "in_path": true
         },
         "prov": {
-          "prov:label": "act-2"
+          "prov:label": "ent-7"
         }
       }
     ],
@@ -204,7 +204,7 @@
           "in_path": true
         },
         "prov": {
-          "prov:label": "act-3"
+          "prov:label": "ent-5"
         }
       }
     ],
@@ -306,7 +306,7 @@
           "in_path": true
         },
         "prov": {
-          "prov:label": "act-4"
+          "prov:label": "ent-6"
         }
       }
     ],
