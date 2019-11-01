@@ -34,26 +34,26 @@ describe('Prov errors', () => {
 describe('Prov methods', () => {
   const prov = new Prov(fixtures.complex.prov);
 
-  it('getParentEntities', () => {
-    expect(prov.getParentEntities('hubmap:act-4')).toEqual([
+  it('getParentEntityNames', () => {
+    expect(prov.getParentEntityNames('hubmap:act-4')).toEqual([
       'hubmap:ent-1', 'hubmap:ent-3', 'hubmap:ent-4',
     ]);
   });
 
-  it('getChildEntities', () => {
-    expect(prov.getChildEntities('hubmap:act-2')).toEqual([
+  it('getChildEntityNames', () => {
+    expect(prov.getChildEntityNames('hubmap:act-2')).toEqual([
       'hubmap:ent-4', 'hubmap:ent-7',
     ]);
   });
 
-  it('getParentActivities', () => {
-    expect(prov.getParentActivities('hubmap:ent-6')).toEqual([
+  it('getParentActivityNames', () => {
+    expect(prov.getParentActivityNames('hubmap:ent-6')).toEqual([
       'hubmap:act-4',
     ]);
   });
 
-  it('getChildActivities', () => {
-    expect(prov.getChildActivities('hubmap:ent-1')).toEqual([
+  it('getChildActivityNames', () => {
+    expect(prov.getChildActivityNames('hubmap:ent-1')).toEqual([
       'hubmap:act-1', 'hubmap:act-2', 'hubmap:act-4',
     ]);
   });

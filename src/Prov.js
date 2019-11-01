@@ -78,47 +78,47 @@ export default class Prov {
   }
 
 
-  getEntities(activityName, relation) {
+  getEntityNames(activityName, relation) {
     return Object.values(this.prov[relation])
       .filter((pair) => this.getNameForActivity(pair['prov:activity'], this.prov) === activityName)
       .map((pair) => this.getNameForEntity(pair['prov:entity'], this.prov));
   }
 
-  getParentEntities(activityName) {
-    return this.getEntities(activityName, 'used');
+  getParentEntityNames(activityName) {
+    return this.getEntityNames(activityName, 'used');
   }
 
-  getChildEntities(activityName) {
-    return this.getEntities(activityName, 'wasGeneratedBy');
+  getChildEntityNames(activityName) {
+    return this.getEntityNames(activityName, 'wasGeneratedBy');
   }
 
-  getActivities(entityName, relation) {
+  getActivityNames(entityName, relation) {
     return Object.values(this.prov[relation])
       .filter((pair) => this.getNameForEntity(pair['prov:entity'], this.prov) === entityName)
       .map((pair) => this.getNameForActivity(pair['prov:activity'], this.prov));
   }
 
-  getParentActivities(entityName) {
-    return this.getActivities(entityName, 'wasGeneratedBy');
+  getParentActivityNames(entityName) {
+    return this.getActivityNames(entityName, 'wasGeneratedBy');
   }
 
-  getChildActivities(entityName) {
-    return this.getActivities(entityName, 'used');
+  getChildActivityNames(entityName) {
+    return this.getActivityNames(entityName, 'used');
   }
 
 
   makeCwlStep(activityId) {
     const activityName = this.getNameForActivity(activityId, this.prov);
-    const inputs = this.getParentEntities(activityName)
+    const inputs = this.getParentEntityNames(activityName)
       .map(
         (entityName) => makeCwlInput(
-          entityName, this.getParentActivities(entityName),
+          entityName, this.getParentActivityNames(entityName),
         ),
       );
-    const outputs = this.getChildEntities(activityName)
+    const outputs = this.getChildEntityNames(activityName)
       .map(
         (entityName) => makeCwlOutput(
-          entityName, this.getChildActivities(entityName), this.prov.activity[activityId]
+          entityName, this.getChildActivityNames(entityName), this.prov.activity[activityId]
         ),
       );
     return {
