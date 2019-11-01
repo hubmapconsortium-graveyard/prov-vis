@@ -33,7 +33,7 @@ export function makeCwlInput(name, steps, isReference) {
 }
 
 // export only to test.
-export function makeCwlOutput(name, steps) {
+export function makeCwlOutput(name, steps, extras) {
   const id = name;
   return {
     name,
@@ -46,8 +46,8 @@ export function makeCwlOutput(name, steps) {
       global: true,
       in_path: true,
     },
-    // TODO: Domain-specific extras go here:
-    prov: { extras: 'go here' },
+    // Domain-specific extras go here:
+    prov: extras,
   };
 }
 
@@ -118,7 +118,7 @@ export default class Prov {
     const outputs = this.getChildEntities(activityName)
       .map(
         (entityName) => makeCwlOutput(
-          entityName, this.getChildActivities(entityName),
+          entityName, this.getChildActivities(entityName), this.prov.activity[activityId]
         ),
       );
     return {

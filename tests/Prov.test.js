@@ -116,7 +116,7 @@ describe('cwl utils', () => {
   });
 
   it('makeCwlOutput', () => {
-    expect(makeCwlOutput('name1', ['step1'])).toEqual(
+    expect(makeCwlOutput('name1', ['step1'], {extras: 'go here!'})).toEqual(
       {
         meta: {
           global: true,
@@ -137,7 +137,7 @@ describe('cwl utils', () => {
           },
         ],
         prov: {
-          extras: 'go here',
+          extras: 'go here!',
         },
       },
     );

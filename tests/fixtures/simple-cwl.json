@@ -43,7 +43,7 @@
           "in_path": true
         },
         "prov": {
-          "extras": "go here"
+          "prov:label": "Process"
         }
       }
     ],
