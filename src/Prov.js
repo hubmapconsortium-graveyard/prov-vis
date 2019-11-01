@@ -66,14 +66,14 @@ export default class Prov {
     this.activityByName = Object.fromEntries(
       Object.entries(this.prov.activity).map(([activityId, activity]) => [
         getNameForActivity(activityId, this.prov), activity,
-      ])
-    )
+      ]),
+    );
 
     this.entityByName = Object.fromEntries(
       Object.entries(this.prov.entity).map(([entityId, entity]) => [
         getNameForEntity(entityId, this.prov), entity,
-      ])
-    )
+      ]),
+    );
   }
 
 
@@ -111,13 +111,13 @@ export default class Prov {
     const inputs = this.getParentEntityNames(activityName)
       .map(
         (entityName) => makeCwlInput(
-          entityName, this.getParentActivityNames(entityName), this.entityByName[entityName]
+          entityName, this.getParentActivityNames(entityName), this.entityByName[entityName],
         ),
       );
     const outputs = this.getChildEntityNames(activityName)
       .map(
         (entityName) => makeCwlOutput(
-          entityName, this.getChildActivityNames(entityName), this.entityByName[entityName]
+          entityName, this.getChildActivityNames(entityName), this.entityByName[entityName],
         ),
       );
     return {
