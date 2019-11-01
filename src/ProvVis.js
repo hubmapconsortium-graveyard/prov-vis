@@ -9,6 +9,11 @@ export default function ProvVis(props) {
     prov, getNameForActivity, getNameForEntity, renderDetailPane,
   } = props;
   const steps = new Prov(prov, getNameForActivity, getNameForEntity).toCwl();
+  function renderDetailPaneWithNode(node) {
+    if (node) {
+      return renderDetailPane(node.meta.prov)
+    }
+  }
   return (
     <GraphParser
       parsingOptions={{
@@ -23,7 +28,7 @@ export default function ProvVis(props) {
       <Graph
         rowSpacingType="compact"
         minimumHeight={300}
-        renderDetailPane={renderDetailPane}
+        renderDetailPane={renderDetailPaneWithNode}
       />
     </GraphParser>
   );
