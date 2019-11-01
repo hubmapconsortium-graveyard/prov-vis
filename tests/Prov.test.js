@@ -32,30 +32,81 @@ describe('Prov errors', () => {
 });
 
 describe('Prov methods', () => {
-  const prov = new Prov(fixtures.complex.prov);
+  const prov = new Prov(
+    fixtures.complex.prov,
+    (id) => `ACT-${id}`,
+    (id) => `ENT-${id}`
+  );
 
   it('getParentEntityNames', () => {
-    expect(prov.getParentEntityNames('hubmap:act-4')).toEqual([
-      'hubmap:ent-1', 'hubmap:ent-3', 'hubmap:ent-4',
+    expect(prov.getParentEntityNames('ACT-hubmap:act-4')).toEqual([
+      'ENT-hubmap:ent-1', 'ENT-hubmap:ent-3', 'ENT-hubmap:ent-4',
     ]);
   });
 
   it('getChildEntityNames', () => {
-    expect(prov.getChildEntityNames('hubmap:act-2')).toEqual([
-      'hubmap:ent-4', 'hubmap:ent-7',
+    expect(prov.getChildEntityNames('ACT-hubmap:act-2')).toEqual([
+      'ENT-hubmap:ent-4', 'ENT-hubmap:ent-7',
     ]);
   });
 
   it('getParentActivityNames', () => {
-    expect(prov.getParentActivityNames('hubmap:ent-6')).toEqual([
-      'hubmap:act-4',
+    expect(prov.getParentActivityNames('ENT-hubmap:ent-6')).toEqual([
+      'ACT-hubmap:act-4',
     ]);
   });
 
   it('getChildActivityNames', () => {
-    expect(prov.getChildActivityNames('hubmap:ent-1')).toEqual([
-      'hubmap:act-1', 'hubmap:act-2', 'hubmap:act-4',
+    expect(prov.getChildActivityNames('ENT-hubmap:ent-1')).toEqual([
+      'ACT-hubmap:act-1', 'ACT-hubmap:act-2', 'ACT-hubmap:act-4',
     ]);
+  });
+
+  it('has activityByName', () => {
+    expect(prov.activityByName).toEqual(
+      {
+        "ACT-hubmap:act-1": {
+          "prov:label": "act-1"
+        },
+        "ACT-hubmap:act-2": {
+          "prov:label": "act-2"
+        },
+        "ACT-hubmap:act-3": {
+          "prov:label": "act-3"
+        },
+        "ACT-hubmap:act-4": {
+          "prov:label": "act-4"
+        }
+      }
+    );
+  });
+
+  it('has entityByName', () => {
+    expect(prov.entityByName).toEqual(
+      {
+        "ENT-hubmap:ent-1": {
+          "prov:label": "ent-1"
+        },
+        "ENT-hubmap:ent-2": {
+          "prov:label": "ent-2"
+        },
+        "ENT-hubmap:ent-3": {
+          "prov:label": "ent-3"
+        },
+        "ENT-hubmap:ent-4": {
+          "prov:label": "ent-4"
+        },
+        "ENT-hubmap:ent-5": {
+          "prov:label": "ent-5"
+        },
+        "ENT-hubmap:ent-6": {
+          "prov:label": "ent-6"
+        },
+        "ENT-hubmap:ent-7": {
+          "prov:label": "ent-7"
+        }
+      }
+    );
   });
 });
 

@@ -63,6 +63,18 @@ export default class Prov {
       throw new Error(failureReason);
     }
     this.prov = prov;
+
+    this.activityByName = Object.fromEntries(
+      Object.entries(this.prov.activity).map(([activityId, activity]) => [
+        getNameForActivity(activityId, this.prov), activity,
+      ])
+    )
+
+    this.entityByName = Object.fromEntries(
+      Object.entries(this.prov.entity).map(([entityId, entity]) => [
+        getNameForEntity(entityId, this.prov), entity,
+      ])
+    )
   }
 
 
