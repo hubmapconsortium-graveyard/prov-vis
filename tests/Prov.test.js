@@ -10,7 +10,6 @@ describe('Prov fixtures', () => {
     it(`converts ${k} W3C JSON to 4DN CWL`, () => {
       const prov = new Prov(v.prov, v.getNameForActivity, v.getNameForEntity);
       const cwl = prov.toCwl();
-      console.log(k, '>>>>>', cwl[0].inputs[0])
       expect(cwl).toEqual(v.cwl, `Mismatch (full after diff):\n${JSON.stringify(cwl, null, 2)}`);
     });
   });
@@ -36,7 +35,7 @@ describe('Prov methods', () => {
   const prov = new Prov(
     fixtures.complex.prov,
     (id) => `ACT-${id}`,
-    (id) => `ENT-${id}`
+    (id) => `ENT-${id}`,
   );
 
   it('getParentEntityNames', () => {
@@ -66,54 +65,54 @@ describe('Prov methods', () => {
   it('has activityByName', () => {
     expect(prov.activityByName).toEqual(
       {
-        "ACT-hubmap:act-1": {
-          "prov:label": "act-1"
+        'ACT-hubmap:act-1': {
+          'prov:label': 'act-1',
         },
-        "ACT-hubmap:act-2": {
-          "prov:label": "act-2"
+        'ACT-hubmap:act-2': {
+          'prov:label': 'act-2',
         },
-        "ACT-hubmap:act-3": {
-          "prov:label": "act-3"
+        'ACT-hubmap:act-3': {
+          'prov:label': 'act-3',
         },
-        "ACT-hubmap:act-4": {
-          "prov:label": "act-4"
-        }
-      }
+        'ACT-hubmap:act-4': {
+          'prov:label': 'act-4',
+        },
+      },
     );
   });
 
   it('has entityByName', () => {
     expect(prov.entityByName).toEqual(
       {
-        "ENT-hubmap:ent-1": {
-          "prov:label": "ent-1"
+        'ENT-hubmap:ent-1': {
+          'prov:label': 'ent-1',
         },
-        "ENT-hubmap:ent-2": {
-          "prov:label": "ent-2"
+        'ENT-hubmap:ent-2': {
+          'prov:label': 'ent-2',
         },
-        "ENT-hubmap:ent-3": {
-          "prov:label": "ent-3"
+        'ENT-hubmap:ent-3': {
+          'prov:label': 'ent-3',
         },
-        "ENT-hubmap:ent-4": {
-          "prov:label": "ent-4"
+        'ENT-hubmap:ent-4': {
+          'prov:label': 'ent-4',
         },
-        "ENT-hubmap:ent-5": {
-          "prov:label": "ent-5"
+        'ENT-hubmap:ent-5': {
+          'prov:label': 'ent-5',
         },
-        "ENT-hubmap:ent-6": {
-          "prov:label": "ent-6"
+        'ENT-hubmap:ent-6': {
+          'prov:label': 'ent-6',
         },
-        "ENT-hubmap:ent-7": {
-          "prov:label": "ent-7"
-        }
-      }
+        'ENT-hubmap:ent-7': {
+          'prov:label': 'ent-7',
+        },
+      },
     );
   });
 });
 
 describe('cwl utils', () => {
   it('makeCwlInput reference', () => {
-    expect(makeCwlInput('name1', [], {extras: 'go here!'}, true)).toEqual(
+    expect(makeCwlInput('name1', [], { extras: 'go here!' }, true)).toEqual(
       {
         meta: {
           global: true,
@@ -140,7 +139,7 @@ describe('cwl utils', () => {
   });
 
   it('makeCwlInput with step', () => {
-    expect(makeCwlInput('name1', ['step1'], {extras: 'go here!'})).toEqual(
+    expect(makeCwlInput('name1', ['step1'], { extras: 'go here!' })).toEqual(
       {
         meta: {
           global: true,
@@ -168,7 +167,7 @@ describe('cwl utils', () => {
   });
 
   it('makeCwlOutput', () => {
-    expect(makeCwlOutput('name1', ['step1'], {extras: 'go here!'})).toEqual(
+    expect(makeCwlOutput('name1', ['step1'], { extras: 'go here!' })).toEqual(
       {
         meta: {
           global: true,
