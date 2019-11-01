@@ -23,7 +23,7 @@
           "type": "data file"
         },
         "prov": {
-          "extras": "go here"
+          "prov:label": "ent-1"
         }
       }
     ],
@@ -84,7 +84,7 @@
           "type": "data file"
         },
         "prov": {
-          "extras": "go here"
+          "prov:label": "ent-1"
         }
       },
       {
@@ -108,7 +108,7 @@
           "type": "data file"
         },
         "prov": {
-          "extras": "go here"
+          "prov:label": "ent-2"
         }
       }
     ],
@@ -184,7 +184,7 @@
           "type": "data file"
         },
         "prov": {
-          "extras": "go here"
+          "prov:label": "ent-3"
         }
       }
     ],
@@ -236,7 +236,7 @@
           "type": "data file"
         },
         "prov": {
-          "extras": "go here"
+          "prov:label": "ent-1"
         }
       },
       {
@@ -261,7 +261,7 @@
           "type": "data file"
         },
         "prov": {
-          "extras": "go here"
+          "prov:label": "ent-3"
         }
       },
       {
@@ -286,7 +286,7 @@
           "type": "data file"
         },
         "prov": {
-          "extras": "go here"
+          "prov:label": "ent-4"
         }
       }
     ],

@@ -23,7 +23,8 @@
           "type": "data file"
         },
         "prov": {
-          "extras": "go here"
+          "prov:label": "Input",
+          "ex:note": "Begins here..."
         }
       }
     ],

@@ -10,6 +10,7 @@ describe('Prov fixtures', () => {
     it(`converts ${k} W3C JSON to 4DN CWL`, () => {
       const prov = new Prov(v.prov, v.getNameForActivity, v.getNameForEntity);
       const cwl = prov.toCwl();
+      console.log(k, '>>>>>', cwl[0].inputs[0])
       expect(cwl).toEqual(v.cwl, `Mismatch (full after diff):\n${JSON.stringify(cwl, null, 2)}`);
     });
   });
@@ -112,7 +113,7 @@ describe('Prov methods', () => {
 
 describe('cwl utils', () => {
   it('makeCwlInput reference', () => {
-    expect(makeCwlInput('name1', [], true)).toEqual(
+    expect(makeCwlInput('name1', [], {extras: 'go here!'}, true)).toEqual(
       {
         meta: {
           global: true,
@@ -132,14 +133,14 @@ describe('cwl utils', () => {
           name: 'name1',
         }],
         prov: {
-          extras: 'go here',
+          extras: 'go here!',
         },
       },
     );
   });
 
   it('makeCwlInput with step', () => {
-    expect(makeCwlInput('name1', ['step1'])).toEqual(
+    expect(makeCwlInput('name1', ['step1'], {extras: 'go here!'})).toEqual(
       {
         meta: {
           global: true,
@@ -160,7 +161,7 @@ describe('cwl utils', () => {
           step: 'step1',
         }],
         prov: {
-          extras: 'go here',
+          extras: 'go here!',
         },
       },
     );

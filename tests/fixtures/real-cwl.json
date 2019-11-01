@@ -22,9 +22,7 @@
           "in_path": true,
           "type": "data file"
         },
-        "prov": {
-          "extras": "go here"
-        }
+        "prov": {}
       }
     ],
     "outputs": [

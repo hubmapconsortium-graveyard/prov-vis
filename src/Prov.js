@@ -3,7 +3,7 @@ import Ajv from 'ajv';
 import schema from './schema.json';
 
 // export only to test.
-export function makeCwlInput(name, steps, isReference) {
+export function makeCwlInput(name, steps, extras, isReference) {
   const id = name;
   const source = [{
     name,
@@ -27,8 +27,7 @@ export function makeCwlInput(name, steps, isReference) {
       in_path: true,
       type: isReference ? 'reference file' : 'data file',
     },
-    // TODO: Domain-specific extras go here:
-    prov: { extras: 'go here' },
+    prov: extras || {}, // TODO: real-prov has unmatched ID: https://github.com/hubmapconsortium/prov-vis/issues/15
   };
 }
 
@@ -112,7 +111,7 @@ export default class Prov {
     const inputs = this.getParentEntityNames(activityName)
       .map(
         (entityName) => makeCwlInput(
-          entityName, this.getParentActivityNames(entityName),
+          entityName, this.getParentActivityNames(entityName), this.entityByName[entityName]
         ),
       );
     const outputs = this.getChildEntityNames(activityName)
