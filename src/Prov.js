@@ -3,7 +3,7 @@ import Ajv from 'ajv';
 import schema from './schema.json';
 
 // export only to test.
-export function makeCwlInput(name, steps, extras, isReference) {
+export function _makeCwlInput(name, steps, extras, isReference) {
   const id = name;
   const source = [{
     name,
@@ -32,7 +32,7 @@ export function makeCwlInput(name, steps, extras, isReference) {
 }
 
 // export only to test.
-export function makeCwlOutput(name, steps, extras) {
+export function _makeCwlOutput(name, steps, extras) {
   const id = name;
   return {
     name,
@@ -50,7 +50,7 @@ export function makeCwlOutput(name, steps, extras) {
   };
 }
 
-export function expand(needsExpansion, prefixMap) {
+export function _expand(needsExpansion, prefixMap) {
   // Walk the needsExpansion object, using prefixMap to expand the keys.
   if (typeof needsExpansion !== 'object') {
     const [prefix, stem] = needsExpansion.split(':');
@@ -64,7 +64,7 @@ export function expand(needsExpansion, prefixMap) {
       Object.entries(needsExpansion).map(
         ([key, value]) => {
           const [prefix, stem] = key.split(':');
-          return [prefixMap[prefix] + stem, expand(value, prefixMap)]
+          return [prefixMap[prefix] + stem, _expand(value, prefixMap)]
         }
       )
     );
@@ -141,13 +141,13 @@ export default class Prov {
     const activityName = this.getNameForActivity(activityId, this.prov);
     const inputs = this.getParentEntityNames(activityName)
       .map(
-        (entityName) => makeCwlInput(
+        (entityName) => _makeCwlInput(
           entityName, this.getParentActivityNames(entityName), this.entityByName[entityName],
         ),
       );
     const outputs = this.getChildEntityNames(activityName)
       .map(
-        (entityName) => makeCwlOutput(
+        (entityName) => _makeCwlOutput(
           entityName, this.getChildActivityNames(entityName), this.entityByName[entityName],
         ),
       );

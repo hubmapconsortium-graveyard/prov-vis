@@ -1,6 +1,6 @@
 import expect from 'expect';
 
-import Prov, { makeCwlInput, makeCwlOutput, expand } from '../src/Prov';
+import Prov, { _makeCwlInput, _makeCwlOutput, _expand } from '../src/Prov';
 
 import * as fixtures from './fixtures';
 
@@ -113,7 +113,7 @@ describe('Prov methods', () => {
 describe('PROV expansion', () => {
   it('should expand prefixes', () =>{
     expect(
-      expand({
+      _expand({
         'do:C': { 're:D': 'mi:E' },
         're:D': { 're:D': 'not-expanded' }
       },
@@ -129,9 +129,9 @@ describe('PROV expansion', () => {
   });
 })
 
-describe('cwl utils', () => {
-  it('makeCwlInput reference', () => {
-    expect(makeCwlInput('name1', [], { extras: 'go here!' }, true)).toEqual(
+describe('CWL utils', () => {
+  it('_makeCwlInput reference', () => {
+    expect(_makeCwlInput('name1', [], { extras: 'go here!' }, true)).toEqual(
       {
         meta: {
           global: true,
@@ -157,8 +157,8 @@ describe('cwl utils', () => {
     );
   });
 
-  it('makeCwlInput with step', () => {
-    expect(makeCwlInput('name1', ['step1'], { extras: 'go here!' })).toEqual(
+  it('_makeCwlInput with step', () => {
+    expect(_makeCwlInput('name1', ['step1'], { extras: 'go here!' })).toEqual(
       {
         meta: {
           global: true,
@@ -185,8 +185,8 @@ describe('cwl utils', () => {
     );
   });
 
-  it('makeCwlOutput', () => {
-    expect(makeCwlOutput('name1', ['step1'], { extras: 'go here!' })).toEqual(
+  it('_makeCwlOutput', () => {
+    expect(_makeCwlOutput('name1', ['step1'], { extras: 'go here!' })).toEqual(
       {
         meta: {
           global: true,
