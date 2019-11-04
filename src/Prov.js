@@ -92,7 +92,7 @@ export default class Prov {
       const needsExpansion = this.prov[topLevel];
       expandedProv[topLevel] = _expand(needsExpansion, this.prov.prefix);
     });
-    return new Prov(expandedProv);
+    return new Prov(expandedProv, this.getNameForActivity, this.getNameForEntity);
   }
 
 

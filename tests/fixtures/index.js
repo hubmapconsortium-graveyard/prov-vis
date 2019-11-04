@@ -8,13 +8,15 @@ import simpleProv from './simple-prov';
 import simpleCwl from './simple-cwl.json';
 
 export const simple = {
-  getNameForActivity: (id) => 'X', //id.split('/').pop(),
-  getNameForEntity: (id) => id.split('/').pop(),
+  getNameForActivity: (id) => id.split('#').pop(),
+  getNameForEntity: (id) => id.split('#').pop(),
   prov: simpleProv,
   cwl: simpleCwl,
 };
 
 export const complex = {
+  getNameForActivity: (id) => id.split('/').pop(),
+  getNameForEntity: (id) => id.split('/').pop(),
   prov: complexProv,
   cwl: complexCwl,
 };
@@ -35,4 +37,4 @@ export const real = {
 };
 
 // The React demo references the default export.
-export default simple;
+export default real;
