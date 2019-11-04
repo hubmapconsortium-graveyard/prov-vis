@@ -53,7 +53,12 @@ export function makeCwlOutput(name, steps, extras) {
 export function expand(needsExpansion, prefixMap) {
   // Walk the needsExpansion object, using prefixMap to expand the keys.
   if (typeof needsExpansion !== 'object') {
-    return needsExpansion;
+    const [prefix, stem] = needsExpansion.split(':');
+    if (stem) {
+      return prefixMap[prefix] + stem;
+    } else {
+      return prefix;
+    }
   } else {
     return Object.fromEntries(
       Object.entries(needsExpansion).map(

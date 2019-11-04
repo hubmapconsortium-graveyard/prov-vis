@@ -111,7 +111,22 @@ describe('Prov methods', () => {
 });
 
 describe('PROV expansion', () => {
-  expect(expand({})).toEqual({});
+  it('should expand prefixes', () =>{
+    expect(
+      expand({
+        'do:C': { 're:D': 'mi:E' },
+        're:D': { 're:D': 'not-expanded' }
+      },
+      {
+        do: 'deer#',
+        re: 'drop-of-golden-sun#',
+        mi: 'name-i-call-myself#'
+      }
+    )).toEqual({
+      'deer#C': { 'drop-of-golden-sun#D': 'name-i-call-myself#E' },
+      'drop-of-golden-sun#D': { 'drop-of-golden-sun#D': 'not-expanded' }
+    })
+  });
 })
 
 describe('cwl utils', () => {
