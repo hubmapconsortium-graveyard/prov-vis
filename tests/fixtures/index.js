@@ -1,8 +1,8 @@
 import realProv from './real-prov.json';
 import realCwl from './real-cwl.json';
-import complexProv from './complex-prov.js';
+import complexProv from './complex-prov';
 import complexCwl from './complex-cwl.json';
-import simpleProv from './simple-prov.js';
+import simpleProv from './simple-prov';
 import simpleCwl from './simple-cwl.json';
 
 export const simple = {
