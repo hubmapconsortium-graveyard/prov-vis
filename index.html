@@ -8,25 +8,26 @@
 
   <body>
     <p>
-      This demonstrates how to use <a href="https://github.com/hubmapconsortium/prov-vis/">prov-vis</a> in static HTML.
+      This demonstrates how to use
+      <a href="https://github.com/hubmapconsortium/prov-vis/">prov-vis</a>
+      in static HTML.
     </p>
     <div id="prov-vis"></div>
 
     <!-- External libraries listed in nwb.config.js need to be loaded first: -->
     <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
 
-    <!-- Load prov-vis: -->
+    <!-- Load prov-vis. (In production, add a version number!) -->
     <script src="https://unpkg.com/@hubmap/prov-vis/umd/@hubmap/prov-vis.min.js"></script>
-    <!-- In production, add a version number! -->
-
-    <!-- ... or "npm run build" to preview it locally; Comment out the line above, and uncomment this: -->
-    <!-- <script src="./umd/prov-vis.min.js"></script> -->
+    <!-- ... or "npm run build" to preview it locally.
+        (If not built, this will 404, and unpkg.com above will still be used.) -->
+    <script src="./umd/@hubmap/prov-vis.js"></script>
 
     <script type="module">
       // This import might be replaced with an AJAX call, or JSON templated into the page on the server.
       // Module loading is subject to CORS restrictions, so this demo needs a static file server.
-      import defaultFixture from './tests/fixtures.js';
-      hubmapProvVis.renderProvVis('prov-vis', defaultFixture.prov);
+      import prov from './tests/fixtures/simple-prov.js';
+      hubmapProvVis.renderProvVis('prov-vis', prov);
     </script>
   </body>
 </html>
