@@ -2,7 +2,7 @@ import Ajv from 'ajv';
 
 import schema from './schema.json';
 
-const PROV_NS = 'http://www.w3.org/ns/prov#';
+export const PROV_NS = 'http://www.w3.org/ns/prov#';
 
 // export only to test.
 export function _makeCwlInput(name, steps, extras, isReference) {
@@ -73,8 +73,8 @@ export function _expand(needsExpansion, prefixMap) {
 
 export default class Prov {
   constructor(prov, getNameForActivity = (id) => id, getNameForEntity = (id) => id) {
-    this._getNameForActivity = getNameForActivity;
-    this._getNameForEntity = getNameForEntity;
+    this.getNameForActivity = getNameForActivity;
+    this.getNameForEntity = getNameForEntity;
 
     const validate = new Ajv().compile(schema);
     const valid = validate(prov);
@@ -98,8 +98,8 @@ export default class Prov {
 
   _getEntityNames(activityName, relation) {
     return Object.values(this.prov[relation])
-      .filter((pair) => this._getNameForActivity(pair[`${PROV_NS}activity`], this.prov) === activityName)
-      .map((pair) => this._getNameForEntity(pair[`${PROV_NS}entity`], this.prov));
+      .filter((pair) => this.getNameForActivity(pair[`${PROV_NS}activity`], this.prov) === activityName)
+      .map((pair) => this.getNameForEntity(pair[`${PROV_NS}entity`], this.prov));
   }
 
   _getParentEntityNames(activityName) {
@@ -112,8 +112,8 @@ export default class Prov {
 
   _getActivityNames(entityName, relation) {
     return Object.values(this.prov[relation])
-      .filter((pair) => this._getNameForEntity(pair[`${PROV_NS}entity`], this.prov) === entityName)
-      .map((pair) => this._getNameForActivity(pair[`${PROV_NS}activity`], this.prov));
+      .filter((pair) => this.getNameForEntity(pair[`${PROV_NS}entity`], this.prov) === entityName)
+      .map((pair) => this.getNameForActivity(pair[`${PROV_NS}activity`], this.prov));
   }
 
   _getParentActivityNames(entityName) {
@@ -128,11 +128,11 @@ export default class Prov {
   makeCwlStep(activityId) {
     const entityByName = Object.fromEntries(
       Object.entries(this.prov.entity).map(([entityId, entity]) => [
-        this._getNameForEntity(entityId, this.prov), entity,
+        this.getNameForEntity(entityId, this.prov), entity,
       ]),
     );
 
-    const activityName = this._getNameForActivity(activityId, this.prov);
+    const activityName = this.getNameForActivity(activityId, this.prov);
     const inputs = this._getParentEntityNames(activityName)
       .map(
         (entityName) => _makeCwlInput(
