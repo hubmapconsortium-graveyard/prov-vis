@@ -1,4 +1,4 @@
-import PROV_NS from '../../src/Prov'
+import { PROV_NS } from '../../src/Prov'
 
 import realProv from './real-prov.json';
 import realCwl from './real-cwl.json';
@@ -24,6 +24,7 @@ export const complex = {
 export const real = {
   getNameForActivity: (id, prov) => {
     const activity = prov.activity[id];
+    console.log(activity, `${PROV_NS}type`);
     return `${activity[`${PROV_NS}type`]} - ${activity[`${PROV_NS}label`]}`;
   },
   getNameForEntity: (id, prov) => {
