@@ -50,6 +50,22 @@ export function makeCwlOutput(name, steps, extras) {
   };
 }
 
+export function expand(needsExpansion, prefixMap) {
+  // Walk the needsExpansion object, using prefixMap to expand the keys.
+  if (typeof needsExpansion !== 'object') {
+    return needsExpansion;
+  } else {
+    return Object.fromEntries(
+      Object.entries(needsExpansion).map(
+        ([key, value]) => {
+          const [prefix, stem] = key.split(':');
+          return [prefixMap[prefix] + stem, expand(value, prefixMap)]
+        }
+      )
+    );
+  }
+}
+
 export default class Prov {
   constructor(prov, getNameForActivity = (id) => id, getNameForEntity = (id) => id) {
     this.getNameForActivity = getNameForActivity;
@@ -74,6 +90,16 @@ export default class Prov {
         getNameForEntity(entityId, this.prov), entity,
       ]),
     );
+  }
+
+  expandPrefixes() {
+    // Returns a new Prov object, with NS prefixes expanded.
+    const expandedProv = {prefix: {}};
+    Object.keys(this.prov).filter(k => k!== 'prefix').forEach(topLevel => {
+      const needsExpansion = this.prov[topLevel]
+      expandedProv[topLevel] = expand(needsExpansion, this.prov.prefix);
+    });
+    return new Prov(expandedProv);
   }
 
 

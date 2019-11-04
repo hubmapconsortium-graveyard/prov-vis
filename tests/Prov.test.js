@@ -1,6 +1,6 @@
 import expect from 'expect';
 
-import Prov, { makeCwlInput, makeCwlOutput } from '../src/Prov';
+import Prov, { makeCwlInput, makeCwlOutput, expand } from '../src/Prov';
 
 import * as fixtures from './fixtures';
 
@@ -109,6 +109,10 @@ describe('Prov methods', () => {
     );
   });
 });
+
+describe('PROV expansion', () => {
+  expect(expand({})).toEqual({});
+})
 
 describe('cwl utils', () => {
   it('makeCwlInput reference', () => {
