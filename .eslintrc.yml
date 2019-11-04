@@ -15,6 +15,7 @@ plugins:
   - react
 rules:
   no-console: [2, { "allow": ["warn", "error"]}]
+  no-underscore-dangle: [0] # We use it to mark privates, which are shared for testing.
   react/jsx-filename-extension: [0]
   react/sort-comp: [0]  # Non-alphabetical groupings can make more sense.
   react/jsx-one-expression-per-line: [0]  # Makes punctuation after tab awkward.

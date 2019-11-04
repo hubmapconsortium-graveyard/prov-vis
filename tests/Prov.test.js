@@ -39,25 +39,25 @@ describe('Prov methods', () => {
   );
 
   it('getParentEntityNames', () => {
-    expect(prov.getParentEntityNames('ACT-hubmap:act-4')).toEqual([
+    expect(prov._getParentEntityNames('ACT-hubmap:act-4')).toEqual([
       'ENT-hubmap:ent-1', 'ENT-hubmap:ent-3', 'ENT-hubmap:ent-4',
     ]);
   });
 
   it('getChildEntityNames', () => {
-    expect(prov.getChildEntityNames('ACT-hubmap:act-2')).toEqual([
+    expect(prov._getChildEntityNames('ACT-hubmap:act-2')).toEqual([
       'ENT-hubmap:ent-4', 'ENT-hubmap:ent-7',
     ]);
   });
 
   it('getParentActivityNames', () => {
-    expect(prov.getParentActivityNames('ENT-hubmap:ent-6')).toEqual([
+    expect(prov._getParentActivityNames('ENT-hubmap:ent-6')).toEqual([
       'ACT-hubmap:act-4',
     ]);
   });
 
   it('getChildActivityNames', () => {
-    expect(prov.getChildActivityNames('ENT-hubmap:ent-1')).toEqual([
+    expect(prov._getChildActivityNames('ENT-hubmap:ent-1')).toEqual([
       'ACT-hubmap:act-1', 'ACT-hubmap:act-2', 'ACT-hubmap:act-4',
     ]);
   });
