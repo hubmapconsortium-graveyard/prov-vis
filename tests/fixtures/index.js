@@ -34,4 +34,4 @@ export const real = {
 };
 
 // The React demo references the default export.
-export default complex;
+export default simple;

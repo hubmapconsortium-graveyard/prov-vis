@@ -1,19 +1,19 @@
 [
   {
-    "name": "ex:process",
+    "name": "http://example.com#process",
     "inputs": [
       {
-        "name": "ex:input",
+        "name": "http://example.com#input",
         "source": [
           {
-            "name": "ex:input",
-            "for_file": "ex:input"
+            "name": "http://example.com#input",
+            "for_file": "http://example.com#input"
           }
         ],
         "run_data": {
           "file": [
             {
-              "@id": "ex:input"
+              "@id": "http://example.com#input"
             }
           ]
         },
@@ -23,19 +23,19 @@
           "type": "data file"
         },
         "prov": {
-          "prov:label": "Input",
-          "ex:note": "Begins here..."
+          "http://www.w3.org/ns/prov#label": "Input",
+          "http://example.com#note": "Begins here..."
         }
       }
     ],
     "outputs": [
       {
-        "name": "ex:output",
+        "name": "http://example.com#output",
         "target": [],
         "run_data": {
           "file": [
             {
-              "@id": "ex:output"
+              "@id": "http://example.com#output"
             }
           ]
         },
@@ -44,13 +44,13 @@
           "in_path": true
         },
         "prov": {
-          "prov:label": "Output",
-          "ex:note": "... and ends here."
+          "http://www.w3.org/ns/prov#label": "Output",
+          "http://example.com#note": "... and ends here."
         }
       }
     ],
     "prov": {
-      "prov:label": "Process"
+      "http://www.w3.org/ns/prov#label": "Process"
     }
   }
 ]
