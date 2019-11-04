@@ -32,36 +32,87 @@ describe('Prov errors', () => {
 });
 
 describe('Prov methods', () => {
-  const prov = new Prov(fixtures.complex.prov);
+  const prov = new Prov(
+    fixtures.complex.prov,
+    (id) => `ACT-${id}`,
+    (id) => `ENT-${id}`,
+  );
 
-  it('getParentEntities', () => {
-    expect(prov.getParentEntities('hubmap:act-4')).toEqual([
-      'hubmap:ent-1', 'hubmap:ent-3', 'hubmap:ent-4',
+  it('getParentEntityNames', () => {
+    expect(prov.getParentEntityNames('ACT-hubmap:act-4')).toEqual([
+      'ENT-hubmap:ent-1', 'ENT-hubmap:ent-3', 'ENT-hubmap:ent-4',
     ]);
   });
 
-  it('getChildEntities', () => {
-    expect(prov.getChildEntities('hubmap:act-2')).toEqual([
-      'hubmap:ent-4', 'hubmap:ent-7',
+  it('getChildEntityNames', () => {
+    expect(prov.getChildEntityNames('ACT-hubmap:act-2')).toEqual([
+      'ENT-hubmap:ent-4', 'ENT-hubmap:ent-7',
     ]);
   });
 
-  it('getParentActivities', () => {
-    expect(prov.getParentActivities('hubmap:ent-6')).toEqual([
-      'hubmap:act-4',
+  it('getParentActivityNames', () => {
+    expect(prov.getParentActivityNames('ENT-hubmap:ent-6')).toEqual([
+      'ACT-hubmap:act-4',
     ]);
   });
 
-  it('getChildActivities', () => {
-    expect(prov.getChildActivities('hubmap:ent-1')).toEqual([
-      'hubmap:act-1', 'hubmap:act-2', 'hubmap:act-4',
+  it('getChildActivityNames', () => {
+    expect(prov.getChildActivityNames('ENT-hubmap:ent-1')).toEqual([
+      'ACT-hubmap:act-1', 'ACT-hubmap:act-2', 'ACT-hubmap:act-4',
     ]);
+  });
+
+  it('has activityByName', () => {
+    expect(prov.activityByName).toEqual(
+      {
+        'ACT-hubmap:act-1': {
+          'prov:label': 'act-1',
+        },
+        'ACT-hubmap:act-2': {
+          'prov:label': 'act-2',
+        },
+        'ACT-hubmap:act-3': {
+          'prov:label': 'act-3',
+        },
+        'ACT-hubmap:act-4': {
+          'prov:label': 'act-4',
+        },
+      },
+    );
+  });
+
+  it('has entityByName', () => {
+    expect(prov.entityByName).toEqual(
+      {
+        'ENT-hubmap:ent-1': {
+          'prov:label': 'ent-1',
+        },
+        'ENT-hubmap:ent-2': {
+          'prov:label': 'ent-2',
+        },
+        'ENT-hubmap:ent-3': {
+          'prov:label': 'ent-3',
+        },
+        'ENT-hubmap:ent-4': {
+          'prov:label': 'ent-4',
+        },
+        'ENT-hubmap:ent-5': {
+          'prov:label': 'ent-5',
+        },
+        'ENT-hubmap:ent-6': {
+          'prov:label': 'ent-6',
+        },
+        'ENT-hubmap:ent-7': {
+          'prov:label': 'ent-7',
+        },
+      },
+    );
   });
 });
 
 describe('cwl utils', () => {
   it('makeCwlInput reference', () => {
-    expect(makeCwlInput('name1', [], true)).toEqual(
+    expect(makeCwlInput('name1', [], { extras: 'go here!' }, true)).toEqual(
       {
         meta: {
           global: true,
@@ -80,12 +131,15 @@ describe('cwl utils', () => {
           for_file: 'name1',
           name: 'name1',
         }],
+        prov: {
+          extras: 'go here!',
+        },
       },
     );
   });
 
   it('makeCwlInput with step', () => {
-    expect(makeCwlInput('name1', ['step1'])).toEqual(
+    expect(makeCwlInput('name1', ['step1'], { extras: 'go here!' })).toEqual(
       {
         meta: {
           global: true,
@@ -105,12 +159,15 @@ describe('cwl utils', () => {
           name: 'name1',
           step: 'step1',
         }],
+        prov: {
+          extras: 'go here!',
+        },
       },
     );
   });
 
   it('makeCwlOutput', () => {
-    expect(makeCwlOutput('name1', ['step1'])).toEqual(
+    expect(makeCwlOutput('name1', ['step1'], { extras: 'go here!' })).toEqual(
       {
         meta: {
           global: true,
@@ -130,6 +187,9 @@ describe('cwl utils', () => {
             step: 'step1',
           },
         ],
+        prov: {
+          extras: 'go here!',
+        },
       },
     );
   });

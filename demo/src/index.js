@@ -14,6 +14,7 @@ function Demo() {
         prov={defaultFixture.prov}
         getNameForActivity={defaultFixture.getNameForActivity}
         getNameForEntity={defaultFixture.getNameForEntity}
+        renderDetailPane={(prov) => <pre>{JSON.stringify(prov)}</pre>}
       />
     </div>
   );

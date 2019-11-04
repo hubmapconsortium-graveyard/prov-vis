@@ -1,6 +1,6 @@
 [
   {
-    "name": "ex:run",
+    "name": "ex:process",
     "inputs": [
       {
         "name": "ex:input",
@@ -21,6 +21,10 @@
           "global": true,
           "in_path": true,
           "type": "data file"
+        },
+        "prov": {
+          "prov:label": "Input",
+          "ex:note": "Begins here..."
         }
       }
     ],
@@ -38,8 +42,15 @@
         "meta": {
           "global": true,
           "in_path": true
+        },
+        "prov": {
+          "prov:label": "Output",
+          "ex:note": "... and ends here."
         }
       }
-    ]
+    ],
+    "prov": {
+      "prov:label": "Process"
+    }
   }
 ]

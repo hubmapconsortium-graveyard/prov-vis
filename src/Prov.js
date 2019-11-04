@@ -3,7 +3,7 @@ import Ajv from 'ajv';
 import schema from './schema.json';
 
 // export only to test.
-export function makeCwlInput(name, steps, isReference) {
+export function makeCwlInput(name, steps, extras, isReference) {
   const id = name;
   const source = [{
     name,
@@ -27,11 +27,12 @@ export function makeCwlInput(name, steps, isReference) {
       in_path: true,
       type: isReference ? 'reference file' : 'data file',
     },
+    prov: extras || {}, // TODO: real-prov has unmatched ID: https://github.com/hubmapconsortium/prov-vis/issues/15
   };
 }
 
 // export only to test.
-export function makeCwlOutput(name, steps) {
+export function makeCwlOutput(name, steps, extras) {
   const id = name;
   return {
     name,
@@ -44,6 +45,8 @@ export function makeCwlOutput(name, steps) {
       global: true,
       in_path: true,
     },
+    // Domain-specific extras go here:
+    prov: extras,
   };
 }
 
@@ -60,59 +63,68 @@ export default class Prov {
     }
     this.prov = prov;
 
-    this.generatedByMap = this.getActivityEntityMap('wasGeneratedBy');
-    this.usedMap = this.getActivityEntityMap('used');
-  }
+    this.activityByName = Object.fromEntries(
+      Object.entries(this.prov.activity).map(([activityId, activity]) => [
+        getNameForActivity(activityId, this.prov), activity,
+      ]),
+    );
 
-  getActivityEntityMap(propName) {
-    return Object.fromEntries(
-      Object.values(this.prov[propName])
-        .map(
-          (props) => [this.getNameForActivity(props['prov:activity'], this.prov), props['prov:entity']],
-        ),
+    this.entityByName = Object.fromEntries(
+      Object.entries(this.prov.entity).map(([entityId, entity]) => [
+        getNameForEntity(entityId, this.prov), entity,
+      ]),
     );
   }
 
 
-  getEntities(activityName, relation) {
+  getEntityNames(activityName, relation) {
     return Object.values(this.prov[relation])
       .filter((pair) => this.getNameForActivity(pair['prov:activity'], this.prov) === activityName)
       .map((pair) => this.getNameForEntity(pair['prov:entity'], this.prov));
   }
 
-  getParentEntities(activityName) {
-    return this.getEntities(activityName, 'used');
+  getParentEntityNames(activityName) {
+    return this.getEntityNames(activityName, 'used');
   }
 
-  getChildEntities(activityName) {
-    return this.getEntities(activityName, 'wasGeneratedBy');
+  getChildEntityNames(activityName) {
+    return this.getEntityNames(activityName, 'wasGeneratedBy');
   }
 
-  getActivities(entityName, relation) {
+  getActivityNames(entityName, relation) {
     return Object.values(this.prov[relation])
       .filter((pair) => this.getNameForEntity(pair['prov:entity'], this.prov) === entityName)
       .map((pair) => this.getNameForActivity(pair['prov:activity'], this.prov));
   }
 
-  getParentActivities(entityName) {
-    return this.getActivities(entityName, 'wasGeneratedBy');
+  getParentActivityNames(entityName) {
+    return this.getActivityNames(entityName, 'wasGeneratedBy');
   }
 
-  getChildActivities(entityName) {
-    return this.getActivities(entityName, 'used');
+  getChildActivityNames(entityName) {
+    return this.getActivityNames(entityName, 'used');
   }
 
 
   makeCwlStep(activityId) {
     const activityName = this.getNameForActivity(activityId, this.prov);
-    const inputs = this.getParentEntities(activityName)
-      .map((entityName) => makeCwlInput(entityName, this.getParentActivities(entityName)));
-    const outputs = this.getChildEntities(activityName)
-      .map((entityName) => makeCwlOutput(entityName, this.getChildActivities(entityName)));
+    const inputs = this.getParentEntityNames(activityName)
+      .map(
+        (entityName) => makeCwlInput(
+          entityName, this.getParentActivityNames(entityName), this.entityByName[entityName],
+        ),
+      );
+    const outputs = this.getChildEntityNames(activityName)
+      .map(
+        (entityName) => makeCwlOutput(
+          entityName, this.getChildActivityNames(entityName), this.entityByName[entityName],
+        ),
+      );
     return {
       name: activityName,
       inputs,
       outputs,
+      prov: this.prov.activity[activityId],
     };
   }
 

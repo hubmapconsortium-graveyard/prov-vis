@@ -21,6 +21,9 @@
           "global": true,
           "in_path": true,
           "type": "data file"
+        },
+        "prov": {
+          "prov:label": "ent-1"
         }
       }
     ],
@@ -47,9 +50,15 @@
         "meta": {
           "global": true,
           "in_path": true
+        },
+        "prov": {
+          "prov:label": "ent-3"
         }
       }
-    ]
+    ],
+    "prov": {
+      "prov:label": "act-1"
+    }
   },
   {
     "name": "hubmap:act-2",
@@ -73,6 +82,9 @@
           "global": true,
           "in_path": true,
           "type": "data file"
+        },
+        "prov": {
+          "prov:label": "ent-1"
         }
       },
       {
@@ -94,6 +106,9 @@
           "global": true,
           "in_path": true,
           "type": "data file"
+        },
+        "prov": {
+          "prov:label": "ent-2"
         }
       }
     ],
@@ -116,6 +131,9 @@
         "meta": {
           "global": true,
           "in_path": true
+        },
+        "prov": {
+          "prov:label": "ent-4"
         }
       },
       {
@@ -131,9 +149,15 @@
         "meta": {
           "global": true,
           "in_path": true
+        },
+        "prov": {
+          "prov:label": "ent-7"
         }
       }
-    ]
+    ],
+    "prov": {
+      "prov:label": "act-2"
+    }
   },
   {
     "name": "hubmap:act-3",
@@ -158,6 +182,9 @@
           "global": true,
           "in_path": true,
           "type": "data file"
+        },
+        "prov": {
+          "prov:label": "ent-3"
         }
       }
     ],
@@ -175,9 +202,15 @@
         "meta": {
           "global": true,
           "in_path": true
+        },
+        "prov": {
+          "prov:label": "ent-5"
         }
       }
-    ]
+    ],
+    "prov": {
+      "prov:label": "act-3"
+    }
   },
   {
     "name": "hubmap:act-4",
@@ -201,6 +234,9 @@
           "global": true,
           "in_path": true,
           "type": "data file"
+        },
+        "prov": {
+          "prov:label": "ent-1"
         }
       },
       {
@@ -223,6 +259,9 @@
           "global": true,
           "in_path": true,
           "type": "data file"
+        },
+        "prov": {
+          "prov:label": "ent-3"
         }
       },
       {
@@ -245,6 +284,9 @@
           "global": true,
           "in_path": true,
           "type": "data file"
+        },
+        "prov": {
+          "prov:label": "ent-4"
         }
       }
     ],
@@ -262,8 +304,14 @@
         "meta": {
           "global": true,
           "in_path": true
+        },
+        "prov": {
+          "prov:label": "ent-6"
         }
       }
-    ]
+    ],
+    "prov": {
+      "prov:label": "act-4"
+    }
   }
 ]

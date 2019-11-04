@@ -3,7 +3,7 @@
 ## 0.0.2 - in progress
 ### Added
 - Demo on GH Pages.
-- Human-readable names for actions and entities.
+- Human-readable names for actions and entities, with more info on click.
 - Stand-alone JSON fixtures.
 - Test renderProvVis.
 
