@@ -79,17 +79,6 @@ export function _expand(needsExpansion, prefixMap, onlyExpandKeysNext, onlyExpan
   );
 }
 
-export function _expandKeys(needsExpansion, prefixMap) {
-  return Object.fromEntries(
-    Object.entries(needsExpansion).map(
-      ([key, value]) => {
-        const [prefix, stem] = key.split(':');
-        return [prefixMap[prefix] + stem, value];
-      },
-    ),
-  );
-}
-
 export default class Prov {
   constructor(prov, getNameForActivity = (id) => id, getNameForEntity = (id) => id) {
     this.getNameForActivity = getNameForActivity;
