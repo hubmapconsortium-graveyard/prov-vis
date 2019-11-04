@@ -1,19 +1,19 @@
 [
   {
-    "name": "http://example.com#process",
+    "name": "process",
     "inputs": [
       {
-        "name": "http://example.com#input",
+        "name": "input",
         "source": [
           {
-            "name": "http://example.com#input",
-            "for_file": "http://example.com#input"
+            "name": "input",
+            "for_file": "input"
           }
         ],
         "run_data": {
           "file": [
             {
-              "@id": "http://example.com#input"
+              "@id": "input"
             }
           ]
         },
@@ -30,12 +30,12 @@
     ],
     "outputs": [
       {
-        "name": "http://example.com#output",
+        "name": "output",
         "target": [],
         "run_data": {
           "file": [
             {
-              "@id": "http://example.com#output"
+              "@id": "output"
             }
           ]
         },

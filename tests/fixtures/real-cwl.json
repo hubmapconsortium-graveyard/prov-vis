@@ -1,6 +1,6 @@
 [
   {
-    "name": "https://hubmapconsortium.org/activities/822a66f8d498ef37fbc2280abcf56c9e",
+    "name": "Create Sample Activity - 822a66f8d498ef37fbc2280abcf56c9e",
     "inputs": [
       {
         "name": "https://hubmapconsortium.org/entities/9942c58c009cb0a0f245f9cb61586af5",
@@ -27,12 +27,12 @@
     ],
     "outputs": [
       {
-        "name": "https://hubmapconsortium.org/entities/0817f6a3a2f170486a49f2ffae46072d",
+        "name": "Sample - TEST0005-RK-4",
         "target": [],
         "run_data": {
           "file": [
             {
-              "@id": "https://hubmapconsortium.org/entities/0817f6a3a2f170486a49f2ffae46072d"
+              "@id": "Sample - TEST0005-RK-4"
             }
           ]
         },
@@ -44,21 +44,21 @@
           "http://www.w3.org/ns/prov#label": "TEST0005-RK-4",
           "http://www.w3.org/ns/prov#type": "Sample",
           "https://hubmapconsortium.org/doi": "576RGJR357",
-          "https://hubmapconsortium.org/displayDOI": "undefined576-RGJR-357",
+          "https://hubmapconsortium.org/displayDOI": "HBM:576-RGJR-357",
           "https://hubmapconsortium.org/displayIdentifier": "TEST0005-RK-4",
           "https://hubmapconsortium.org/uuid": "0817f6a3a2f170486a49f2ffae46072d",
-          "https://hubmapconsortium.org/metadata": "undefined \"[{'id'",
-          "http://www.w3.org/ns/prov#generatedAtTime": "undefined40",
-          "https://hubmapconsortium.org/modifiedTimestamp": "undefined40"
+          "https://hubmapconsortium.org/metadata": "{\"protocols\": \"[{'id': 'protocol_1', 'protocol_url': 'http://protocols.io/protst/29022928394', 'protocol_file': ''}]\", \"specimen_type\": \"fresh_frozen_tissue\", \"user_group_uuid\": \"5bd084c8-edc2-11e8-802f-0e368f3075e8\", \"sample_count\": \"5\"}",
+          "http://www.w3.org/ns/prov#generatedAtTime": "2019-09-17T16:40:04",
+          "https://hubmapconsortium.org/modifiedTimestamp": "2019-09-17T16:40:04"
         }
       },
       {
-        "name": "https://hubmapconsortium.org/entities/12e77e69ab76b1832a95e00646f666db",
+        "name": "Sample - TEST0005-RK-5",
         "target": [],
         "run_data": {
           "file": [
             {
-              "@id": "https://hubmapconsortium.org/entities/12e77e69ab76b1832a95e00646f666db"
+              "@id": "Sample - TEST0005-RK-5"
             }
           ]
         },
@@ -70,21 +70,21 @@
           "http://www.w3.org/ns/prov#label": "TEST0005-RK-5",
           "http://www.w3.org/ns/prov#type": "Sample",
           "https://hubmapconsortium.org/doi": "555JCVC476",
-          "https://hubmapconsortium.org/displayDOI": "undefined555-JCVC-476",
+          "https://hubmapconsortium.org/displayDOI": "HBM:555-JCVC-476",
           "https://hubmapconsortium.org/displayIdentifier": "TEST0005-RK-5",
           "https://hubmapconsortium.org/uuid": "12e77e69ab76b1832a95e00646f666db",
-          "https://hubmapconsortium.org/metadata": "undefined \"[{'id'",
-          "http://www.w3.org/ns/prov#generatedAtTime": "undefined40",
-          "https://hubmapconsortium.org/modifiedTimestamp": "undefined40"
+          "https://hubmapconsortium.org/metadata": "{\"protocols\": \"[{'id': 'protocol_1', 'protocol_url': 'http://protocols.io/protst/29022928394', 'protocol_file': ''}]\", \"specimen_type\": \"fresh_frozen_tissue\", \"user_group_uuid\": \"5bd084c8-edc2-11e8-802f-0e368f3075e8\", \"sample_count\": \"5\"}",
+          "http://www.w3.org/ns/prov#generatedAtTime": "2019-09-17T16:40:04",
+          "https://hubmapconsortium.org/modifiedTimestamp": "2019-09-17T16:40:04"
         }
       },
       {
-        "name": "https://hubmapconsortium.org/entities/d2f87dda666fce9efeeeb09b078b5feb",
+        "name": "Sample - TEST0005-RK-3",
         "target": [],
         "run_data": {
           "file": [
             {
-              "@id": "https://hubmapconsortium.org/entities/d2f87dda666fce9efeeeb09b078b5feb"
+              "@id": "Sample - TEST0005-RK-3"
             }
           ]
         },
@@ -96,21 +96,21 @@
           "http://www.w3.org/ns/prov#label": "TEST0005-RK-3",
           "http://www.w3.org/ns/prov#type": "Sample",
           "https://hubmapconsortium.org/doi": "479XQZH692",
-          "https://hubmapconsortium.org/displayDOI": "undefined479-XQZH-692",
+          "https://hubmapconsortium.org/displayDOI": "HBM:479-XQZH-692",
           "https://hubmapconsortium.org/displayIdentifier": "TEST0005-RK-3",
           "https://hubmapconsortium.org/uuid": "d2f87dda666fce9efeeeb09b078b5feb",
-          "https://hubmapconsortium.org/metadata": "undefined \"[{'id'",
-          "http://www.w3.org/ns/prov#generatedAtTime": "undefined40",
-          "https://hubmapconsortium.org/modifiedTimestamp": "undefined40"
+          "https://hubmapconsortium.org/metadata": "{\"protocols\": \"[{'id': 'protocol_1', 'protocol_url': 'http://protocols.io/protst/29022928394', 'protocol_file': ''}]\", \"specimen_type\": \"fresh_frozen_tissue\", \"user_group_uuid\": \"5bd084c8-edc2-11e8-802f-0e368f3075e8\", \"sample_count\": \"5\"}",
+          "http://www.w3.org/ns/prov#generatedAtTime": "2019-09-17T16:40:04",
+          "https://hubmapconsortium.org/modifiedTimestamp": "2019-09-17T16:40:04"
         }
       },
       {
-        "name": "https://hubmapconsortium.org/entities/731c5b88cdc623212cf605d1ff6f22f7",
+        "name": "Sample - TEST0005-RK-2",
         "target": [],
         "run_data": {
           "file": [
             {
-              "@id": "https://hubmapconsortium.org/entities/731c5b88cdc623212cf605d1ff6f22f7"
+              "@id": "Sample - TEST0005-RK-2"
             }
           ]
         },
@@ -122,21 +122,21 @@
           "http://www.w3.org/ns/prov#label": "TEST0005-RK-2",
           "http://www.w3.org/ns/prov#type": "Sample",
           "https://hubmapconsortium.org/doi": "876VBCH275",
-          "https://hubmapconsortium.org/displayDOI": "undefined876-VBCH-275",
+          "https://hubmapconsortium.org/displayDOI": "HBM:876-VBCH-275",
           "https://hubmapconsortium.org/displayIdentifier": "TEST0005-RK-2",
           "https://hubmapconsortium.org/uuid": "731c5b88cdc623212cf605d1ff6f22f7",
-          "https://hubmapconsortium.org/metadata": "undefined \"[{'id'",
-          "http://www.w3.org/ns/prov#generatedAtTime": "undefined40",
-          "https://hubmapconsortium.org/modifiedTimestamp": "undefined40"
+          "https://hubmapconsortium.org/metadata": "{\"protocols\": \"[{'id': 'protocol_1', 'protocol_url': 'http://protocols.io/protst/29022928394', 'protocol_file': ''}]\", \"specimen_type\": \"fresh_frozen_tissue\", \"user_group_uuid\": \"5bd084c8-edc2-11e8-802f-0e368f3075e8\", \"sample_count\": \"5\"}",
+          "http://www.w3.org/ns/prov#generatedAtTime": "2019-09-17T16:40:04",
+          "https://hubmapconsortium.org/modifiedTimestamp": "2019-09-17T16:40:04"
         }
       },
       {
-        "name": "https://hubmapconsortium.org/entities/51318fa4fff79c82d4de7b2d70e630cb",
+        "name": "Sample - TEST0005-RK-1",
         "target": [],
         "run_data": {
           "file": [
             {
-              "@id": "https://hubmapconsortium.org/entities/51318fa4fff79c82d4de7b2d70e630cb"
+              "@id": "Sample - TEST0005-RK-1"
             }
           ]
         },
@@ -148,26 +148,26 @@
           "http://www.w3.org/ns/prov#label": "TEST0005-RK-1",
           "http://www.w3.org/ns/prov#type": "Sample",
           "https://hubmapconsortium.org/doi": "836PZMN835",
-          "https://hubmapconsortium.org/displayDOI": "undefined836-PZMN-835",
+          "https://hubmapconsortium.org/displayDOI": "HBM:836-PZMN-835",
           "https://hubmapconsortium.org/displayIdentifier": "TEST0005-RK-1",
           "https://hubmapconsortium.org/uuid": "51318fa4fff79c82d4de7b2d70e630cb",
-          "https://hubmapconsortium.org/metadata": "undefined \"[{'id'",
-          "http://www.w3.org/ns/prov#generatedAtTime": "undefined40",
-          "https://hubmapconsortium.org/modifiedTimestamp": "undefined40"
+          "https://hubmapconsortium.org/metadata": "{\"protocols\": \"[{'id': 'protocol_1', 'protocol_url': 'http://protocols.io/protst/29022928394', 'protocol_file': ''}]\", \"specimen_type\": \"fresh_frozen_tissue\", \"user_group_uuid\": \"5bd084c8-edc2-11e8-802f-0e368f3075e8\", \"sample_count\": \"5\"}",
+          "http://www.w3.org/ns/prov#generatedAtTime": "2019-09-17T16:40:04",
+          "https://hubmapconsortium.org/modifiedTimestamp": "2019-09-17T16:40:04"
         }
       }
     ],
     "prov": {
-      "http://www.w3.org/ns/prov#startTime": "undefined40",
-      "http://www.w3.org/ns/prov#endTime": "undefined40",
+      "http://www.w3.org/ns/prov#startTime": "2019-09-17T16:40:04",
+      "http://www.w3.org/ns/prov#endTime": "2019-09-17T16:40:04",
       "http://www.w3.org/ns/prov#label": "822a66f8d498ef37fbc2280abcf56c9e",
       "http://www.w3.org/ns/prov#type": "Create Sample Activity",
       "https://hubmapconsortium.org/doi": "982TNDD845",
-      "https://hubmapconsortium.org/displayDOI": "undefined982-TNDD-845",
+      "https://hubmapconsortium.org/displayDOI": "HBM:982-TNDD-845",
       "https://hubmapconsortium.org/displayIdentifier": "822a66f8d498ef37fbc2280abcf56c9e",
       "https://hubmapconsortium.org/uuid": "822a66f8d498ef37fbc2280abcf56c9e",
-      "http://www.w3.org/ns/prov#generatedAtTime": "undefined40",
-      "https://hubmapconsortium.org/modifiedTimestamp": "undefined40"
+      "http://www.w3.org/ns/prov#generatedAtTime": "2019-09-17T16:40:04",
+      "https://hubmapconsortium.org/modifiedTimestamp": "2019-09-17T16:40:04"
     }
   }
 ]

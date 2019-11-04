@@ -52,8 +52,11 @@ export function _makeCwlOutput(name, steps, extras) {
   };
 }
 
-export function _expand(needsExpansion, prefixMap) {
+export function _expand(needsExpansion, prefixMap, onlyExpandKeysNext, onlyExpandKeys) {
   // Walk the needsExpansion object, using prefixMap to expand the keys, and values, if needed.
+  // For "action" and "entity" we don't want to expand keys in what is really
+  // user metadata... but that is two levels down, so we have two booleans we set in turn,
+  // to stop us from expanding too deeply.
   if (typeof needsExpansion !== 'object') {
     const [prefix, stem] = needsExpansion.split(':');
     if (stem) {
@@ -65,7 +68,23 @@ export function _expand(needsExpansion, prefixMap) {
     Object.entries(needsExpansion).map(
       ([key, value]) => {
         const [prefix, stem] = key.split(':');
-        return [prefixMap[prefix] + stem, _expand(value, prefixMap)];
+        return [
+          prefixMap[prefix] + stem,
+          onlyExpandKeys
+            ? value
+            : _expand(value, prefixMap, false, onlyExpandKeysNext)
+        ];
+      },
+    ),
+  );
+}
+
+export function _expandKeys(needsExpansion, prefixMap) {
+  return Object.fromEntries(
+    Object.entries(needsExpansion).map(
+      ([key, value]) => {
+        const [prefix, stem] = key.split(':');
+        return [prefixMap[prefix] + stem, value];
       },
     ),
   );
@@ -83,15 +102,20 @@ export default class Prov {
       throw new Error(failureReason);
     }
     this.prov = prov;
+    this.prov.prefix._ = '[anonymous]'
   }
 
   expandPrefixes() {
     // Returns a new Prov object, with NS prefixes expanded.
     const expandedProv = { prefix: {} };
     Object.keys(this.prov).filter((k) => k !== 'prefix').forEach((topLevel) => {
-      const needsExpansion = this.prov[topLevel];
-      expandedProv[topLevel] = _expand(needsExpansion, this.prov.prefix);
+      const mayNeedExpansion = this.prov[topLevel];
+      expandedProv[topLevel] = _expand(
+        mayNeedExpansion, this.prov.prefix,
+        topLevel === 'entity' || topLevel === 'activity'
+      );
     });
+    console.log(JSON.stringify(expandedProv, null, 2));
     return new Prov(expandedProv, this.getNameForActivity, this.getNameForEntity);
   }
 

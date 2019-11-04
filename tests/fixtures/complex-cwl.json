@@ -1,19 +1,19 @@
 [
   {
-    "name": "https://hubmapconsortium.org/act-1",
+    "name": "act-1",
     "inputs": [
       {
-        "name": "https://hubmapconsortium.org/ent-1",
+        "name": "ent-1",
         "source": [
           {
-            "name": "https://hubmapconsortium.org/ent-1",
-            "for_file": "https://hubmapconsortium.org/ent-1"
+            "name": "ent-1",
+            "for_file": "ent-1"
           }
         ],
         "run_data": {
           "file": [
             {
-              "@id": "https://hubmapconsortium.org/ent-1"
+              "@id": "ent-1"
             }
           ]
         },
@@ -29,21 +29,21 @@
     ],
     "outputs": [
       {
-        "name": "https://hubmapconsortium.org/ent-3",
+        "name": "ent-3",
         "target": [
           {
-            "step": "https://hubmapconsortium.org/act-3",
-            "name": "https://hubmapconsortium.org/ent-3"
+            "step": "act-3",
+            "name": "ent-3"
           },
           {
-            "step": "https://hubmapconsortium.org/act-4",
-            "name": "https://hubmapconsortium.org/ent-3"
+            "step": "act-4",
+            "name": "ent-3"
           }
         ],
         "run_data": {
           "file": [
             {
-              "@id": "https://hubmapconsortium.org/ent-3"
+              "@id": "ent-3"
             }
           ]
         },
@@ -61,20 +61,20 @@
     }
   },
   {
-    "name": "https://hubmapconsortium.org/act-2",
+    "name": "act-2",
     "inputs": [
       {
-        "name": "https://hubmapconsortium.org/ent-1",
+        "name": "ent-1",
         "source": [
           {
-            "name": "https://hubmapconsortium.org/ent-1",
-            "for_file": "https://hubmapconsortium.org/ent-1"
+            "name": "ent-1",
+            "for_file": "ent-1"
           }
         ],
         "run_data": {
           "file": [
             {
-              "@id": "https://hubmapconsortium.org/ent-1"
+              "@id": "ent-1"
             }
           ]
         },
@@ -88,17 +88,17 @@
         }
       },
       {
-        "name": "https://hubmapconsortium.org/ent-2",
+        "name": "ent-2",
         "source": [
           {
-            "name": "https://hubmapconsortium.org/ent-2",
-            "for_file": "https://hubmapconsortium.org/ent-2"
+            "name": "ent-2",
+            "for_file": "ent-2"
           }
         ],
         "run_data": {
           "file": [
             {
-              "@id": "https://hubmapconsortium.org/ent-2"
+              "@id": "ent-2"
             }
           ]
         },
@@ -114,17 +114,17 @@
     ],
     "outputs": [
       {
-        "name": "https://hubmapconsortium.org/ent-4",
+        "name": "ent-4",
         "target": [
           {
-            "step": "https://hubmapconsortium.org/act-4",
-            "name": "https://hubmapconsortium.org/ent-4"
+            "step": "act-4",
+            "name": "ent-4"
           }
         ],
         "run_data": {
           "file": [
             {
-              "@id": "https://hubmapconsortium.org/ent-4"
+              "@id": "ent-4"
             }
           ]
         },
@@ -137,12 +137,12 @@
         }
       },
       {
-        "name": "https://hubmapconsortium.org/ent-7",
+        "name": "ent-7",
         "target": [],
         "run_data": {
           "file": [
             {
-              "@id": "https://hubmapconsortium.org/ent-7"
+              "@id": "ent-7"
             }
           ]
         },
@@ -160,21 +160,21 @@
     }
   },
   {
-    "name": "https://hubmapconsortium.org/act-3",
+    "name": "act-3",
     "inputs": [
       {
-        "name": "https://hubmapconsortium.org/ent-3",
+        "name": "ent-3",
         "source": [
           {
-            "name": "https://hubmapconsortium.org/ent-3",
-            "for_file": "https://hubmapconsortium.org/ent-3",
-            "step": "https://hubmapconsortium.org/act-1"
+            "name": "ent-3",
+            "for_file": "ent-3",
+            "step": "act-1"
           }
         ],
         "run_data": {
           "file": [
             {
-              "@id": "https://hubmapconsortium.org/ent-3"
+              "@id": "ent-3"
             }
           ]
         },
@@ -190,12 +190,12 @@
     ],
     "outputs": [
       {
-        "name": "https://hubmapconsortium.org/ent-5",
+        "name": "ent-5",
         "target": [],
         "run_data": {
           "file": [
             {
-              "@id": "https://hubmapconsortium.org/ent-5"
+              "@id": "ent-5"
             }
           ]
         },
@@ -213,20 +213,20 @@
     }
   },
   {
-    "name": "https://hubmapconsortium.org/act-4",
+    "name": "act-4",
     "inputs": [
       {
-        "name": "https://hubmapconsortium.org/ent-1",
+        "name": "ent-1",
         "source": [
           {
-            "name": "https://hubmapconsortium.org/ent-1",
-            "for_file": "https://hubmapconsortium.org/ent-1"
+            "name": "ent-1",
+            "for_file": "ent-1"
           }
         ],
         "run_data": {
           "file": [
             {
-              "@id": "https://hubmapconsortium.org/ent-1"
+              "@id": "ent-1"
             }
           ]
         },
@@ -240,18 +240,18 @@
         }
       },
       {
-        "name": "https://hubmapconsortium.org/ent-3",
+        "name": "ent-3",
         "source": [
           {
-            "name": "https://hubmapconsortium.org/ent-3",
-            "for_file": "https://hubmapconsortium.org/ent-3",
-            "step": "https://hubmapconsortium.org/act-1"
+            "name": "ent-3",
+            "for_file": "ent-3",
+            "step": "act-1"
           }
         ],
         "run_data": {
           "file": [
             {
-              "@id": "https://hubmapconsortium.org/ent-3"
+              "@id": "ent-3"
             }
           ]
         },
@@ -265,18 +265,18 @@
         }
       },
       {
-        "name": "https://hubmapconsortium.org/ent-4",
+        "name": "ent-4",
         "source": [
           {
-            "name": "https://hubmapconsortium.org/ent-4",
-            "for_file": "https://hubmapconsortium.org/ent-4",
-            "step": "https://hubmapconsortium.org/act-2"
+            "name": "ent-4",
+            "for_file": "ent-4",
+            "step": "act-2"
           }
         ],
         "run_data": {
           "file": [
             {
-              "@id": "https://hubmapconsortium.org/ent-4"
+              "@id": "ent-4"
             }
           ]
         },
@@ -292,12 +292,12 @@
     ],
     "outputs": [
       {
-        "name": "https://hubmapconsortium.org/ent-6",
+        "name": "ent-6",
         "target": [],
         "run_data": {
           "file": [
             {
-              "@id": "https://hubmapconsortium.org/ent-6"
+              "@id": "ent-6"
             }
           ]
         },
