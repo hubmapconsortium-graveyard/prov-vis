@@ -10,7 +10,7 @@ export default function ProvVis(props) {
   } = props;
   const steps = new Prov(prov, getNameForActivity, getNameForEntity).toCwl();
   function renderDetailPaneWithNode(node) {
-    if (node) {
+    if (renderDetailPane && node) {
       return renderDetailPane(node.meta.prov)
     }
   }

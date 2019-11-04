@@ -27,7 +27,11 @@
       // This import might be replaced with an AJAX call, or JSON templated into the page on the server.
       // Module loading is subject to CORS restrictions, so this demo needs a static file server.
       import prov from './tests/fixtures/simple-prov.js';
-      hubmapProvVis.renderProvVis('prov-vis', prov);
+      hubmapProvVis.renderProvVis('prov-vis', prov, {
+        getNameForActivity: (id, details) => `Act ID: ${id} ${Object.keys(details)}`,
+        getNameForEntity: (id, details) => `Ent ID: ${id}`,
+        // renderDetailPane
+      });
     </script>
   </body>
 </html>
