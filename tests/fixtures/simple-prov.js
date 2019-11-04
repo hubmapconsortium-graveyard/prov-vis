@@ -23,4 +23,4 @@ export default {
       'prov:entity': 'ex:input',
     },
   },
-}
+};

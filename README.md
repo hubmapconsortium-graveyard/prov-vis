@@ -9,6 +9,7 @@ This repo is bootstrapped with [NWB](https://github.com/insin/nwb/blob/master/do
 
 To use the live demo:
 ```sh
+npm install
 npm start
 ```
 and then visit `http://localhost:3000/`.
@@ -16,7 +17,6 @@ and then visit `http://localhost:3000/`.
 To preview the static demo:
 ```sh
 npm run build
-npm install http-server -g  # If you don't have a static file server already available... 
 http-server
 ```
 and change the `script` tag in `index.html` to point at the UMD build;
