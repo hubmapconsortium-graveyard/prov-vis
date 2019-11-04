@@ -33,7 +33,7 @@ describe('Prov errors', () => {
 
 describe('Prov methods', () => {
   const prov = new Prov(
-    fixtures.complex.prov
+    fixtures.complex.prov,
   ).expandPrefixes();
 
   it('getParentEntityNames', () => {
@@ -66,23 +66,23 @@ describe('Prov methods', () => {
 });
 
 describe('PROV expansion', () => {
-  it('should expand prefixes', () =>{
+  it('should expand prefixes', () => {
     expect(
       _expand({
         'do:C': { 're:D': 'mi:E' },
-        're:D': { 're:D': 'not-expanded' }
+        're:D': { 're:D': 'not-expanded' },
       },
       {
         do: 'deer#',
         re: 'drop-of-golden-sun#',
-        mi: 'name-i-call-myself#'
-      }
-    )).toEqual({
+        mi: 'name-i-call-myself#',
+      }),
+    ).toEqual({
       'deer#C': { 'drop-of-golden-sun#D': 'name-i-call-myself#E' },
-      'drop-of-golden-sun#D': { 'drop-of-golden-sun#D': 'not-expanded' }
-    })
+      'drop-of-golden-sun#D': { 'drop-of-golden-sun#D': 'not-expanded' },
+    });
   });
-})
+});
 
 describe('CWL utils', () => {
   it('_makeCwlInput reference', () => {

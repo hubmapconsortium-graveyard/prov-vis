@@ -3,7 +3,7 @@
 export default {
   prefix: {
     ex: 'http://example.com#',
-    prov: 'http://www.w3.org/ns/prov#'
+    prov: 'http://www.w3.org/ns/prov#',
   },
   entity: {
     'ex:input': { 'prov:label': 'Input', 'ex:note': 'Begins here...' },
