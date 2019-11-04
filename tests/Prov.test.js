@@ -33,80 +33,35 @@ describe('Prov errors', () => {
 
 describe('Prov methods', () => {
   const prov = new Prov(
-    fixtures.complex.prov,
-    (id) => `ACT-${id}`,
-    (id) => `ENT-${id}`,
-  );
+    fixtures.complex.prov
+  ).expandPrefixes();
 
   it('getParentEntityNames', () => {
-    expect(prov._getParentEntityNames('ACT-hubmap:act-4')).toEqual([
-      'ENT-hubmap:ent-1', 'ENT-hubmap:ent-3', 'ENT-hubmap:ent-4',
+    expect(prov._getParentEntityNames('https://hubmapconsortium.org/act-4')).toEqual([
+      'https://hubmapconsortium.org/ent-1',
+      'https://hubmapconsortium.org/ent-3',
+      'https://hubmapconsortium.org/ent-4',
     ]);
   });
 
   it('getChildEntityNames', () => {
-    expect(prov._getChildEntityNames('ACT-hubmap:act-2')).toEqual([
-      'ENT-hubmap:ent-4', 'ENT-hubmap:ent-7',
+    expect(prov._getChildEntityNames('https://hubmapconsortium.org/act-2')).toEqual([
+      'https://hubmapconsortium.org/ent-4', 'https://hubmapconsortium.org/ent-7',
     ]);
   });
 
   it('getParentActivityNames', () => {
-    expect(prov._getParentActivityNames('ENT-hubmap:ent-6')).toEqual([
-      'ACT-hubmap:act-4',
+    expect(prov._getParentActivityNames('https://hubmapconsortium.org/ent-6')).toEqual([
+      'https://hubmapconsortium.org/act-4',
     ]);
   });
 
   it('getChildActivityNames', () => {
-    expect(prov._getChildActivityNames('ENT-hubmap:ent-1')).toEqual([
-      'ACT-hubmap:act-1', 'ACT-hubmap:act-2', 'ACT-hubmap:act-4',
+    expect(prov._getChildActivityNames('https://hubmapconsortium.org/ent-1')).toEqual([
+      'https://hubmapconsortium.org/act-1',
+      'https://hubmapconsortium.org/act-2',
+      'https://hubmapconsortium.org/act-4',
     ]);
-  });
-
-  it('has activityByName', () => {
-    expect(prov.activityByName).toEqual(
-      {
-        'ACT-hubmap:act-1': {
-          'prov:label': 'act-1',
-        },
-        'ACT-hubmap:act-2': {
-          'prov:label': 'act-2',
-        },
-        'ACT-hubmap:act-3': {
-          'prov:label': 'act-3',
-        },
-        'ACT-hubmap:act-4': {
-          'prov:label': 'act-4',
-        },
-      },
-    );
-  });
-
-  it('has entityByName', () => {
-    expect(prov.entityByName).toEqual(
-      {
-        'ENT-hubmap:ent-1': {
-          'prov:label': 'ent-1',
-        },
-        'ENT-hubmap:ent-2': {
-          'prov:label': 'ent-2',
-        },
-        'ENT-hubmap:ent-3': {
-          'prov:label': 'ent-3',
-        },
-        'ENT-hubmap:ent-4': {
-          'prov:label': 'ent-4',
-        },
-        'ENT-hubmap:ent-5': {
-          'prov:label': 'ent-5',
-        },
-        'ENT-hubmap:ent-6': {
-          'prov:label': 'ent-6',
-        },
-        'ENT-hubmap:ent-7': {
-          'prov:label': 'ent-7',
-        },
-      },
-    );
   });
 });
 
