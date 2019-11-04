@@ -1,6 +1,6 @@
 {
   "name": "@hubmap/prov-vis",
-  "version": "0.0.2",
+  "version": "0.0.1",
   "description": "prov-vis React component",
   "main": "lib/index.js",
   "module": "es/index.js",
