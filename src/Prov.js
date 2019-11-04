@@ -72,7 +72,7 @@ export function _expand(needsExpansion, prefixMap, onlyExpandKeysNext, onlyExpan
           prefixMap[prefix] + stem,
           onlyExpandKeys
             ? value
-            : _expand(value, prefixMap, false, onlyExpandKeysNext)
+            : _expand(value, prefixMap, false, onlyExpandKeysNext),
         ];
       },
     ),
@@ -102,7 +102,7 @@ export default class Prov {
       throw new Error(failureReason);
     }
     this.prov = prov;
-    this.prov.prefix._ = '[anonymous]'
+    this.prov.prefix._ = '[anonymous]';
   }
 
   expandPrefixes() {
@@ -112,10 +112,9 @@ export default class Prov {
       const mayNeedExpansion = this.prov[topLevel];
       expandedProv[topLevel] = _expand(
         mayNeedExpansion, this.prov.prefix,
-        topLevel === 'entity' || topLevel === 'activity'
+        topLevel === 'entity' || topLevel === 'activity',
       );
     });
-    console.log(JSON.stringify(expandedProv, null, 2));
     return new Prov(expandedProv, this.getNameForActivity, this.getNameForEntity);
   }
 
