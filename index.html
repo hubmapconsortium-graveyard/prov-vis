@@ -30,7 +30,7 @@
       hubmapProvVis.renderProvVis('prov-vis', prov, {
         getNameForActivity: (id, details) => `Act ID: ${id} ${Object.keys(details)}`,
         getNameForEntity: (id, details) => `Ent ID: ${id}`,
-        // renderDetailPane
+        renderDetailPane: (details) => React.createElement('pre', null, JSON.stringify(details))
       });
     </script>
   </body>
