@@ -2,8 +2,10 @@ import Ajv from 'ajv';
 
 import schema from './schema.json';
 
+export const PROV_NS = 'http://www.w3.org/ns/prov#';
+
 // export only to test.
-export function makeCwlInput(name, steps, extras, isReference) {
+export function _makeCwlInput(name, steps, extras, isReference) {
   const id = name;
   const source = [{
     name,
@@ -32,7 +34,7 @@ export function makeCwlInput(name, steps, extras, isReference) {
 }
 
 // export only to test.
-export function makeCwlOutput(name, steps, extras) {
+export function _makeCwlOutput(name, steps, extras) {
   const id = name;
   return {
     name,
@@ -50,6 +52,33 @@ export function makeCwlOutput(name, steps, extras) {
   };
 }
 
+export function _expand(needsExpansion, prefixMap, onlyExpandKeysNext, onlyExpandKeys) {
+  // Walk the needsExpansion object, using prefixMap to expand the keys, and values, if needed.
+  // For "action" and "entity" we don't want to expand keys in what is really
+  // user metadata... but that is two levels down, so we have two booleans we set in turn,
+  // to stop us from expanding too deeply.
+  if (typeof needsExpansion !== 'object') {
+    const [prefix, stem] = needsExpansion.split(':');
+    if (stem) {
+      return prefixMap[prefix] + stem;
+    }
+    return prefix;
+  }
+  return Object.fromEntries(
+    Object.entries(needsExpansion).map(
+      ([key, value]) => {
+        const [prefix, stem] = key.split(':');
+        return [
+          prefixMap[prefix] + stem,
+          onlyExpandKeys
+            ? value
+            : _expand(value, prefixMap, false, onlyExpandKeysNext),
+        ];
+      },
+    ),
+  );
+}
+
 export default class Prov {
   constructor(prov, getNameForActivity = (id) => id, getNameForEntity = (id) => id) {
     this.getNameForActivity = getNameForActivity;
@@ -62,62 +91,72 @@ export default class Prov {
       throw new Error(failureReason);
     }
     this.prov = prov;
+    this.prov.prefix._ = '[anonymous]';
 
-    this.activityByName = Object.fromEntries(
-      Object.entries(this.prov.activity).map(([activityId, activity]) => [
-        getNameForActivity(activityId, this.prov), activity,
-      ]),
-    );
+    this._expandPrefixes();
+  }
 
-    this.entityByName = Object.fromEntries(
-      Object.entries(this.prov.entity).map(([entityId, entity]) => [
-        getNameForEntity(entityId, this.prov), entity,
-      ]),
-    );
+  _expandPrefixes() {
+    // Returns a new Prov object, with NS prefixes expanded.
+    const expandedProv = { prefix: {} };
+    Object.keys(this.prov).filter((k) => k !== 'prefix').forEach((topLevel) => {
+      const mayNeedExpansion = this.prov[topLevel];
+      expandedProv[topLevel] = _expand(
+        mayNeedExpansion, this.prov.prefix,
+        topLevel === 'entity' || topLevel === 'activity',
+      );
+    });
+    this.prov = expandedProv;
   }
 
 
-  getEntityNames(activityName, relation) {
+  _getEntityNames(activityName, relation) {
     return Object.values(this.prov[relation])
-      .filter((pair) => this.getNameForActivity(pair['prov:activity'], this.prov) === activityName)
-      .map((pair) => this.getNameForEntity(pair['prov:entity'], this.prov));
+      .filter((pair) => this.getNameForActivity(pair[`${PROV_NS}activity`], this.prov) === activityName)
+      .map((pair) => this.getNameForEntity(pair[`${PROV_NS}entity`], this.prov));
   }
 
-  getParentEntityNames(activityName) {
-    return this.getEntityNames(activityName, 'used');
+  _getParentEntityNames(activityName) {
+    return this._getEntityNames(activityName, 'used');
   }
 
-  getChildEntityNames(activityName) {
-    return this.getEntityNames(activityName, 'wasGeneratedBy');
+  _getChildEntityNames(activityName) {
+    return this._getEntityNames(activityName, 'wasGeneratedBy');
   }
 
-  getActivityNames(entityName, relation) {
+  _getActivityNames(entityName, relation) {
     return Object.values(this.prov[relation])
-      .filter((pair) => this.getNameForEntity(pair['prov:entity'], this.prov) === entityName)
-      .map((pair) => this.getNameForActivity(pair['prov:activity'], this.prov));
+      .filter((pair) => this.getNameForEntity(pair[`${PROV_NS}entity`], this.prov) === entityName)
+      .map((pair) => this.getNameForActivity(pair[`${PROV_NS}activity`], this.prov));
   }
 
-  getParentActivityNames(entityName) {
-    return this.getActivityNames(entityName, 'wasGeneratedBy');
+  _getParentActivityNames(entityName) {
+    return this._getActivityNames(entityName, 'wasGeneratedBy');
   }
 
-  getChildActivityNames(entityName) {
-    return this.getActivityNames(entityName, 'used');
+  _getChildActivityNames(entityName) {
+    return this._getActivityNames(entityName, 'used');
   }
 
 
   makeCwlStep(activityId) {
+    const entityByName = Object.fromEntries(
+      Object.entries(this.prov.entity).map(([entityId, entity]) => [
+        this.getNameForEntity(entityId, this.prov), entity,
+      ]),
+    );
+
     const activityName = this.getNameForActivity(activityId, this.prov);
-    const inputs = this.getParentEntityNames(activityName)
+    const inputs = this._getParentEntityNames(activityName)
       .map(
-        (entityName) => makeCwlInput(
-          entityName, this.getParentActivityNames(entityName), this.entityByName[entityName],
+        (entityName) => _makeCwlInput(
+          entityName, this._getParentActivityNames(entityName), entityByName[entityName],
         ),
       );
-    const outputs = this.getChildEntityNames(activityName)
+    const outputs = this._getChildEntityNames(activityName)
       .map(
-        (entityName) => makeCwlOutput(
-          entityName, this.getChildActivityNames(entityName), this.entityByName[entityName],
+        (entityName) => _makeCwlOutput(
+          entityName, this._getChildActivityNames(entityName), entityByName[entityName],
         ),
       );
     return {

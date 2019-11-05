@@ -8,7 +8,9 @@ export default function ProvVis(props) {
   const {
     prov, getNameForActivity, getNameForEntity, renderDetailPane,
   } = props;
-  const steps = new Prov(prov, getNameForActivity, getNameForEntity).toCwl();
+  const steps = new Prov(
+    prov, getNameForActivity, getNameForEntity,
+  ).toCwl();
   function renderDetailPaneWithNode(node) { // eslint-disable-line consistent-return
     if (renderDetailPane && node) {
       return renderDetailPane(node.meta.prov);

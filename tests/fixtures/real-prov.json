@@ -3,7 +3,8 @@
     "ex": "http://example.org/",
     "hubmap": "https://hubmapconsortium.org/",
     "dct": "http://purl.org/dc/terms/",
-    "foaf": "http://xmlns.com/foaf/0.1/"
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "prov": "http://www.w3.org/ns/prov#"
   },
   "agent": {
     "hubmap:agent/e19adbbb-73c3-43a7-b05e-0eead04f5ff8": {

@@ -14,7 +14,8 @@ export default {
   /* eslint-disable object-curly-newline */
   /* eslint-disable indent */
   prefix: {
-    hubmap: 'https://hubmapconsortium.org',
+    hubmap: 'https://hubmapconsortium.org/',
+    prov: 'http://www.w3.org/ns/prov#',
   },
   entity: {
     'hubmap:ent-1': { 'prov:label': 'ent-1' },
