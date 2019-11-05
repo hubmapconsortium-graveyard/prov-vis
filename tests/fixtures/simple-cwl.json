@@ -50,7 +50,15 @@
       }
     ],
     "prov": {
-      "http://www.w3.org/ns/prov#label": "Process"
+      "http://www.w3.org/ns/prov#label": "Process",
+      "http://www.w3.org/ns/prov#delegate": {
+        "http://example.com#DisplayName": "Jane Austen",
+        "http://www.w3.org/ns/prov#type": "prov:Person"
+      },
+      "http://www.w3.org/ns/prov#responsible": {
+        "http://example.com#DisplayName": "Example.com, incorporated",
+        "http://www.w3.org/ns/prov#type": "prov:Organization"
+      }
     }
   }
 ]
