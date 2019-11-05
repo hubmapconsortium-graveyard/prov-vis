@@ -113,7 +113,7 @@ export default class ProvData {
   _moveAgents() {
     // Modifies this.prov, with the the agent data expanded and moved to the activity.
     if (this.prov.actedOnBehalfOf) {
-      Object.entries(this.prov.actedOnBehalfOf).forEach(([key,obj]) => {
+      Object.entries(this.prov.actedOnBehalfOf).forEach(([key, obj]) => {
         const activityId = obj[`${PROV_NS}activity`];
         const delegateId = obj[`${PROV_NS}delegate`];
         const responsibleId = obj[`${PROV_NS}responsible`];
@@ -122,7 +122,7 @@ export default class ProvData {
         this.prov.activity[activityId][`${PROV_NS}responsible`] = this.prov.agent[responsibleId];
 
         delete this.prov.actedOnBehalfOf[key];
-      })
+      });
       delete this.prov.actedOnBehalfOf;
       delete this.prov.agent;
     }
