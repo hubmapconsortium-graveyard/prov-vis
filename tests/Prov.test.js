@@ -15,10 +15,6 @@ describe('Prov fixtures', () => {
 });
 
 describe('Prov errors', () => {
-  it('errors if input is invalid', () => {
-    expect(() => new Prov({})).toThrow();
-  });
-
   it('has expected error message', () => {
     let message;
     try {
