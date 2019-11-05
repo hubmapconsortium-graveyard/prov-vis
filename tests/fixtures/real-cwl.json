@@ -167,7 +167,18 @@
       "https://hubmapconsortium.org/displayIdentifier": "822a66f8d498ef37fbc2280abcf56c9e",
       "https://hubmapconsortium.org/uuid": "822a66f8d498ef37fbc2280abcf56c9e",
       "http://www.w3.org/ns/prov#generatedAtTime": "2019-09-17T16:40:04",
-      "https://hubmapconsortium.org/modifiedTimestamp": "2019-09-17T16:40:04"
+      "https://hubmapconsortium.org/modifiedTimestamp": "2019-09-17T16:40:04",
+      "http://www.w3.org/ns/prov#delegate": {
+        "https://hubmapconsortium.org/userEmail": "shirey@pitt.edu",
+        "https://hubmapconsortium.org/userUUID": "e19adbbb-73c3-43a7-b05e-0eead04f5ff8",
+        "https://hubmapconsortium.org/userDisplayName": "William Shirey",
+        "http://www.w3.org/ns/prov#type": "http://www.w3.org/ns/prov#Person"
+      },
+      "http://www.w3.org/ns/prov#responsible": {
+        "https://hubmapconsortium.org/groupName": "hubmap-testing",
+        "https://hubmapconsortium.org/groupUUID": "5bd084c8-edc2-11e8-802f-0e368f3075e8",
+        "http://www.w3.org/ns/prov#type": "http://www.w3.org/ns/prov#Organization"
+      }
     }
   }
 ]
