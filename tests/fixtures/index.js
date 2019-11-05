@@ -1,4 +1,4 @@
-import { PROV_NS } from '../../src/Prov';
+import { PROV_NS } from '../../src/ProvData';
 
 import realProv from './real-prov.json';
 import realCwl from './real-cwl.json';

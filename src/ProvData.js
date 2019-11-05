@@ -79,7 +79,7 @@ export function _expand(needsExpansion, prefixMap, onlyExpandKeysNext, onlyExpan
   );
 }
 
-export default class Prov {
+export default class ProvData {
   constructor(prov, getNameForActivity = (id) => id, getNameForEntity = (id) => id) {
     this.getNameForActivity = getNameForActivity;
     this.getNameForEntity = getNameForEntity;
@@ -94,10 +94,11 @@ export default class Prov {
     this.prov.prefix._ = '[anonymous]';
 
     this._expandPrefixes();
+    this._moveAgents();
   }
 
   _expandPrefixes() {
-    // Returns a new Prov object, with NS prefixes expanded.
+    // Modifies this.prov, with NS prefixes expanded.
     const expandedProv = { prefix: {} };
     Object.keys(this.prov).filter((k) => k !== 'prefix').forEach((topLevel) => {
       const mayNeedExpansion = this.prov[topLevel];
@@ -107,6 +108,22 @@ export default class Prov {
       );
     });
     this.prov = expandedProv;
+  }
+
+  _moveAgents() {
+    // Modifies this.prov, with the the agent data expanded and moved to the activity.
+    if (this.prov.actedOnBehalfOf) {
+      Object.values(this.prov.actedOnBehalfOf).forEach((obj) => {
+        const activityId = obj[`${PROV_NS}activity`];
+        const delegateId = obj[`${PROV_NS}delegate`];
+        const responsibleId = obj[`${PROV_NS}responsible`];
+
+        this.prov.activity[activityId][`${PROV_NS}delegate`] = this.prov.agent[delegateId];
+        this.prov.activity[activityId][`${PROV_NS}responsible`] = this.prov.agent[responsibleId];
+      });
+      delete this.prov.actedOnBehalfOf;
+      delete this.prov.agent;
+    }
   }
 
 

@@ -24,4 +24,21 @@ export default {
       'prov:entity': 'ex:input',
     },
   },
+  agent: {
+    'ex:j-austen': {
+      'ex:DisplayName': 'Jane Austen',
+      'prov:type': 'prov:Person',
+    },
+    'ex:example-com': {
+      'ex:DisplayName': 'Example.com, incorporated',
+      'prov:type': 'prov:Organization',
+    },
+  },
+  actedOnBehalfOf: {
+    '_:id6': {
+      'prov:delegate': 'ex:j-austen',
+      'prov:responsible': 'ex:example-com',
+      'prov:activity': 'ex:process',
+    },
+  },
 };
