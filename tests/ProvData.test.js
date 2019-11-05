@@ -4,12 +4,12 @@ import ProvData, { _makeCwlInput, _makeCwlOutput, _expand } from '../src/ProvDat
 
 import * as fixtures from './fixtures';
 
-window.console.warn = function(...args) {
-  if (args[0] != 'HORZ') {
+console.warn = (...args) => {
+  if (args[0] !== 'HORZ') {
     // TODO: Remove when upstream PR is merged: https://github.com/4dn-dcic/react-workflow-viz/pull/7
     console.warn(...args);
   }
-}
+};
 
 describe('Prov fixtures', () => {
   Object.entries(fixtures).forEach(([k, v]) => {
