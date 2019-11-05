@@ -1,6 +1,8 @@
 # Changelog
 
 ## 0.0.3 - in progress
+### Added
+- Expand `agent` and `actedOnBehalfOf` in the CWL.
 ### Changed
 - Fixed redundant fixtures.
 - Namespace prefixes are arbitrary: This expands them to the URIs they represent.
