@@ -120,8 +120,6 @@ export default class ProvData {
 
         this.prov.activity[activityId][`${PROV_NS}delegate`] = this.prov.agent[delegateId];
         this.prov.activity[activityId][`${PROV_NS}responsible`] = this.prov.agent[responsibleId];
-
-        delete this.prov.actedOnBehalfOf[key];
       });
       delete this.prov.actedOnBehalfOf;
       delete this.prov.agent;
