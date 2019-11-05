@@ -92,9 +92,11 @@ export default class Prov {
     }
     this.prov = prov;
     this.prov.prefix._ = '[anonymous]';
+
+    this._expandPrefixes();
   }
 
-  expandPrefixes() {
+  _expandPrefixes() {
     // Returns a new Prov object, with NS prefixes expanded.
     const expandedProv = { prefix: {} };
     Object.keys(this.prov).filter((k) => k !== 'prefix').forEach((topLevel) => {
@@ -104,7 +106,7 @@ export default class Prov {
         topLevel === 'entity' || topLevel === 'activity',
       );
     });
-    return new Prov(expandedProv, this.getNameForActivity, this.getNameForEntity);
+    this.prov = expandedProv;
   }
 
 

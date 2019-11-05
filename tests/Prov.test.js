@@ -8,8 +8,7 @@ import * as fixtures from './fixtures';
 describe('Prov fixtures', () => {
   Object.entries(fixtures).forEach(([k, v]) => {
     it(`converts ${k} W3C JSON to 4DN CWL`, () => {
-      const prov = new Prov(v.prov, v.getNameForActivity, v.getNameForEntity);
-      const cwl = prov.expandPrefixes().toCwl();
+      const cwl = new Prov(v.prov, v.getNameForActivity, v.getNameForEntity).toCwl();
       expect(cwl).toEqual(v.cwl, `Mismatch (full after diff):\n${JSON.stringify(cwl, null, 2)}`);
     });
   });
@@ -34,7 +33,7 @@ describe('Prov errors', () => {
 describe('Prov methods', () => {
   const prov = new Prov(
     fixtures.complex.prov,
-  ).expandPrefixes();
+  );
 
   it('getParentEntityNames', () => {
     expect(prov._getParentEntityNames('https://hubmapconsortium.org/act-4')).toEqual([
