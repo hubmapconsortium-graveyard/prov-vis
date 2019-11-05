@@ -79,7 +79,7 @@ export function _expand(needsExpansion, prefixMap, onlyExpandKeysNext, onlyExpan
   );
 }
 
-export default class Prov {
+export default class ProvData {
   constructor(prov, getNameForActivity = (id) => id, getNameForEntity = (id) => id) {
     this.getNameForActivity = getNameForActivity;
     this.getNameForEntity = getNameForEntity;
@@ -97,7 +97,7 @@ export default class Prov {
   }
 
   _expandPrefixes() {
-    // Returns a new Prov object, with NS prefixes expanded.
+    // Returns a new ProvData object, with NS prefixes expanded.
     const expandedProv = { prefix: {} };
     Object.keys(this.prov).filter((k) => k !== 'prefix').forEach((topLevel) => {
       const mayNeedExpansion = this.prov[topLevel];

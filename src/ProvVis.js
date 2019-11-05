@@ -2,13 +2,13 @@ import React from 'react';
 
 import Graph, { GraphParser } from '@hms-dbmi-bgm/react-workflow-viz';
 
-import Prov from './Prov';
+import ProvData from './ProvData';
 
 export default function ProvVis(props) {
   const {
     prov, getNameForActivity, getNameForEntity, renderDetailPane,
   } = props;
-  const steps = new Prov(
+  const steps = new ProvData(
     prov, getNameForActivity, getNameForEntity,
   ).toCwl();
   function renderDetailPaneWithNode(node) { // eslint-disable-line consistent-return

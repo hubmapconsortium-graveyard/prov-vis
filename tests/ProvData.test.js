@@ -1,24 +1,23 @@
 import expect from 'expect';
 
-import Prov, { _makeCwlInput, _makeCwlOutput, _expand } from '../src/Prov';
+import ProvData, { _makeCwlInput, _makeCwlOutput, _expand } from '../src/ProvData';
 
 import * as fixtures from './fixtures';
-
 
 describe('Prov fixtures', () => {
   Object.entries(fixtures).forEach(([k, v]) => {
     it(`converts ${k} W3C JSON to 4DN CWL`, () => {
-      const cwl = new Prov(v.prov, v.getNameForActivity, v.getNameForEntity).toCwl();
+      const cwl = new ProvData(v.prov, v.getNameForActivity, v.getNameForEntity).toCwl();
       expect(cwl).toEqual(v.cwl, `Mismatch (full after diff):\n${JSON.stringify(cwl, null, 2)}`);
     });
   });
 });
 
-describe('Prov errors', () => {
+describe('ProvData errors', () => {
   it('has expected error message', () => {
     let message;
     try {
-      new Prov({}); // eslint-disable-line no-new
+      new ProvData({}); // eslint-disable-line no-new
     } catch (e) {
       message = e.message;
     }
@@ -26,8 +25,8 @@ describe('Prov errors', () => {
   });
 });
 
-describe('Prov methods', () => {
-  const prov = new Prov(
+describe('ProvData methods', () => {
+  const prov = new ProvData(
     fixtures.complex.prov,
   );
 
