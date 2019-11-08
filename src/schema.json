@@ -35,6 +35,13 @@
     "wasGeneratedBy": { "$ref": "#/definitions/string_to_string_to_string" },
     "used": { "$ref": "#/definitions/string_to_string_to_string" },
     "agent": { "$ref": "#/definitions/string_to_string_to_string" },
-    "actedOnBehalfOf": { "$ref": "#/definitions/string_to_string_to_string" }
+    "actedOnBehalfOf": { "$ref": "#/definitions/string_to_string_to_string" },
+    "wasStartedBy": {},
+    "wasAssociatedWith": {},
+    "mentionOf": {},
+    "specializationOf": {},
+    "hadMember": {},
+    "wasEndedBy": {},
+    "bundle": {}
   }
 }

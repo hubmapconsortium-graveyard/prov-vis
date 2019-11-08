@@ -7,6 +7,8 @@ import complexCwl from './complex-cwl.json';
 import simpleProv from './simple-prov';
 import simpleCwl from './simple-cwl.json';
 
+import cwlProv from './primary.cwlprov.json'
+
 export const simple = {
   getNameForActivity: (id) => id.split('#').pop(),
   getNameForEntity: (id) => id.split('#').pop(),
@@ -36,5 +38,9 @@ export const real = {
   cwl: realCwl,
 };
 
+export const cwl = {
+  prov: cwlProv
+}
+
 // The React demo references the default export.
-export default complex;
+export default cwl;
