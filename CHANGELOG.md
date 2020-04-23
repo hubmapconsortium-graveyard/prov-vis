@@ -6,7 +6,7 @@
 ### Changed
 - Fixed redundant fixtures.
 - Namespace prefixes are arbitrary: This expands them to the URIs they represent.
--- Modify npm build script to include non .js files included in src in ES module.
+- Modify npm build script to include non .js files included in src in ES module.
 
 ## [0.0.2](https://www.npmjs.com/package/@hubmap/prov-vis/v/0.0.2) - 2019-11-04
 ### Added
