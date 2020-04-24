@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.0.3 - in progress
+## [0.0.4](https://www.npmjs.com/package/@hubmap/prov-vis/v/0.0.4) - 2020-04-24 - Skipped Version 0.0.3
 ### Added
 - Expand `agent` and `actedOnBehalfOf` in the CWL.
 ### Changed
