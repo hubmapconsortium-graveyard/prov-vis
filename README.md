@@ -1,3 +1,5 @@
+## 💥 *Deprecated and archived* 💥
+
 # prov-vis
 Generic wrapper for [4dn-dcic/react-workflow-viz](https://github.com/4dn-dcic/react-workflow-viz):
 - Takes [W3C PROV-JSON](https://www.w3.org/Submission/prov-json/) as input.
